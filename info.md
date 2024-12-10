@@ -7,7 +7,7 @@
 <User-Stories & Acceptance-Criteria>
 
 1.  As a user,
-    I want to be able to register and log in with email or username + password so that i have access to my personalzed app functionality.
+    I want to be able to register and log in with email or username + password so that i have access to my personalzed dashboard.
    
     AC:
        - Landing page must have a login form for username/email + password.
@@ -77,4 +77,10 @@
        - Update progress dynamically with a dashboard showing real-time calculations.
        - At 6 months, display a congratulatory message and ongoing motivational advice.
            
-    
+6. As a user, at the end of 6 months, I want to be prompted to add my feelings and experience to a pool of anonymous quit stories and have a way to view these stories, 
+   so that I can reflect on my journey and provide info to others.
+
+   AC: 
+       - At the 6-month milestone, prompt the user with an option to share their story anonymously, including how they feel, how the journey went, and life post-quitting.
+       - Allow users to view a collection of anonymous quit stories within the app.
+       - Include an option for users to flag inappropriate content in the story pool.
