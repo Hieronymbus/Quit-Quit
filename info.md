@@ -1,7 +1,7 @@
 <<<Addiction quiting assist APP>>>
 
 
-
+https://excalidraw.com/
 
 
 <User-Stories & Acceptance-Criteria>
@@ -20,7 +20,7 @@
        - The system must validate the credentials against stored user data.
        - if login succesfull user should be redirected to there dashboard with a auth token provided.
 
-2. As a user struggling with an addiction,
+2. As a user,
    I want to create a new quit goal by entering details about my addiction and recording a video to myself,
    so that I can track my progress and stay motivated in the future.
 
