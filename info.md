@@ -1,10 +1,17 @@
-<<<Addiction quiting assist APP>>>
+<<<**Addiction quiting assist APP**>>>
 
+<**Timeline**>
 
-https://excalidraw.com/
+- Project Proposal – 1 week – start Tue 10/12/24
+- Development Phase – 4 weeks - start Tue 17/12/24
+- Final Submission
+- Presentation/Demo Day – TBD
 
+<**App layout**>
 
-<User-Stories & Acceptance-Criteria>
+- https://excalidraw.com/   open addictionAPP.excalidraw
+
+<**User-Stories & Acceptance-Criteria**>
 
 1.  As a user,
     I want to be able to register and log in with email or username + password so that i have access to my personalzed dashboard.
