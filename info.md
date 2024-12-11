@@ -7,6 +7,19 @@
 - Final Submission
 - Presentation/Demo Day – TBD
 
+<<**Packages-Needed**>>
+
+- Tailwind for CSS or Chakra UI
+- express for server
+- dotenv for environment variables
+- mongoose DB
+- Vite
+
+<<**DATABASE**>>
+
+- MONGO 
+- set up sepeate DB for dev vs testing vs production  
+
 <**App layout**>
 
 - https://excalidraw.com/   open addictionAPP.excalidraw
@@ -28,6 +41,12 @@
        - if login succesfull user should be redirected to there dashboard with a auth token provided.
 
 2. As a user,
+   I want an option to toggle into a darkmode so that my eyes dont get rekt
+
+   AC: 
+      - User can toggle darkmode from the main options dropdown
+
+3. As a user,
    I want to create a new quit goal by entering details about my addiction and recording a video to myself,
    so that I can track my progress and stay motivated in the future.
 
@@ -47,7 +66,7 @@
        - Save all data and video for tracking in the dashboard.
          Allow video playback with a motivational reminder.
 
-3. As a user,
+4. As a user,
    I want a new motivational quote to display on my dashboard every day,
    so that I can feel inspired and encouraged throughout my journey.
 
@@ -60,7 +79,7 @@
 
        - Ensure the quote is visually distinct and easy to read on the dashboard.
 
-4. As a user,
+5. As a user,
    I want access to medical/expert advice related to what I’m quitting,
    so that I can better understand and manage the challenges of quitting.
 
@@ -74,7 +93,7 @@
        - Ensure advice is categorized clearly and updated regularly.
        - If the user’s addiction type is not supported, display a generic message: "More information will be added soon. Check back later."    
 
-5. As a user, 
+6. As a user, 
    I want an achievements/progress section with milestones like money saved, time since quitting, and health improvements, 
    so that I can stay motivated and track tangible benefits beyond the hardest part.
 
@@ -84,7 +103,7 @@
        - Update progress dynamically with a dashboard showing real-time calculations.
        - At 6 months, display a congratulatory message and ongoing motivational advice.
            
-6. As a user, at the end of 6 months, I want to be prompted to add my feelings and experience to a pool of anonymous quit stories and have a way to view these stories, 
+7. As a user, at the end of 6 months, I want to be prompted to add my feelings and experience to a pool of anonymous quit stories and have a way to view these stories, 
    so that I can reflect on my journey and provide info to others.
 
    AC: 
