@@ -9,11 +9,16 @@
 
 <<**Packages-Needed**>>
 
-- Tailwind for CSS or Chakra UI
-- express for server
-- dotenv for environment variables
-- mongoose DB
-- Vite
+> frontend
+- Tailwind : CSS 
+- Vite react : 
+- react router : pages
+- zustand : global state 
+
+> backend
+- express : server
+- dotenv : environment variables
+- mongoos : DB
 
 <<**DATABASE**>>
 
