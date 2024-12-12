@@ -1,16 +1,16 @@
 import express from "express";
 import dotenv from "dotenv";
-import path, { dirname } from "path";
-import { fileURLToPath } from 'url';
+import path from "path";
+
 
 
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+
 const app = express();
 const PORT = process.env.PORT || 3000;
-// const __dirname = path.resovle()
+const __dirname = path.resolve()
+console.log(__dirname)
 
 // Check if the app is running in "production" mode
 // "process.env.NODE_ENV" is an environment variable that stores the current mode (development or production)
