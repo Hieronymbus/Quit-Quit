@@ -1,12 +1,16 @@
 import express from "express";
 import dotenv from "dotenv";
-import path from "path";
+import path, { dirname } from "path";
+import { fileURLToPath } from 'url';
+
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
-const __dirname = path.resovle()
+// const __dirname = path.resovle()
 
 // Check if the app is running in "production" mode
 // "process.env.NODE_ENV" is an environment variable that stores the current mode (development or production)
@@ -18,10 +22,10 @@ if (process.env.NODE_ENV === "production") {
 
     // Handle all other routes by sending the "index.html" file
     // The "*" means that any route that doesn't match an API or static file will be handled by this
-    app.get("*", (request, response) => {
+    app.get("*", (req, res) => {
         // Send the "index.html" file located in the "dist" folder
         // This ensures that the frontend's main HTML file is served for any route (like React or Vue's client-side routing)
-        response.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+        res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
     });
 }
 

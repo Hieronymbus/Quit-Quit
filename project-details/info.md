@@ -23,7 +23,7 @@
 - nodemon : to watch server for updates
 - express : server
 - dotenv : environment variables
-- mongoos : DB
+- mongoose : DB
 
 <<**DATABASE**>>
 
