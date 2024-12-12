@@ -1,5 +1,8 @@
 <<<**Addiction quiting assist APP**>>>
 
+<<**DeploymentLINK**>>
+- https://quitforealtho.onrender.com production
+
 <**Timeline**>
 
 - Project Proposal – 1 week – start Tue 10/12/24
@@ -16,6 +19,8 @@
 - zustand : global state 
 
 > backend
+- cross-env : set env in diff environments mac vs windows
+- nodemon : to watch server for updates
 - express : server
 - dotenv : environment variables
 - mongoos : DB
