@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const addictionSchema = new mongoose.Schema({
 
-    typeype:{
+    type:{
         type: String,
         required: true
     },
@@ -14,9 +14,16 @@ const addictionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    achievments:{
-        type:
-    }
+    achievments:[{
+        title: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        }
+    }]
 
 }, {
     timestamps: true

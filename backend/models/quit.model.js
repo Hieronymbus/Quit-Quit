@@ -2,8 +2,10 @@ import mongoose from "mongoose";
 
 const quitSchema = new mongoose.Schema({
 
-    addictionType:{
-
+    addiction:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Addiction'
     },
     startDate: {
         type: Date,
