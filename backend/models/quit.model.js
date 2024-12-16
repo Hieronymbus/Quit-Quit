@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 
 const quitSchema = new mongoose.Schema({
 
+    userID: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
     addiction:{
         type: mongoose.Schema.Types.ObjectId,
         required: true,
