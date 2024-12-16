@@ -7,6 +7,8 @@
 
 - Project Proposal – 1 week – start Tue 10/12/24
 - Development Phase – 4 weeks - start Tue 17/12/24
+  - backend 2weeks
+  - frontend 2weeks
 - Final Submission
 - Presentation/Demo Day – TBD
 
@@ -36,6 +38,7 @@
 
 <**User-Stories & Acceptance-Criteria**>
 
+> Core: 
 1.  As a user,
     I want to be able to register and log in with email or username + password so that i have access to my personalzed dashboard.
    
@@ -62,34 +65,31 @@
 
    AC:   
        - User can enter addiction type, duration, frequency, and money spent.
-         Optional text field for reasons to quit.
-         Video Recording:
-
+       - Optional text field for reasons to quit.      
        - Option to record or upload a video (up to 2 minutes).
-         Skipping the video prompts a confirmation message.
-         Validation & Submission:
-
        - All mandatory fields must be completed. 
-         Show success or error messages based on submission status.
-         Access & Playback:
- 
        - Save all data and video for tracking in the dashboard.
-         Allow video playback with a motivational reminder.
-
+        
 4. As a user,
    I want a new motivational quote to display on my dashboard every day,
    so that I can feel inspired and encouraged throughout my journey.
 
    AC:
        - A new motivational quote must appear on the dashboard every day at 12:00 AM (user's local time).
-
        - Quotes must be randomly selected from a pre-defined database or API without repeating within a week.
-
        - If the quote fails to load (e.g., network error), display a fallback default quote.
-
        - Ensure the quote is visually distinct and easy to read on the dashboard.
 
-5. As a user,
+5. As a user, 
+   I want a stats page for each quit so that i can easily see things like the start date, time elapsed, end date etc.
+
+   AC: 
+       - Display all relevant stats in a clear and easy to read way
+       - Update dynamically showing real-time calculations.
+       - At 6 months, display a congratulatory message and ongoing motivational advice.
+
+>Bonus:
+6. As a user,
    I want access to medical/expert advice related to what I’m quitting,
    so that I can better understand and manage the challenges of quitting.
 
@@ -103,17 +103,16 @@
        - Ensure advice is categorized clearly and updated regularly.
        - If the user’s addiction type is not supported, display a generic message: "More information will be added soon. Check back later."    
 
-6. As a user, 
-   I want an achievements/progress section with milestones like money saved, time since quitting, and health improvements, 
+7. As a user, 
+   I want an achievements section with milestones and funny names/wording. like money saved, time since quitting, and health improvements etc
    so that I can stay motivated and track tangible benefits beyond the hardest part.
 
    AC: 
-       - Display milestones for money saved, time since quitting (e.g., "1 week", "6 months"), 
+       - Display milestones for money saved, time since quitting (e.g., "1 week", "halfway" "6 months"), 
          and health improvements tailored to the addiction type (e.g., "lung function improved," "THC reduced by 50%").  
        - Update progress dynamically with a dashboard showing real-time calculations.
-       - At 6 months, display a congratulatory message and ongoing motivational advice.
-           
-7. As a user, at the end of 6 months, I want to be prompted to add my feelings and experience to a pool of anonymous quit stories and have a way to view these stories, 
+                
+8. As a user, at the end of 6 months, I want to be prompted to add my feelings and experience to a pool of anonymous quit stories and have a way to view these stories, 
    so that I can reflect on my journey and provide info to others.
 
    AC: 

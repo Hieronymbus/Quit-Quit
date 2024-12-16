@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import path from "path";
+import { connectToDB } from "./config/db.js";
 
 
 
@@ -10,7 +11,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const __dirname = path.resolve()
-console.log(__dirname)
+
 
 // Check if the app is running in "production" mode
 // "process.env.NODE_ENV" is an environment variable that stores the current mode (development or production)
@@ -30,5 +31,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.listen(PORT, () => {
-    console.log(`app is listening on port ${PORT}`);
+    connectToDB();
+    console.log(`Server started. app is listening on port ${PORT}`);
 });
