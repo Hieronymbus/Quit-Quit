@@ -21,6 +21,7 @@
 - zustand : global state 
 
 > backend
+- express-fileupload : for the video upload
 - cross-env : set env in diff environments mac vs windows
 - nodemon : to watch server for updates
 - express : server

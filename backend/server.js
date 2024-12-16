@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { connectToDB } from "./config/db.js";
-
+import Quit from "../models/quit.model.js"
 
 
 dotenv.config();
@@ -11,6 +11,37 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const __dirname = path.resolve()
+
+
+
+app.get('/quits', async (req, res) => {
+    
+    try {
+        const quits = await Quit.find({});
+        res.status(200).json({success: true, data: quits});
+    } catch (err) {
+        console.error("Error finding quits:", err.message);
+        res.status(404).json({success: false, message:"Server Error"});
+    };
+});
+
+app.post('/quits', async (req,res) => {
+    
+    try {
+        
+
+    } catch (error) {
+        
+
+    }
+
+});
+
+app.delete('/quits/:id', async (req,res) => {
+
+
+});
+
 
 
 // Check if the app is running in "production" mode
