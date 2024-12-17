@@ -18,13 +18,24 @@ app.use(fileUpload());
 app.use(express.json());
 
 /// user apis ///
-app.
+app.post("/users", (req, res) => {
+
+});
+app.get("/users", (req, res) => {
+
+});
+app.put("/users", (req, res) => {
+
+});
+app.delete("/users", (req, res) => {
+
+});
 
 /// addiction apis ///
 
 
 /// quit apis ///
-app.use("/quits", quitRoutes)
+app.use("/api/quits", quitRoutes)
 
 
 
