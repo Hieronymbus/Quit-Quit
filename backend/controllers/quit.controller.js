@@ -1,7 +1,8 @@
-import Quit from "../models/quit.model.js";
-import Addiction from "../models/addiction.model.js"
 import path from"path";
 import { randomUUID } from "crypto";
+import fs from "fs";
+import Quit from "../models/quit.model.js";
+import Addiction from "../models/addiction.model.js";
 
 const __dirname = path.resolve() // because __dirname is not available when package.json has "type" : "module" .
 
@@ -63,7 +64,22 @@ export const deleteQuit = async (req,res) => {
     const {quitID} = req.params
 
     try {
+        const quit = await Quit.findById(quitID)
+
+        if(!quit){
+            return res.status(404).json({ success: false, message:"failure to delete quit not found" })
+        }
+        
         await Quit.findByIdAndDelete(quitID);
+        if(quit.videoPath){
+            fs.unlink(quit.videoPath,(err) => {
+                if(err){
+                    console.error("Error deleting file:", err.message );
+                    return res.status(500).json({success: false, message: "Quit entry deleted from DB, but file deletion failed"})
+                }   
+            })
+        }
+
         res.status(200).json({success: true, message:"Quit succesfully deleted"})
     } catch (err) {
         console.error("Server Error", err.message);
@@ -74,16 +90,29 @@ export const deleteQuit = async (req,res) => {
 //// delete all abandoned
 export const deleteAllAbandonedQuits = async (req, res) => {
 
-    const abandonedQuit = await Quit.findOne( { status: "abandoned" } )
-    if(!abandonedQuit){
-       return res.status(404).json({success: false, message: "No abandoned quits found to delete"})
-    }
-
+    
     try {
-        await Quit.deleteMany( { status: "abandoned" } )
-        res.status(204).json({success: true, message: "Abandoned quits succesfully deleted"})
+        const abandonedQuits = await Quit.find( { status: "abandoned" } )
+        if(abandonedQuits.length === 0 ){
+           return res.status(404).json({success: false, message: "No abandoned quits found to delete"})
+        }
+        
+        abandonedQuits.forEach(async (quit, index)=> {
+            await Quit.findByIdAndDelete(quit._id)
+
+            if(quit.videoPath){
+                fs.unlink(quit.videoPath,(err) => {
+                    if(err){
+                        console.error("Error deleting file:", err.message );
+                    }   
+                })
+            }
+        })
+
+        res.status(200).json({success: true, message: "Abandoned quits succesfully deleted"})
     } catch (err) {
         console.error("Server Error:", err.message )
         res.status(500).json({success: false, message: "Failure to delete, Server Error"})
     }
+
 }
