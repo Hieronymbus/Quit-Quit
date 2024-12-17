@@ -12,7 +12,7 @@
 - Final Submission
 - Presentation/Demo Day – TBD
 
-<<**Packages-Needed**>>
+<<**Packages/Software-Needed**>>
 
 > frontend
 - Tailwind : CSS 
