@@ -7,7 +7,7 @@ const quitSchema = new mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    addiction:{
+    addictionType:{
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Addiction'
@@ -31,7 +31,7 @@ const quitSchema = new mongoose.Schema({
     reasonsToQuit: {
         type: String
     },
-    videoURL: {
+    videoPath: {
         type: String
     }
 },{

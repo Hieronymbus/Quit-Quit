@@ -1,17 +1,21 @@
 import express from "express";
 import dotenv from "dotenv";
 import path from "path";
+import fileUpload from "express-fileupload";
+import { randomUUID } from "crypto";
 import { connectToDB } from "./config/db.js";
-import Quit from "../models/quit.model.js"
+import Quit from "./models/quit.model.js";
 
 
 dotenv.config();
 
-
 const app = express();
 const PORT = process.env.PORT || 3000;
-const __dirname = path.resolve()
+const __dirname = path.resolve() // because __dirname is not available when package.json has "type" : "module" .
 
+//middlewares
+app.use(fileupload());
+app.use(express.json());
 
 
 app.get('/quits', async (req, res) => {
@@ -27,19 +31,38 @@ app.get('/quits', async (req, res) => {
 
 app.post('/quits', async (req,res) => {
     
-    try {
-        
+    const quit = req.body
+    let uploadPath;
+    if(req.files) {
+        const videoFile = req.files.videoFile;
+        const uniqueName = randomUUID();
+        const fileExtension = "." + videoFile.name.split(".").pop();
+        const uniqueFileName = uniqueName + fileExtension;
+        uploadPath = path.join(__dirname,'public', 'testUploads', uniqueFileName);
 
-    } catch (error) {
-        
-
+        videoFile.mv(uploadPath)
+        quit.videoPath = uploadPath
     }
-
+    const newQuit = new Quit(quit)
+    try {
+        await newQuit.save()
+        res.status(201).json({success: true, data: newQuit})
+    } catch (err) {
+        console.error("Error in Create Quit", err)
+        res.status(500).json({success: false, message:"Server error"})
+    }
 });
 
-app.delete('/quits/:id', async (req,res) => {
+app.delete('/quits/:quitID', async (req,res) => {
+    
+    const {quitID} = req.params
 
-
+    try {
+        await Quit.findByIdAndDelete(quitID);
+        res.status(200).json({success: true, message:"Quit succesfully completed"})
+    } catch (error) {
+        
+    }
 });
 
 

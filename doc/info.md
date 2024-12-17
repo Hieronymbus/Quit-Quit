@@ -22,12 +22,15 @@
 
 > backend
 - express-fileupload : for the video upload
+- crypto : random uuid fo file upload
 - cross-env : set env in diff environments mac vs windows
 - nodemon : to watch server for updates
 - express : server
 - dotenv : environment variables
 - mongoose : DB
 
+> testing
+- jest? postman? curl? puppeteer?
 <<**DATABASE**>>
 
 - MONGO 
@@ -112,6 +115,7 @@
        - Display milestones for money saved, time since quitting (e.g., "1 week", "halfway" "6 months"), 
          and health improvements tailored to the addiction type (e.g., "lung function improved," "THC reduced by 50%").  
        - Update progress dynamically with a dashboard showing real-time calculations.
+       - make achievments bind to account so you can collect badges?
                 
 8. As a user, at the end of 6 months, I want to be prompted to add my feelings and experience to a pool of anonymous quit stories and have a way to view these stories, 
    so that I can reflect on my journey and provide info to others.
