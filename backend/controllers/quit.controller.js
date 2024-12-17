@@ -1,4 +1,5 @@
 import Quit from "../models/quit.model.js";
+import Addiction from "../models/addiction.model.js"
 import path from"path";
 import { randomUUID } from "crypto";
 
@@ -33,7 +34,7 @@ export const createQuit = async (req,res) => {
 export const readQuits = async (req, res) => {
     
     try {
-        const quits = await Quit.find({});
+        const quits = await Quit.find({}).populate("addictionType");
         res.status(200).json({success: true, data: quits});
     } catch (err) {
         console.error("Error finding quits:", err.message);

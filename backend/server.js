@@ -4,7 +4,7 @@ import path from "path";
 import fileUpload from "express-fileupload";
 
 import { connectToDB } from "./config/db.js";
-import Quit from "./models/quit.model.js";
+
 import quitRoutes from "./routes/quit.route.js"
 
 dotenv.config();
