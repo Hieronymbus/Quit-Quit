@@ -10,7 +10,7 @@ const addictionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    image:{
+    imagePath:{
         type: String,
         required: true
     },
@@ -23,7 +23,7 @@ const addictionSchema = new mongoose.Schema({
             type: String,
             required: true
         },
-        imageURL:{
+        imagePath:{
             type: String,
             required: true
         }

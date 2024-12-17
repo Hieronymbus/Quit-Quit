@@ -33,6 +33,10 @@ const quitSchema = new mongoose.Schema({
     },
     videoPath: {
         type: String
+    },
+    status: {
+        type: String,
+        required: true
     }
 },{
     timestamps: true

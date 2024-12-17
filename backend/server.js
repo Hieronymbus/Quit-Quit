@@ -5,7 +5,7 @@ import fileUpload from "express-fileupload";
 import { randomUUID } from "crypto";
 import { connectToDB } from "./config/db.js";
 import Quit from "./models/quit.model.js";
-
+import quitRoutes from "./routes/quit.route.js"
 
 dotenv.config();
 
@@ -14,56 +14,16 @@ const PORT = process.env.PORT || 3000;
 const __dirname = path.resolve() // because __dirname is not available when package.json has "type" : "module" .
 
 //middlewares
-app.use(fileupload());
+app.use(fileUpload());
 app.use(express.json());
 
+/// user apis ///
 
-app.get('/quits', async (req, res) => {
-    
-    try {
-        const quits = await Quit.find({});
-        res.status(200).json({success: true, data: quits});
-    } catch (err) {
-        console.error("Error finding quits:", err.message);
-        res.status(404).json({success: false, message:"Server Error"});
-    };
-});
+/// addiction apis ///
 
-app.post('/quits', async (req,res) => {
-    
-    const quit = req.body
-    let uploadPath;
-    if(req.files) {
-        const videoFile = req.files.videoFile;
-        const uniqueName = randomUUID();
-        const fileExtension = "." + videoFile.name.split(".").pop();
-        const uniqueFileName = uniqueName + fileExtension;
-        uploadPath = path.join(__dirname,'public', 'testUploads', uniqueFileName);
+/// quit apis ///
+app.use("/quits", quitRoutes)
 
-        videoFile.mv(uploadPath)
-        quit.videoPath = uploadPath
-    }
-    const newQuit = new Quit(quit)
-    try {
-        await newQuit.save()
-        res.status(201).json({success: true, data: newQuit})
-    } catch (err) {
-        console.error("Error in Create Quit", err)
-        res.status(500).json({success: false, message:"Server error"})
-    }
-});
-
-app.delete('/quits/:quitID', async (req,res) => {
-    
-    const {quitID} = req.params
-
-    try {
-        await Quit.findByIdAndDelete(quitID);
-        res.status(200).json({success: true, message:"Quit succesfully completed"})
-    } catch (error) {
-        
-    }
-});
 
 
 
