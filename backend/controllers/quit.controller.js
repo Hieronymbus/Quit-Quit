@@ -1,5 +1,8 @@
 import Quit from "../models/quit.model.js";
 import path from"path";
+import { randomUUID } from "crypto";
+
+const __dirname = path.resolve() // because __dirname is not available when package.json has "type" : "module" .
 
 ///create a new quit
 export const createQuit = async (req,res) => {
@@ -11,7 +14,7 @@ export const createQuit = async (req,res) => {
         const uniqueName = randomUUID();
         const fileExtension = "." + videoFile.name.split(".").pop();
         const uniqueFileName = uniqueName + fileExtension;
-        uploadPath = path.join(__dirname,'public', 'uploads.test', uniqueFileName);
+        uploadPath = path.join(__dirname,'backend','public', 'uploads.test', uniqueFileName);
 
         videoFile.mv(uploadPath)
         quit.videoPath = uploadPath
