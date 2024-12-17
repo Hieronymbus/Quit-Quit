@@ -57,16 +57,33 @@ export const updateQuit = async (req, res) => {
 
 }
 
-//// delete a quit: 
+////  delete a single quit: 
 export const deleteQuit = async (req,res) => {
     
     const {quitID} = req.params
 
     try {
         await Quit.findByIdAndDelete(quitID);
-        res.status(200).json({success: true, message:"Quit succesfully completed"})
-    } catch (error) {
-        
+        res.status(200).json({success: true, message:"Quit succesfully deleted"})
+    } catch (err) {
+        console.error("Server Error", err.message);
+        res.status(500).json({ success: false, message:"Server Error, failure to delete" })
     }
 }
 
+//// delete all abandoned
+export const deleteAllAbandonedQuits = async (req, res) => {
+
+    const abandonedQuit = await Quit.findOne( { status: "abandoned" } )
+    if(!abandonedQuit){
+       return res.status(404).json({success: false, message: "No abandoned quits found to delete"})
+    }
+
+    try {
+        await Quit.deleteMany( { status: "abandoned" } )
+        res.status(204).json({success: true, message: "Abandoned quits succesfully deleted"})
+    } catch (err) {
+        console.error("Server Error:", err.message )
+        res.status(500).json({success: false, message: "Failure to delete, Server Error"})
+    }
+}

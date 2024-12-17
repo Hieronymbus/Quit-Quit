@@ -6,6 +6,7 @@ import fileUpload from "express-fileupload";
 import { connectToDB } from "./config/db.js";
 
 import quitRoutes from "./routes/quit.route.js"
+import Quit from "./models/quit.model.js";
 
 dotenv.config();
 
@@ -18,21 +19,32 @@ app.use(fileUpload());
 app.use(express.json());
 
 /// user apis ///
-app.post("/users", (req, res) => {
+app.post("/users", async (req, res) => {
 
 });
-app.get("/users", (req, res) => {
+app.get("/users", async (req, res) => {
 
 });
-app.put("/users", (req, res) => {
+app.put("/users", async (req, res) => {
 
 });
-app.delete("/users", (req, res) => {
+app.delete("/users", async (req, res) => {
 
 });
 
 /// addiction apis ///
+app.post("/addiction", async (req, res) => {
 
+});
+app.get("/addiction", async (req, res) => {
+
+});
+app.patch("/addiction/:addictionID", async (req, res) => {
+
+});
+app.delete("/addiction/:addictionID", async (req, res) => {
+
+});
 
 /// quit apis ///
 app.use("/api/quits", quitRoutes)
