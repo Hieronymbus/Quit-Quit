@@ -1,53 +1,54 @@
-<<<**Addiction quiting assist APP**>>>
+### ############################## ###
+###  Addiction Quiting Assist App  ###
+### ############################## ###
 
-<<**DeploymentLINK**>>
+## Deployment Link 
 - https://quitforealtho.onrender.com production
 
-<**Timeline**>
+## Timeline 
 
 - Project Proposal – 1 week – start Tue 10/12/24
 - Development Phase – 4 weeks - start Tue 17/12/24
-  - backend 2weeks
+  - backend 2weeks 
   - frontend 2weeks
 - Final Submission
 - Presentation/Demo Day – TBD
 
-<<**Packages/Software-Needed**>>
+## Packages/Software-Needed
 
-> frontend
-- Tailwind : CSS 
-- Vite react : 
+# Frontend
+- Tailwind :  open-source CSS framework 
+- Vite react : frontend UI library and bundler
 - react router : pages
 - zustand : global state 
 
-> backend
+# Backend
 - express-fileupload : for the video upload
 - crypto : random uuid fo file upload
-- cross-env : set env in diff environments mac vs windows
-- nodemon : to watch server for updates
+- cross-env : single command without worrying about setting or using the environment variable properly for the platform.
+- nodemon : monitoryour project directory and automatically restarts your node application when it detects any changes.
 - express : server
 - dotenv : environment variables
-- mongoose : DB
+- mongoose : provides a uniform API for accessing DB
 - cookie-parser : middleware to parse http req cookies
 - bcrypt : for password hashing
-- jwt : for auth token secure
+- jwt : for auth token secure generation. securely transmitting information between parties as a JSON object.
 
-
-
-> testing
+# Testing
 - jest? postman? curl? puppeteer?
-<<**DATABASE**>>
+
+## Database
 
 - MONGO 
 - set up sepeate DB for dev vs testing vs production  
 
-<**App layout**>
+## App Layout
 
 - https://excalidraw.com/   open addictionAPP.excalidraw
 
-<**User-Stories & Acceptance-Criteria**>
+## User-Stories & Acceptance-Criteria
 
-> Core: 
+# Core: 
 1.  As a user,
     I want to be able to register and log in with email or username + password so that i have access to my personalzed dashboard.
    
@@ -97,7 +98,7 @@
        - Update dynamically showing real-time calculations.
        - At 6 months, display a congratulatory message and ongoing motivational advice.
 
->Bonus:
+# Bonus:
 6. As a user,
    I want access to medical/expert advice related to what I’m quitting,
    so that I can better understand and manage the challenges of quitting.
@@ -129,3 +130,4 @@
        - At the 6-month milestone, prompt the user with an option to share their story anonymously, including how they feel, how the journey went, and life post-quitting.
        - Allow users to view a collection of anonymous quit stories within the app.
        - Include an option for users to flag inappropriate content in the story pool.
+

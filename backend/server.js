@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import path from "path";
 import fileUpload from "express-fileupload";
 import bcrypt from "bcrypt"
+import cookieParser from "cookie-parser";
+import jwt from "jsonwebtoken"
 
 import { connectToDB } from "./config/db.js";
 import quitRoutes from "./routes/quit.route.js"
@@ -13,11 +15,31 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const __dirname = path.resolve() // because __dirname is not available when package.json has "type" : "module" .
+const SECRET_KEY = process.env.SECRET_KEY;
+const __dirname = path.resolve(); // because __dirname is not available when package.json has "type" : "module" .
 
 //middlewares
 app.use(fileUpload());
 app.use(express.json());
+app.use(cookieParser());
+
+function authCookieMiddleware(req, res, next) {
+    //Each fetch request grab token
+    const token = req.cookies.authToken;
+    if (!token) {
+      return res.status(401).json({message:'Acces Denied'})
+    };
+    
+    try {
+      const decoded = jwt.verify(token, SECRET_KEY);
+      req.user = decoded;
+
+      next()
+    
+    } catch (error) {
+      res.status(401).json({message:'Invalid token'})
+    }
+};
 
 /// user apis ///
 app.post("/api/users/register", async (req, res) => {
@@ -56,26 +78,27 @@ app.post("/api/users/login", async (req, res) => {
     const { userNameEmail, password } = req.body
 
     try {
-      
-        const result = await Users.findOne({
+        //search by email or username
+        const user = await User.findOne({
             $or:[
-                {email:userNameEmail},
-                {userName:userNameEmail}
+                {email: userNameEmail},
+                {userName: userNameEmail}
             ]
         })
-        const user = result.rows[0];
-  
+        if (!user){
+           return res.status(400).send('No user found with those details')
+        }
+        //check for password match
         const match = await bcrypt.compare(password, user.password);
-  
+        
         const userDataForToken = {
-          id: user.id ,
-          username: user.username ,
+          _id: user._id ,
+          userName: user.userName ,
           role: "user" 
         }
-  
         const userDataForFrontend = {
-          id: user.id,
-          username: user.username,
+          _id: user._id,
+          userName: user.userName,
           email: user.email
         }
   
@@ -85,13 +108,14 @@ app.post("/api/users/login", async (req, res) => {
           //Assign token
           res.cookie('authToken', token, {httpOnly: true });
         
-        };
+        } else {
+            return res.status(400).json( { success: false, message: "incorrect password" })
+        }
   
         res.status(201).json( { message:'logged in', data: userDataForFrontend });
-      } catch (error) {
-        
-        res.status(400).send('no user found with those details')
-  
+      } catch (err) {
+        console.error("Server Error:", err.message)
+        res.status(500).json( {success: false, message: "Server Serror, failure to log in"})
       }
 
 });
