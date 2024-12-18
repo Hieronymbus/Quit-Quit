@@ -130,15 +130,15 @@ app.post('/api/users/logout', async (req, res) => {
 });
 
 app.get("/api/users", authCookieMiddleware, async (req, res) => {
-    const {id, userName, role} = req.user;
+    const {_id, userName, role} = req.user;
 
 
     try {
        
-        const user = await User.findById(id)
+        const user = await User.findById(_id)
         const userDataForFrontend = {
-          id: user.id,
-          userName: user.username,
+          _id: user._id,
+          userName: user.userName,
           email: user.email
         }
         res.status(200).json( {success: true, data: userDataForFrontend } );
@@ -157,7 +157,7 @@ app.delete("/api/users/:id", async (req, res) => {
 
 /// addiction apis ///
 app.post("/api/addiction", async (req, res) => {
-    
+
 });
 app.get("/api/addiction", async (req, res) => {
 
