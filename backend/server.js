@@ -119,7 +119,33 @@ app.post("/api/users/login", async (req, res) => {
       }
 
 });
-app.get("/api/users", async (req, res) => {
+app.post('/api/users/logout', async (req, res) => {
+    try {
+        res.clearCookie('authToken')
+        .status(200).json( { success: true, message: 'User succesfully logged Out'});
+      
+    } catch (err) {
+        res.status(500).json({success: true, message:"Server Error failure to logout"})
+    }
+});
+
+app.get("/api/users", authCookieMiddleware, async (req, res) => {
+    const {id, userName, role} = req.user;
+
+
+    try {
+       
+        const user = await User.findById(id)
+        const userDataForFrontend = {
+          id: user.id,
+          userName: user.username,
+          email: user.email
+        }
+        res.status(200).json( {success: true, data: userDataForFrontend } );
+      } catch (err) {
+        console.error(err);
+        res.status(500).json({success:false, message:"Server Error"});
+      }
 
 });
 app.put("/api/users/:id", async (req, res) => {
@@ -131,7 +157,7 @@ app.delete("/api/users/:id", async (req, res) => {
 
 /// addiction apis ///
 app.post("/api/addiction", async (req, res) => {
-
+    
 });
 app.get("/api/addiction", async (req, res) => {
 
