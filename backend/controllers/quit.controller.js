@@ -76,43 +76,43 @@ export const deleteQuit = async (req,res) => {
                 if(err){
                     console.error("Error deleting file:", err.message );
                     return res.status(500).json({success: false, message: "Quit entry deleted from DB, but file deletion failed"})
-                }   
-            })
-        }
+                } ;
+            });
+        };
 
-        res.status(200).json({success: true, message:"Quit succesfully deleted"})
+        res.status(200).json({success: true, message:"Quit succesfully deleted"});
     } catch (err) {
         console.error("Server Error", err.message);
-        res.status(500).json({ success: false, message:"Server Error, failure to delete" })
-    }
-}
+        res.status(500).json({ success: false, message:"Server Error, failure to delete" });
+    };
+};
 
 //// delete all abandoned
 export const deleteAllAbandonedQuits = async (req, res) => {
 
     
     try {
-        const abandonedQuits = await Quit.find( { status: "abandoned" } )
+        const abandonedQuits = await Quit.find( { status: "abandoned" } );
         if(abandonedQuits.length === 0 ){
-           return res.status(404).json({success: false, message: "No abandoned quits found to delete"})
-        }
+           return res.status(404).json({success: false, message: "No abandoned quits found to delete"});
+        };
         
         abandonedQuits.forEach(async (quit, index)=> {
-            await Quit.findByIdAndDelete(quit._id)
+            await Quit.findByIdAndDelete(quit._id);
 
             if(quit.videoPath){
                 fs.unlink(quit.videoPath,(err) => {
                     if(err){
                         console.error("Error deleting file:", err.message );
-                    }   
-                })
-            }
-        })
+                    }; 
+                });
+            };
+        });
 
-        res.status(200).json({success: true, message: "Abandoned quits succesfully deleted"})
+        res.status(200).json({success: true, message: "Abandoned quits succesfully deleted"});
     } catch (err) {
-        console.error("Server Error:", err.message )
-        res.status(500).json({success: false, message: "Failure to delete, Server Error"})
-    }
+        console.error("Server Error:", err.message );
+        res.status(500).json({success: false, message: "Failure to delete, Server Error"});
+    };
 
-}
+};

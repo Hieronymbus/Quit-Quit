@@ -2,11 +2,12 @@ import express from "express";
 import dotenv from "dotenv";
 import path from "path";
 import fileUpload from "express-fileupload";
+import bcrypt from "bcrypt"
 
 import { connectToDB } from "./config/db.js";
-
 import quitRoutes from "./routes/quit.route.js"
 import Quit from "./models/quit.model.js";
+import User from "./models/user.model.js"
 
 dotenv.config();
 
@@ -19,30 +20,102 @@ app.use(fileUpload());
 app.use(express.json());
 
 /// user apis ///
-app.post("/users", async (req, res) => {
+app.post("/api/users/register", async (req, res) => {
+    const { userName, email, password, confirmationPassword } = req.body
+
+    if(password != confirmationPassword ){
+        return res.status(400).json({success: false, message: 'password does not match confirmation password'})
+    }
+    const existingUserName = await User.findOne({userName: userName});
+    if(existingUserName){
+        return res.status(400).json({success: false, message: 'username already taken'});
+    }
+    const existingEmail = await User.findOne({email: email});
+    if(existingEmail) {
+        return res.status(400).json({success: false, message: 'email already registered'});
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new User({
+        userName: userName,
+        email: email,
+        password: hashedPassword
+    });
+
+    try {
+        await newUser.save()
+        res.status(201).json({success: true, data: newUser})
+    } catch (err) {
+       console.error("Server Error:", err.message)
+       res.status(500).json({success: false, message: "Server Error, failure to register"}) 
+    }
 
 });
-app.get("/users", async (req, res) => {
+app.post("/api/users/login", async (req, res) => {
+    const { userNameEmail, password } = req.body
+
+    try {
+      
+        const result = await Users.findOne({
+            $or:[
+                {email:userNameEmail},
+                {userName:userNameEmail}
+            ]
+        })
+        const user = result.rows[0];
+  
+        const match = await bcrypt.compare(password, user.password);
+  
+        const userDataForToken = {
+          id: user.id ,
+          username: user.username ,
+          role: "user" 
+        }
+  
+        const userDataForFrontend = {
+          id: user.id,
+          username: user.username,
+          email: user.email
+        }
+  
+        if(match) {
+          //Generate token
+          const token = jwt.sign( userDataForToken, SECRET_KEY, {expiresIn: '1h' } );
+          //Assign token
+          res.cookie('authToken', token, {httpOnly: true });
+        
+        };
+  
+        res.status(201).json( { message:'logged in', data: userDataForFrontend });
+      } catch (error) {
+        
+        res.status(400).send('no user found with those details')
+  
+      }
 
 });
-app.put("/users", async (req, res) => {
+app.get("/api/users", async (req, res) => {
 
 });
-app.delete("/users", async (req, res) => {
+app.put("/api/users/:id", async (req, res) => {
+
+});
+app.delete("/api/users/:id", async (req, res) => {
 
 });
 
 /// addiction apis ///
-app.post("/addiction", async (req, res) => {
+app.post("/api/addiction", async (req, res) => {
 
 });
-app.get("/addiction", async (req, res) => {
+app.get("/api/addiction", async (req, res) => {
 
 });
-app.patch("/addiction/:addictionID", async (req, res) => {
+app.patch("/api/addiction/:addictionID", async (req, res) => {
 
 });
-app.delete("/addiction/:addictionID", async (req, res) => {
+app.delete("/api/addiction/:addictionID", async (req, res) => {
 
 });
 

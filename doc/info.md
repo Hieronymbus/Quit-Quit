@@ -28,6 +28,11 @@
 - express : server
 - dotenv : environment variables
 - mongoose : DB
+- cookie-parser : middleware to parse http req cookies
+- bcrypt : for password hashing
+- jwt : for auth token secure
+
+
 
 > testing
 - jest? postman? curl? puppeteer?
