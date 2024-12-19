@@ -36,7 +36,8 @@ function authCookieMiddleware(req, res, next) {
 
       next()
     
-    } catch (error) {
+    } catch (err) {
+      console.error("Authentication Error:", err.message)  
       res.status(401).json({message:'Invalid token'})
     }
 };
@@ -125,6 +126,7 @@ app.post('/api/users/logout', async (req, res) => {
         .status(200).json( { success: true, message: 'User succesfully logged Out'});
       
     } catch (err) {
+        console.error("Error logging out:", err.message)
         res.status(500).json({success: true, message:"Server Error failure to logout"})
     }
 });
@@ -143,16 +145,41 @@ app.get("/api/users", authCookieMiddleware, async (req, res) => {
         }
         res.status(200).json( {success: true, data: userDataForFrontend } );
       } catch (err) {
-        console.error(err);
+        console.error("Error retreiving user details:", err.message);
         res.status(500).json({success:false, message:"Server Error"});
       }
 
 });
-app.put("/api/users/:id", async (req, res) => {
+app.put("/api/users/:id", authCookieMiddleware , async (req, res) => {
+
+    const {_id} = req.params;
+    const updatedDetails = req.body;
+
+    try {
+        const updatedUser = await User.findByIdAndUpdate(_id, updatedDetails, {new: true})
+        if(!updatedUser){
+            return res.status(404).json({succes:false, message: "User not found"})
+        }
+        res.status(200).json({success: true, data: updatedUser})
+    } catch (err) {
+        console.error("Error updating user:", err.message)
+        res.status(500).json({success:false, message: "Server Error, failed to update user"})
+    }
 
 });
-app.delete("/api/users/:id", async (req, res) => {
+app.delete("/api/users/:id", authCookieMiddleware , async (req, res) => {
 
+    const {_id} = req.params;
+    try {
+        const deletedUser = await User.findByIdAndDelete(_id);
+        if(!deletedUser){
+            return res.status(404).json({succes:false, message: "User not found"})
+        }
+        res.status(200).json({success: true, message: "User succesfully deleted"});
+    } catch (err) {
+        console.error("Error Deleting user:",err.message)
+        res.status(500).json({success:false, message: "Server Error failed to delete user"})
+    }
 });
 
 /// addiction apis ///
