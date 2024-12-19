@@ -2,14 +2,15 @@ import express from "express";
 import dotenv from "dotenv";
 import path from "path";
 import fileUpload from "express-fileupload";
-import bcrypt from "bcrypt"
+
 import cookieParser from "cookie-parser";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
 import { connectToDB } from "./config/db.js";
-import quitRoutes from "./routes/quit.route.js"
+import quitRoutes from "./routes/quit.route.js";
+import userRoutes from "./routes/user.route.js";
 import Quit from "./models/quit.model.js";
-import User from "./models/user.model.js"
+import User from "./models/user.model.js";
 
 dotenv.config();
 
@@ -43,7 +44,7 @@ export function authCookieMiddleware(req, res, next) {
 };
 
 /// user apis ///
-app.use("/api/users")
+app.use("/api/users", userRoutes)
 
 /// addiction apis ///
 app.post("/api/addiction", async (req, res) => {
@@ -61,8 +62,6 @@ app.delete("/api/addiction/:addictionID", async (req, res) => {
 
 /// quit apis ///
 app.use("/api/quits", quitRoutes)
-
-
 
 
 // Check if the app is running in "production" mode

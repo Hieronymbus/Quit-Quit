@@ -1,5 +1,10 @@
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 import User from "../models/user.model.js";
 
+dotenv.config();
+const SECRET_KEY = process.env.SECRET_KEY;
 export const createRegister = async (req, res) => {
     const { userName, email, password, confirmationPassword } = req.body
 
@@ -74,7 +79,7 @@ export const createLogin = async (req, res) => {
         res.status(201).json( { message:'logged in', data: userDataForFrontend });
       } catch (err) {
         console.error("Server Error:", err.message)
-        res.status(500).json( {success: false, message: "Server Serror, failure to log in"})
+        res.status(500).json( {success: false, message: "Server Error, failure to log in"})
       }
 
 };
@@ -111,11 +116,11 @@ export const readUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
 
-    const {_id} = req.params;
+    const {id} = req.params;
     const updatedDetails = req.body;
 
     try {
-        const updatedUser = await User.findByIdAndUpdate(_id, updatedDetails, {new: true})
+        const updatedUser = await User.findByIdAndUpdate(id, updatedDetails, {new: true})
         if(!updatedUser){
             return res.status(404).json({succes:false, message: "User not found"})
         }
@@ -128,9 +133,9 @@ export const updateUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
 
-    const {_id} = req.params;
+    const {id} = req.params;
     try {
-        const deletedUser = await User.findByIdAndDelete(_id);
+        const deletedUser = await User.findByIdAndDelete(id);
         if(!deletedUser){
             return res.status(404).json({succes:false, message: "User not found"})
         }
