@@ -24,7 +24,7 @@
 
 # Backend
 - express-fileupload : for the video upload
-- crypto : random uuid fo file upload
+- crypto : random uuid for file upload
 - cross-env : single command without worrying about setting or using the environment variable properly for the platform.
 - nodemon : monitoryour project directory and automatically restarts your node application when it detects any changes.
 - express : server
@@ -40,7 +40,7 @@
 ## Database
 
 - MONGO 
-- set up sepeate DB for dev vs testing vs production  
+- set up sepeate DB for dev/ testing vs production  
 
 ## App Layout
 
