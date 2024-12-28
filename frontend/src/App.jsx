@@ -10,12 +10,15 @@ import PersonalDashboard from './pages/PersonalDashboard';
 import QuitStats from './pages/QuitStats';
 import QuitAdvice from './pages/QuitAdvice';
 import QuitMilestones from './pages/QuitMilestones';
+import AddQuit from './pages/AddQuit';
 
 function App() {
 
   const [user, setUser] = useState({
     isLoggedIn: true,
-    userDetails: null
+    userDetails: {
+      userID: "6760d5828f0f8537ef054d7d"
+    }
   });
 
   return (
@@ -32,6 +35,7 @@ function App() {
             <Route element={<QuitStats />} path="/quitDashboard"/>
             <Route element={<QuitMilestones />} path="/quitMilstones"/>
             <Route element={<QuitAdvice />} path="/quitAdvice"/>
+            <Route element={<AddQuit />} path="/addQuit" />
           </Route>
         </Routes>
       

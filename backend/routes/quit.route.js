@@ -3,7 +3,7 @@ import {  readQuits, createQuit, updateQuit, deleteQuit, deleteAllAbandonedQuits
 
 const router = express.Router()
 
-router.get('/', readQuits);
+router.get('/:userID', readQuits);
 
 router.post('/', createQuit);
 

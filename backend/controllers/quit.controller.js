@@ -31,11 +31,11 @@ export const createQuit = async (req,res) => {
     }
 }
 
-////read a list of all quits
+////read a list of all a users quits
 export const readQuits = async (req, res) => {
-    
+    const {userID} = req.params
     try {
-        const quits = await Quit.find({}).populate("addictionType");
+        const quits = await Quit.find({userID: userID}).populate("addictionType");
         res.status(200).json({success: true, data: quits});
     } catch (err) {
         console.error("Error finding quits:", err.message);
