@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Router, Routes, Route} from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 
 import ProtectedRoutes from './utils/ProtectedRoutes';
 import Home from './pages/Home';
@@ -12,24 +12,29 @@ import QuitAdvice from './pages/QuitAdvice';
 import QuitMilestones from './pages/QuitMilestones';
 
 function App() {
-  
+
+  const [user, setUser] = useState({
+    isLoggedIn: true,
+    userDetails: null
+  });
+
   return (
     <>
-      <Router>
+      
         <Routes>
           <Route element={<Home />} path='/' />
           <Route element={<Login /> } path="/login" />
           <Route element={<Register /> } path="/register" />
           <Route element={<About /> } path="/about" />
 
-          <Route element={<ProtectedRoutes /> } >
+          <Route element={<ProtectedRoutes user={user}/> } >
             <Route element={<PersonalDashboard />} path="/personalDashboard"/>
             <Route element={<QuitStats />} path="/quitDashboard"/>
             <Route element={<QuitMilestones />} path="/quitMilstones"/>
             <Route element={<QuitAdvice />} path="/quitAdvice"/>
           </Route>
         </Routes>
-      </Router>
+      
     </>
   )
 }

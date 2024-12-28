@@ -9,6 +9,7 @@ import jwt from "jsonwebtoken";
 import { connectToDB } from "./config/db.js";
 import quitRoutes from "./routes/quit.route.js";
 import userRoutes from "./routes/user.route.js";
+import miscRoutes from "./routes/misc.route.js";
 import Quit from "./models/quit.model.js";
 import User from "./models/user.model.js";
 
@@ -42,6 +43,11 @@ export function authCookieMiddleware(req, res, next) {
       res.status(401).json({message:'Invalid token'})
     }
 };
+
+
+
+/// misc api ///
+app.use("/api/misc", miscRoutes)
 
 /// user apis ///
 app.use("/api/users", userRoutes)

@@ -2,11 +2,11 @@ import { Outlet, Navigate } from "react-router-dom";
 
 import React from 'react'
 
-const ProtectedRoutes = () => {
-    const user = null;
+const ProtectedRoutes = ({user}) => {
+    const isLoggedIn = user.isLoggedIn
     
     return (
-    user ? <Outlet /> : <Navigate to="/login" />
+    isLoggedIn ? <Outlet /> : <Navigate to="/login" />
   )
 }
 
