@@ -15,7 +15,7 @@ export const createQuote = async (req, res) => {
         const data = await response.json();
   
         // Cache the new quote and update the fetch time
-        cachedQuote = data[0].q + " - " + data[0].a;
+        cachedQuote = `"${data[0].q}" - ${data[0].a}`;
         lastFetchedTime = now;
       } catch (err) {
         console.error(err)
