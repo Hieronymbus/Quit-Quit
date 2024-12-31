@@ -12,14 +12,10 @@ import QuitAdvice from './pages/QuitAdvice';
 import QuitMilestones from './pages/QuitMilestones';
 import AddQuit from './pages/AddQuit';
 
+
 function App() {
 
-  const [user, setUser] = useState({
-    isLoggedIn: true,
-    userDetails: {
-      userID: "6760d5828f0f8537ef054d7d"
-    }
-  });
+  
 
   return (
     <>
@@ -30,7 +26,7 @@ function App() {
           <Route element={<Register /> } path="/register" />
           <Route element={<About /> } path="/about" />
 
-          <Route element={<ProtectedRoutes user={user}/> } >
+          <Route element={<ProtectedRoutes /> } >
             <Route element={<PersonalDashboard />} path="/personalDashboard"/>
             <Route element={<QuitStats />} path="/quitDashboard"/>
             <Route element={<QuitMilestones />} path="/quitMilstones"/>

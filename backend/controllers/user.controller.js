@@ -19,7 +19,7 @@ export const createRegister = async (req, res) => {
     if(existingEmail) {
         return res.status(400).json({success: false, message: 'email already registered'});
     }
-
+    console.log(password)
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({

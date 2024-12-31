@@ -1,12 +1,12 @@
 import { Outlet, Navigate } from "react-router-dom";
-
+import { useUserStore } from "../store/user.js";
 import React from 'react'
 
-const ProtectedRoutes = ({user}) => {
-    const isLoggedIn = user.isLoggedIn
+const ProtectedRoutes = ({}) => {
+    const {user} = useUserStore()
     
     return (
-    isLoggedIn ? <Outlet /> : <Navigate to="/login" />
+    user.isLoggedIn ? <Outlet /> : <Navigate to="/login" />
   )
 }
 

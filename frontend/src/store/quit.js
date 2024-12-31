@@ -16,7 +16,7 @@ export const useQuitStore = create((set) => ({
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(newQuit),
+                body: JSON.stringify(newQuit)
             });
             const data = await response.json();
             set( (prev) => ({quits:[...prev.quits, data.data ]}));
