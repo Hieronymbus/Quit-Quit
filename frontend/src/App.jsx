@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route} from 'react-router-dom';
 
 import ProtectedRoutes from './utils/ProtectedRoutes';
@@ -11,12 +11,15 @@ import QuitStats from './pages/QuitStats';
 import QuitAdvice from './pages/QuitAdvice';
 import QuitMilestones from './pages/QuitMilestones';
 import AddQuit from './pages/AddQuit';
-
+import { useUserStore } from './store/user.js';
 
 function App() {
-
-  
-
+  const {fetchUser } = useUserStore()
+  useEffect(() => {
+    fetchUser() 
+     
+  }, [fetchUser])
+ 
   return (
     <>
       

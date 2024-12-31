@@ -3,7 +3,8 @@ import { create } from "zustand";
 export const useUserStore = create((set) => ({
     user: {
         isLoggedIn: false,
-        userDetails: {}
+        userDetails: {},
+        isLoading: true
     },
     registerUser: async (newUser) => {
         if(!newUser.userName ||!newUser.email || !newUser.password || !newUser.confirmationPassword){
@@ -39,9 +40,35 @@ export const useUserStore = create((set) => ({
 
         set({user: {
             isLoggedIn: true,
-            userDetails: data.data
+            userDetails: data.data,
+            isLoading:false
         }});
 
         return { success: true, message: data.message }
+    },
+    fetchUser: async () => {
+        
+        const response = await fetch("/api/users/", {
+            credentials: "include"
+        });
+        const data = await response.json();
+        
+        if (data.success) {
+            set({
+                user:{
+                    isLoggedIn: true,
+                    userDetails: data.data,
+                    isLoading: false
+                }
+            })
+        } else {
+            set({
+                user:{
+                    isLoggedIn: false,
+                    userDetails: {},
+                    isLoading: false
+                }
+            })
+        }
     }
 }))

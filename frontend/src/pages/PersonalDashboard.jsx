@@ -11,7 +11,7 @@ const PersonalDashboard = () => {
   useEffect(() => {
     fetchQuits("6760d5828f0f8537ef054d7d");
   },[fetchQuits])
-  console.log(quits)
+ 
 
   return (
     <div
