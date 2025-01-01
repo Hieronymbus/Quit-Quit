@@ -70,5 +70,21 @@ export const useUserStore = create((set) => ({
                 }
             })
         }
+    },
+    logoutUser: async () => {
+        const response = await fetch("/api/users/logout", {
+            method:"POST",
+            credentials: "include",
+            headers:{
+                "Content-Type" : "application/json"
+            }
+        })
+        const data = await response.json();
+        set({ user: {
+            isLoggedIn: false,
+            userDetails: {},
+            isLoading: true
+        }})
+
     }
 }))

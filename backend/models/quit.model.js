@@ -24,12 +24,10 @@ const quitSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    sessionsPerWeek: {
-        type: Number,
-        required: true
-    },
-    reasonsToQuit: {
-        type: String
+    usageParameters: {
+        type: Map,
+        of: mongoose.Schema.Types.Mixed, // Can store values of varying types
+        required: true,
     },
     videoPath: {
         type: String

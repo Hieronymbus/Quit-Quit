@@ -2,7 +2,12 @@ import React from 'react'
 
 const AddQuit = () => {
   return (
-    <div>AddQuit</div>
+    <div>
+      <form action="">
+
+        
+      </form>
+    </div>
   )
 }
 

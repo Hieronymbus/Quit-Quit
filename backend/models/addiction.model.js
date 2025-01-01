@@ -14,20 +14,38 @@ const addictionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    achievments:[{
-        title: {
+    usageParameters: [
+        {
+          name: {
             type: String,
-            required: true
-        },
-        description: {
+            required: true, // e.g., "packsPerWeek"
+          },
+          type: {
             type: String,
-            required: true
-        },
-        imagePath:{
-            type: String,
-            required: true
+            required: true, // e.g., "number" or "string"
+          },
+          required: {
+            type: Boolean,
+            default: true, // If the parameter is mandatory
+          },
         }
-    }]
+    ],
+    achievments:[
+        {
+            title: {
+                type: String,
+                required: true
+            },
+            description: {
+                type: String,
+                required: true
+            },
+            imagePath:{
+                type: String,
+                required: true
+            }
+        }
+    ]
 }, {
     timestamps: true
 })

@@ -1,9 +1,13 @@
 import { Outlet, Navigate } from "react-router-dom";
 import { useUserStore } from "../store/user.js";
-import React from 'react'
+import React , {useEffect} from 'react'
 
 const ProtectedRoutes = () => {
-    const {user} = useUserStore()
+    const {fetchUser, user} = useUserStore()
+    useEffect(() => {
+      fetchUser() 
+       
+    }, [fetchUser])
     if(user.isLoading) {
       return <div>loading..</div>
     }

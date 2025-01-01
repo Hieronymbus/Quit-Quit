@@ -15,10 +15,7 @@ import { useUserStore } from './store/user.js';
 
 function App() {
   const {fetchUser } = useUserStore()
-  useEffect(() => {
-    fetchUser() 
-     
-  }, [fetchUser])
+
  
   return (
     <>

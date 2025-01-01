@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-
+import { Link } from 'react-router-dom'
 const Header = () => {
 
     const [dailyQuote, setDailyQuote] = useState("")
@@ -17,7 +17,7 @@ const Header = () => {
     useEffect(()=>{
         fetchDailyQuote()
 
-    },[])
+    },[fetchDailyQuote])
 
 
     return (
@@ -25,7 +25,7 @@ const Header = () => {
             className='h-1/6 flex justify-around items-center border-b-4 '
         >
             <button
-                className='w-1/6 p-2 border border-slate-500' 
+                className=' p-2 border border-slate-500' 
             >
                 Menu
             </button>
@@ -34,12 +34,14 @@ const Header = () => {
             >
               {dailyQuote}
             </div>
-            <button
-                className='w-1/6 p-2 border border-slate-500'
-            >
-                Add Quit
-                
-            </button>
+            <Link to={"/addQuit"}>
+                <button
+                    className=' p-2 border border-slate-500'
+                >
+                    Add Quit
+                    
+                </button>
+            </Link>
         </header>
     )
 }
