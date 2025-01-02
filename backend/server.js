@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
 
 import { connectToDB } from "./config/db.js";
+import addictionRoutes from "./routes/addiction.route.js";
 import quitRoutes from "./routes/quit.route.js";
 import userRoutes from "./routes/user.route.js";
 import miscRoutes from "./routes/misc.route.js";
@@ -53,18 +54,7 @@ app.use("/api/misc", miscRoutes)
 app.use("/api/users", userRoutes)
 
 /// addiction apis ///
-app.post("/api/addiction", async (req, res) => {
-
-});
-app.get("/api/addiction", async (req, res) => {
-
-});
-app.patch("/api/addiction/:addictionID", async (req, res) => {
-
-});
-app.delete("/api/addiction/:addictionID", async (req, res) => {
-
-});
+app.use("/api/addiction", addictionRoutes )
 
 /// quit apis ///
 app.use("/api/quits", quitRoutes)
