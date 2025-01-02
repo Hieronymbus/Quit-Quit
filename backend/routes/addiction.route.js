@@ -5,11 +5,11 @@ const router = express.Router()
 router.post("/", async (req, res) => {
 
 });
-router.get("/api/addiction", readAddictions);
-router.patch("/api/addiction/:addictionID", async (req, res) => {
+router.get("/", readAddictions);
+router.patch("/:addictionID", async (req, res) => {
 
 });
-router.delete("/api/addiction/:addictionID", async (req, res) => {
+router.delete("/:addictionID", async (req, res) => {
 
 });
 

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const addictionSchema = new mongoose.Schema({
 
-    type:{
+    name:{
         type: String,
         required: true
     },
@@ -10,7 +10,7 @@ const addictionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    imagePath:{
+    iconPath:{
         type: String,
         required: true
     },

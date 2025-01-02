@@ -54,7 +54,7 @@ app.use("/api/misc", miscRoutes)
 app.use("/api/users", userRoutes)
 
 /// addiction apis ///
-app.use("/api/addiction", addictionRoutes )
+app.use("/api/addictions", addictionRoutes )
 
 /// quit apis ///
 app.use("/api/quits", quitRoutes)
