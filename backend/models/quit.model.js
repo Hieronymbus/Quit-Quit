@@ -20,15 +20,14 @@ const quitSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    spendingPerWeek: {
-        type: Number,
-        required: true
-    },
     usageParameters: {
         type: Map,
         of: mongoose.Schema.Types.Mixed, // Can store values of varying types
         required: true,
     },
+    reasonsToQuit: {
+        type: String
+    },   
     videoPath: {
         type: String
     },
