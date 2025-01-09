@@ -12,7 +12,7 @@ const AddQuit = () => {
       addictionType:"",
       startDate:"",
       endDate:"",
-      usageParameters:"",
+      usageParameters:{},
       reasonsToQuit:"",
       videoFile: null,
       status: "active"
@@ -30,18 +30,35 @@ const AddQuit = () => {
       setAddictionChoiceParameters(choice.usageParameters)
     }
   }, [newQuit.addictionType])
+
+  function setDates(e) {
+    const newStartDate = new Date(e.target.value); 
+    const newEndDate = new Date(newStartDate); 
+    newEndDate.setMonth(newStartDate.getMonth() + 6);
+  
+    // Handle cases where the end date is invalid due to month overflow (e.g., Feb 31st)
+    if (newEndDate.getDate() !== newStartDate.getDate()) {
+      newEndDate.setDate(0); // Adjust to the last valid day of the month
+    }
+  
+    setNewQuit((prev) => ({
+      ...prev,
+      startDate: newStartDate,
+      endDate: newEndDate,
+    }));
+  }
+
   return (
     <div>
       Create a New Quit Below
       <br/>
       <br/>
         <form 
-          onSubmit={}
+          // onSubmit={} 
         >
           <label htmlFor="addictionSelect">
             Select Addiction you wish to quit:
             <select 
-              name="addiction"
               id="addictionSelect"
               onChange={(e)=>{setNewQuit(prev=>({...prev,addictionType: e.target.value}))}}
               value={newQuit.addictionType}
@@ -68,6 +85,8 @@ const AddQuit = () => {
                 <input
                   type="date" 
                   id='startDateInput'
+                  onChange={(e) => setDates(e)}
+                  value={newQuit.startDate ? newQuit.startDate.toISOString().split("T")[0] : ""}
                 />
               </label>
             )
@@ -78,14 +97,19 @@ const AddQuit = () => {
           {
 
             addictionChoiceParameters.map((parameter, index) => {
+              const nameSplit = parameter.name.split(' ');
+              const name = nameSplit[0];
               return  <label
-                        htmlFor={`paramerter${index + 1}`}
+                        htmlFor={`parameter${index + 1}`}
                         key={index}
                       >
                         {parameter.name}:
                         <input 
                           type={parameter.type}
-                          id={`paramerter${index + 1}`}
+                          id={`parameter${index + 1}`}
+                          onChange={(e) =>
+                            setNewQuit(prev => ({...prev, usageParameters:{...prev.usageParameters, name: e.target.value }}))
+                          }
                         />
                       </label>
             })
@@ -99,10 +123,15 @@ const AddQuit = () => {
             &&
             (
               <div>
-                <label>
+                <label
+                  htmlFor='textReasonsTextArea'
+                >
                   reasons for quiting(optional) :
-                  <textarea>
-
+                  <textarea
+                    id='textReasonsTextArea'
+                    onChange={(e) => {setNewQuit(prev => ({...prev, reasonsToQuit: e.target.value }))}}
+                    value={newQuit.reasonsToQuit}
+                  >
                   </textarea>
                 </label>
                 <br />
@@ -113,7 +142,6 @@ const AddQuit = () => {
                   Would you like to upload or record a video message to youself that you can rewatch in the future to remind youself 
                   why you are making this change in  your life to quit(optional)?
                   <select
-                    name='modeSelect'
                     id='modeSelect'
                     onChange={(e) => {setMode(e.target.value)}}
                     value={mode}
@@ -132,12 +160,14 @@ const AddQuit = () => {
                   mode == 'upload' 
                   &&
                   <label 
-                    htmlFor=""
+                    htmlFor="fileUploadInput"
                   >
                     choose file from device to upload -   
                     <input 
                       type="file"
-                    
+                      id='fileUploadInput'
+                      onChange={(e) => {setNewQuit(prev => ({...prev, videoFile: e.target.value}))}}
+                      value={newQuit.videoFile}
                     />
                   </label>  
                 }
