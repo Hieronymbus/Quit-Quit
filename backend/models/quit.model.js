@@ -7,7 +7,7 @@ const quitSchema = new mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    addictionType:{
+    addictionTypeID:{
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Addiction'

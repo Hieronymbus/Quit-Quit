@@ -11,6 +11,11 @@ export const createQuit = async (req,res) => {
     
     const quit = req.body
     let uploadPath;
+    const parsedUsageParameters = JSON.parse(quit.usageParameters);
+
+    // Convert the parsed object to a Map (key-value pairs)
+    const usageParamsMap = new Map(Object.entries(parsedUsageParameters));
+    quit.usageParameters = usageParamsMap
     if(req.files) {
         const videoFile = req.files.videoFile;
         const uniqueName = randomUUID();
@@ -35,7 +40,7 @@ export const createQuit = async (req,res) => {
 export const readQuits = async (req, res) => {
     const {userID} = req.params
     try {
-        const quits = await Quit.find({userID: userID}).populate("addictionType");
+        const quits = await Quit.find({userID: userID}).populate("addictionTypeID");
         res.status(200).json({success: true, data: quits});
     } catch (err) {
         console.error("Error finding quits:", err.message);

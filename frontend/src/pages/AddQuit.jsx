@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import { useUserStore } from '../store/user.js';
 import { useAddictionStore } from '../store/addiction.js';
+import { useQuitStore } from '../store/quit.js';
 import VideoRecorder from '../components/VideoRecorder.jsx';
 const AddQuit = () => {
 
   const {user} = useUserStore();
   const {addictionsArr, fetchAddictions} = useAddictionStore();
+  const {createQuit} = useQuitStore();
   const [mode, setMode] = useState("")
   const [newQuit, setNewQuit] = useState({
-      userID: user._id,
-      addictionType:"",
+      userID: user.userDetails._id,
+      addictionTypeID:"",
       startDate:"",
       endDate:"",
       usageParameters:{},
@@ -25,11 +27,11 @@ const AddQuit = () => {
   console.log(addictionsArr)
 
   useEffect(() => {
-    if(newQuit.addictionType){
-      const choice = addictionsArr.find(addiction => addiction.name === newQuit.addictionType)
+    if(newQuit.addictionTypeID){
+      const choice = addictionsArr.find(addiction => addiction._id === newQuit.addictionTypeID)
       setAddictionChoiceParameters(choice.usageParameters)
     }
-  }, [newQuit.addictionType])
+  }, [newQuit.addictionTypeID])
 
   function setDates(e) {
     const newStartDate = new Date(e.target.value); 
@@ -48,26 +50,45 @@ const AddQuit = () => {
     }));
   }
 
+  async function handleAddQuit(e) {
+    e.preventDefault()
+    // console.log(newQuit)
+    const {success, message} = await createQuit(newQuit)
+    console.log(message)
+    // setNewQuit(
+    //   {
+    //     userID: user._id,
+    //     addictionType:"",
+    //     startDate:"",
+    //     endDate:"",
+    //     usageParameters:{},
+    //     reasonsToQuit:"",
+    //     videoFile: null,
+    //     status: "active"
+    // }
+    // )
+  }
+
   return (
     <div>
       Create a New Quit Below
       <br/>
       <br/>
         <form 
-          // onSubmit={} 
+          onSubmit={handleAddQuit} 
         >
           <label htmlFor="addictionSelect">
             Select Addiction you wish to quit:
             <select 
               id="addictionSelect"
-              onChange={(e)=>{setNewQuit(prev=>({...prev,addictionType: e.target.value}))}}
-              value={newQuit.addictionType}
+              onChange={(e)=>{setNewQuit(prev=>({...prev,addictionTypeID: e.target.value}))}}
+              value={newQuit.addictionTypeID}
             >
               <option value="" disabled>
                 -- Select an option --
               </option>
               {addictionsArr.map((addiction, index) => {
-                return  <option value={addiction.name} key={index}>
+                return  <option value={addiction._id} key={index}>
                           {addiction.name}
                         </option>
               })}
@@ -76,7 +97,7 @@ const AddQuit = () => {
           <br/> 
           <br/>
           {
-            newQuit.addictionType 
+            newQuit.addictionTypeID
             &&
             (
               <label
@@ -108,7 +129,7 @@ const AddQuit = () => {
                           type={parameter.type}
                           id={`parameter${index + 1}`}
                           onChange={(e) =>
-                            setNewQuit(prev => ({...prev, usageParameters:{...prev.usageParameters, name: e.target.value }}))
+                            setNewQuit(prev => ({...prev, usageParameters:{...prev.usageParameters, [name]: e.target.value }}))
                           }
                         />
                       </label>
@@ -119,7 +140,7 @@ const AddQuit = () => {
           <br/>
 
           {
-            newQuit.addictionType 
+            newQuit.addictionTypeID
             &&
             (
               <div>
@@ -184,7 +205,6 @@ const AddQuit = () => {
           <br/>
           <br />
 
-          
           <button
             type='submit'
           >

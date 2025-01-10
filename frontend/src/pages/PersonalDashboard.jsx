@@ -9,7 +9,7 @@ const PersonalDashboard = () => {
   const { fetchQuits, quits } = useQuitStore();
 
   useEffect(() => {
-    fetchQuits("6760d5828f0f8537ef054d7d");
+    fetchQuits("677337ddbc40fcf08b9b94b9");
   },[fetchQuits])
  console.log(quits)
 
