@@ -17,7 +17,7 @@ const PersonalDashboard = () => {
     <div
       className='h-screen'
     >
-      { }
+      
       <Header/>
       <div
         className='flex h-5/6'

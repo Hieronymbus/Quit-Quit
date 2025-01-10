@@ -29,7 +29,7 @@ function App() {
           <Route element={<ProtectedRoutes /> } >
             <Route element={<PersonalDashboard />} path="/personalDashboard"/>
             <Route element={<QuitStats />} path="/quitStats"/>
-            <Route element={<QuitMilestones />} path="/quitMilstones"/>
+            <Route element={<QuitMilestones />} path="/quitMilestones"/>
             <Route element={<QuitAdvice />} path="/quitAdvice"/>
             <Route element={<AddQuit />} path="/addQuit" />
           </Route>

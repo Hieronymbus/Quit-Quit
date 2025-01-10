@@ -1,8 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {useNavigate, useLocation} from 'react-router-dom'
 
 const Footer = () => {
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
   return (
-    <div>Footer</div>
+    <footer
+    className="h-1/6 flex"
+> 
+    <div
+      className={`w-1/3 h-full flex justify-center items-center border ${location.pathname === '/quitStats' && 'bg-lime-500'} border-r-slate-500`}
+      onClick={() => navigate('/quitStats')}
+    >
+      Stats
+    </div>
+    <div
+      className={`w-1/3 h-full flex justify-center items-center border border-r-slate-500 ${location.pathname === '/quitMilestones' && 'bg-lime-500'}`}
+      onClick={() => navigate('/quitMilestones')}
+
+    >
+      Milestones
+    </div>
+    <div
+      className={`w-1/3 h-full flex justify-center items-center ${location.pathname === '/quitAdvice' && 'bg-lime-500'}`}
+      onClick={() => navigate('/quitAdvice')}
+
+    >
+      Expert Advice
+    </div> 
+  </footer>
+
   )
 }
 

@@ -9,11 +9,11 @@ const Header = () => {
 
     return (
         <header
-            className='h-1/6'  
+            className='h-1/6'
         >
             {
                 location.pathname === "/personalDashboard" 
-                &&
+                ?
                 (
                     <div 
                         className='h-full flex justify-around items-center border-b-4 '
@@ -35,7 +35,28 @@ const Header = () => {
                     </Link>
                     </div>
                 )
+                :
+                (
+                    <div
+                          className='h-full flex justify-around items-center border-b-4 '
+                    >
+                        <button
+                             className=' p-2 border border-slate-500' 
+                        >
+                            Return to dashboard
+                        </button>
+                        <h1>
+                            You are quitting Sugar
+                        </h1>
+                        <button
+                             className=' p-2 border border-slate-500' 
+                        >
+                            Abandon quit
+                        </button>
+                    </div>
+                )
             }
+            
            
         </header>
     )
