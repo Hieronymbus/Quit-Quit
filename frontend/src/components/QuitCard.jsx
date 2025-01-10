@@ -1,10 +1,15 @@
 import React from 'react'
 
-const QuitCard = () => {
+const QuitCard = ({name,startDate}) => {
 
     
   return (
-    <div>QuitCard</div>
+    <div>
+
+      <h1>Addiction: {name}</h1>
+      <h1>Quit Started: {startDate}</h1>
+      <h1></h1>
+    </div>
   )
 }
 

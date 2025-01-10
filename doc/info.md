@@ -2,6 +2,13 @@
 ###  Addiction Quiting Assist App  ###
 ### ############################## ###
 
+## Potential site names
+- quitwit
+- quitquit
+- quitFRFR
+- quitForReal(though)
+- quitShit
+
 ## Deployment Link 
 - https://quitforealtho.onrender.com production
 

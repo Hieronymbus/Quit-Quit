@@ -1,4 +1,5 @@
 import React from 'react'
+import QuitCard from './QuitCard'
 
 const QuitList = ({title, quits}) => {
 
@@ -13,7 +14,13 @@ const QuitList = ({title, quits}) => {
         <div>
             {quits.map((quit, index) => {
                 if(quit.status === title.toLowerCase()){
-                    return <h1 key={index}>{quit._id}</h1>
+                    return (
+                        <QuitCard
+                            name={quit.addictionTypeID.name}
+                            startDate={quit.startDate}
+                    
+                        />
+                    )
                 }
             })}
         </div>
