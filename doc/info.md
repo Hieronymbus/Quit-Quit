@@ -131,3 +131,6 @@
        - Allow users to view a collection of anonymous quit stories within the app.
        - Include an option for users to flag inappropriate content in the story pool.
 
+9. As a user, when i register i want an email verification check for security
+
+       AC: implement email verifcation on signup
