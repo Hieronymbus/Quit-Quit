@@ -1,0 +1,42 @@
+import React, {useEffect, useState} from 'react'
+
+const QuitDuration = ({startDate}) => {
+
+    const [duration, setDuration] = useState("");
+
+    useEffect(() => {
+      const calculateDuration = () => {
+        const now = new Date();
+        const start = new Date(startDate);
+  
+        // Calculate the elapsed time in milliseconds
+        const elapsed = now - start; // Correctly calculate the time difference (future-proof)
+  
+        if (elapsed >= 0) { // Only calculate if the quit date is in the past
+          const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
+          const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
+          const seconds = Math.floor((elapsed / 1000) % 60);
+  
+          setDuration(`${days}d ${hours}h ${minutes}m ${seconds}s`);
+        } else {
+          setDuration("Quit hasn't started yet."); // Display this if the quit date is in the future
+        }
+      };
+  
+      // Calculate immediately and then every second
+      calculateDuration();
+      const interval = setInterval(calculateDuration, 1000);
+  
+      return () => clearInterval(interval); // Cleanup on component unmount
+    }, [startDate]);
+  
+    return <div>Current Duration: {duration}</div>;
+}
+
+export default QuitDuration
+
+
+
+
+

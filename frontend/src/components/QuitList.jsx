@@ -14,8 +14,10 @@ const QuitList = ({title, quits}) => {
         <div>
             {quits.map((quit, index) => {
                 if(quit.status === title.toLowerCase()){
+                    
                     return (
                         <QuitCard
+                            key={index}
                             name={quit.addictionTypeID.name}
                             startDate={quit.startDate}
                     

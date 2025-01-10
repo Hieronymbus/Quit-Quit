@@ -35,25 +35,32 @@ const AddQuit = () => {
   }, [newQuit.addictionTypeID])
 
   function setDates(e) {
+    // Parse the start date from input (this will be in the format "YYYY-MM-DDTHH:mm")
     const newStartDate = new Date(e.target.value); 
-    const newEndDate = new Date(newStartDate); 
+    
+    // Create a new end date by copying the start date
+    const newEndDate = new Date(newStartDate);
+    
+    // Add 6 months to the end date
     newEndDate.setMonth(newStartDate.getMonth() + 6);
-  
-    // Handle cases where the end date is invalid due to month overflow (e.g., Feb 31st)
+    
+    // Adjust the end date if the day doesn't match between the start and end months (for overflow)
     if (newEndDate.getDate() !== newStartDate.getDate()) {
-      newEndDate.setDate(0); // Adjust to the last valid day of the month
+      newEndDate.setDate(0); // Set to the last valid day of the month
     }
   
+    // Update the state with both start and end dates
     setNewQuit((prev) => ({
       ...prev,
       startDate: newStartDate,
       endDate: newEndDate,
     }));
   }
+  
 
   async function handleAddQuit(e) {
     e.preventDefault()
-    // console.log(newQuit)
+    
     const {success, message} = await createQuit(newQuit)
     console.log(message)
     setNewQuit(
@@ -108,10 +115,10 @@ const AddQuit = () => {
                 htmlFor='startDateInput'
               >
                 <input
-                  type="date" 
+                  type="datetime-local" 
                   id='startDateInput'
                   onChange={(e) => setDates(e)}
-                  value={newQuit.startDate ? newQuit.startDate.toISOString().split("T")[0] : ""}
+                  value={newQuit.startDate ? newQuit.startDate.toISOString().slice(0, 16) : ""} // Formatting to YYYY-MM-DDTHH:mm
                 />
               </label>
             )

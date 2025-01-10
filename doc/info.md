@@ -8,6 +8,7 @@
 - quitFRFR
 - quitForReal(though)
 - quitShit
+- addictionBrawler
 
 ## Deployment Link 
 - https://quitforealtho.onrender.com production
