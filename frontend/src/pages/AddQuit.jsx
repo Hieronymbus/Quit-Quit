@@ -55,18 +55,18 @@ const AddQuit = () => {
     // console.log(newQuit)
     const {success, message} = await createQuit(newQuit)
     console.log(message)
-    // setNewQuit(
-    //   {
-    //     userID: user._id,
-    //     addictionType:"",
-    //     startDate:"",
-    //     endDate:"",
-    //     usageParameters:{},
-    //     reasonsToQuit:"",
-    //     videoFile: null,
-    //     status: "active"
-    // }
-    // )
+    setNewQuit(
+      {
+        userID: user._id,
+        addictionType:"",
+        startDate:"",
+        endDate:"",
+        usageParameters:{},
+        reasonsToQuit:"",
+        videoFile: "",
+        status: "active"
+    }
+    )
   }
 
   return (
@@ -186,9 +186,14 @@ const AddQuit = () => {
                     choose file from device to upload -   
                     <input 
                       type="file"
-                      id='fileUploadInput'
-                      onChange={(e) => {setNewQuit(prev => ({...prev, videoFile: e.target.value}))}}
-                      value={newQuit.videoFile}
+                      id="fileUploadInput"
+                      onChange={(e) => {
+                        const file = e.target.files[0];  
+                        setNewQuit(prev => ({ 
+                          ...prev, 
+                          videoFile: file 
+                        }));
+                      }}
                     />
                   </label>  
                 }
