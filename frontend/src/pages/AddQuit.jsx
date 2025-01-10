@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
+import {  useNavigate } from 'react-router-dom';
 import { useUserStore } from '../store/user.js';
 import { useAddictionStore } from '../store/addiction.js';
 import { useQuitStore } from '../store/quit.js';
 import VideoRecorder from '../components/VideoRecorder.jsx';
 const AddQuit = () => {
-
+  const navigate = useNavigate();
   const {user} = useUserStore();
   const {addictionsArr, fetchAddictions} = useAddictionStore();
   const {createQuit} = useQuitStore();
@@ -67,6 +68,9 @@ const AddQuit = () => {
         status: "active"
     }
     )
+
+    alert(message)
+    navigate("/personalDashboard")
   }
 
   return (
