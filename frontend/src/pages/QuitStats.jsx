@@ -1,8 +1,13 @@
 import React from 'react'
 
 const QuitDashboard = () => {
+ 
   return (
-    <div>QuitDashboard</div>
+    <div>
+      <header></header>
+      <div></div>
+      <footer></footer>
+    </div>
   )
 }
 
