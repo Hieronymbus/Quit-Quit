@@ -10,12 +10,13 @@ const QuitCard = ({quit,setSelectedQuit}) => {
     setSelectedQuit(quit._id)
     navigate('/quitStats')
   }
+  console.log(quit)
   return (
     <div
       onClick={handleQuitClick}
     >
 
-      <h1>Addiction: {name}</h1>
+      <h1>Addiction: {quit.addictionTypeID.name}</h1>
       <FormatDate date={quit.startDate} />
       <QuitDuration startDate={quit.startDate}/>
     </div>
