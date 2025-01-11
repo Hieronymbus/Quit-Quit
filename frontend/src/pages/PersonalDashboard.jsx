@@ -3,7 +3,7 @@ import { useQuitStore } from '../store/quit.js'
 import Header from '../components/Header'
 import QuitList from '../components/QuitList'
 
-const PersonalDashboard = () => {
+const PersonalDashboard = ({setSelectedQuit}) => {
 
 
   const { fetchQuits, quits } = useQuitStore();
@@ -11,7 +11,6 @@ const PersonalDashboard = () => {
   useEffect(() => {
     fetchQuits("677337ddbc40fcf08b9b94b9");
   },[fetchQuits])
- console.log(quits)
 
   return (
     <div
@@ -25,14 +24,17 @@ const PersonalDashboard = () => {
         <QuitList 
           title="Abandoned"
           quits={quits}
+          setSelectedQuit={setSelectedQuit}
         />
         <QuitList 
           title="Active"
           quits={quits}
+          setSelectedQuit={setSelectedQuit}
         />
         <QuitList 
           title="Completed"
           quits={quits}
+          setSelectedQuit={setSelectedQuit}
         />
       </div>
     </div>

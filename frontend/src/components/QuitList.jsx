@@ -1,9 +1,10 @@
 import React from 'react'
 import QuitCard from './QuitCard'
+import { set } from 'mongoose'
 
-const QuitList = ({title, quits}) => {
+const QuitList = ({title, quits, setSelectedQuit}) => {
 
-
+    
   return (
     <div
         className='w-1/3 h-full border-4 flex flex-col items-center'
@@ -14,13 +15,11 @@ const QuitList = ({title, quits}) => {
         <div>
             {quits.map((quit, index) => {
                 if(quit.status === title.toLowerCase()){
-                    
                     return (
                         <QuitCard
                             key={index}
-                            name={quit.addictionTypeID.name}
-                            startDate={quit.startDate}
-                    
+                            quit={quit}
+                            setSelectedQuit={setSelectedQuit}
                         />
                     )
                 }

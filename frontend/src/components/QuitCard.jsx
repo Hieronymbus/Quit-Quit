@@ -2,21 +2,22 @@ import React from 'react'
 import QuitDuration from './QuitDuration.jsx';
 import FormatDate from './FormatDate.jsx';
 import { useNavigate } from 'react-router-dom';
-const QuitCard = ({name,startDate}) => {
+
+const QuitCard = ({quit,setSelectedQuit}) => {
   const navigate = useNavigate()
   
   function handleQuitClick () {
+    setSelectedQuit(quit._id)
     navigate('/quitStats')
   }
-    
   return (
     <div
       onClick={handleQuitClick}
     >
 
       <h1>Addiction: {name}</h1>
-      <FormatDate date={startDate} />
-      <QuitDuration startDate={startDate}/>
+      <FormatDate date={quit.startDate} />
+      <QuitDuration startDate={quit.startDate}/>
     </div>
   )
 }

@@ -16,7 +16,7 @@ const FormatDate = ({date}) => {
       }
 
   return (
-    <h1>Start Date: {formatDate(date)}</h1>
+    <h1>{formatDate(date)}</h1>
   )
 }
 

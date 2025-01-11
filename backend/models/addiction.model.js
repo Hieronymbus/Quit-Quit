@@ -10,7 +10,7 @@ const addictionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    iconPath:{
+    icon:{
         type: String,
         required: true
     },

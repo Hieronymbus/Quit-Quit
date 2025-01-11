@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
 
-const QuitMilestones = () => {
+const QuitMilestones = ({selectedQuit}) => {
   return (
     <div
       className="h-screen"

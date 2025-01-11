@@ -83,6 +83,7 @@ const AddQuit = () => {
   return (
     <div>
       Create a New Quit Below
+      
       <br/>
       <br/>
         <form 

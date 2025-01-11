@@ -14,9 +14,18 @@ import AddQuit from './pages/AddQuit';
 import { useUserStore } from './store/user.js';
 
 function App() {
-  const {fetchUser } = useUserStore()
+  const { user, fetchUser } = useUserStore()
+  
+  const [selectedQuit, setSelectedQuit] = useState(() => {
+    const savedQuitID = localStorage.getItem('selectedQuit');
+    console.log("0", savedQuitID)
+    return savedQuitID ? savedQuitID : ''; 
+  })
+  useEffect(() => {
+    localStorage.setItem('selectedQuit', selectedQuit);
+  }, [selectedQuit]);
+  
 
- 
   return (
     <>
       
@@ -27,10 +36,10 @@ function App() {
           <Route element={<About /> } path="/about" />
 
           <Route element={<ProtectedRoutes /> } >
-            <Route element={<PersonalDashboard />} path="/personalDashboard"/>
-            <Route element={<QuitStats />} path="/quitStats"/>
-            <Route element={<QuitMilestones />} path="/quitMilestones"/>
-            <Route element={<QuitAdvice />} path="/quitAdvice"/>
+            <Route element={<PersonalDashboard setSelectedQuit={setSelectedQuit} />} path="/personalDashboard"/>
+            <Route element={<QuitStats selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit} />} path="/quitStats"/>
+            <Route element={<QuitMilestones selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit}/>} path="/quitMilestones"/>
+            <Route element={<QuitAdvice  selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit}/>} path="/quitAdvice"/>
             <Route element={<AddQuit />} path="/addQuit" />
           </Route>
         </Routes>

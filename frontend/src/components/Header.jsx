@@ -1,12 +1,15 @@
 import React,{useState,useEffect} from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import DailyQuote from './DailyQuote.jsx'
-const Header = () => {
+
+const Header = ({currentQuit, setSelectedQuit}) => {
 
     const location = useLocation()
-    
-
-
+    const navigate = useNavigate()
+    const handleReturn = () => {
+        setSelectedQuit("")
+        navigate('/personalDashboard')
+    }
     return (
         <header
             className='h-1/6'
@@ -37,16 +40,22 @@ const Header = () => {
                 )
                 :
                 (
+                    
                     <div
                           className='h-full flex justify-around items-center border-b-4 '
-                    >
+                    >   
                         <button
-                             className=' p-2 border border-slate-500' 
+                            className=' p-2 border border-slate-500' 
+                            onClick={handleReturn}
                         >
                             Return to dashboard
                         </button>
                         <h1>
-                            You are quitting Sugar
+                            You are quitting {currentQuit?.addictionTypeID.name}
+                            {/* <div
+                                className='h-6 w-6'
+                                dangerouslySetInnerHTML={{ __html: currentQuit?.addictionTypeID.icon }} // Render the XML as raw HTML
+                            /> */}
                         </h1>
                         <button
                              className=' p-2 border border-slate-500' 

@@ -9,7 +9,7 @@ const ProtectedRoutes = () => {
        
     }, [fetchUser])
     if(user.isLoading) {
-      return <div>loading..</div>
+      return <div></div>
     }
     return (
     user.isLoggedIn ? <Outlet /> : <Navigate to="/login" />
