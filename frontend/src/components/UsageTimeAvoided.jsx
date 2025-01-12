@@ -14,7 +14,7 @@ const UsageTimeAvoided = ({startDate, timePerDay}) => {
 
     const interval = setInterval(() => {
         setTimeSaved(calculateTimeSaved().toFixed(5));
-    }, 100);
+    }, 1000);
 
     return () => clearInterval(interval);
     }, [startDate, timePerDay]);

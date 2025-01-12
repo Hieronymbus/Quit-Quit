@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const AmountAvoided = ({ startDate, amountPerDay }) => {
   const [amountAvoided, setAmountAvoided] = useState(0);
-    console.log(amountPerDay)
+  
   useEffect(() => {
 
     const calculateAmountAvoided = () => {
