@@ -13,11 +13,7 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit}) => {
   useEffect(() => {
     fetchQuits("677337ddbc40fcf08b9b94b9");
   },[fetchQuits])
-  useEffect(()=>{
-    if(user.isLoggedIn === false) {
-      localStorage.removeItem('selectedQuit')
-    }
-}, [user.isLoggedIn])
+  
   const currentQuit = quits.find((quit) => quit._id === selectedQuit)
   console.log(currentQuit)
   return (

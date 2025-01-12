@@ -6,6 +6,8 @@ const Header = ({currentQuit, setSelectedQuit}) => {
 
     const location = useLocation()
     const navigate = useNavigate()
+    const [isMenuOpen, setIsmenuOpen] = useState(false)
+
     const handleReturn = () => {
         setSelectedQuit("")
         navigate('/personalDashboard')
@@ -24,6 +26,7 @@ const Header = ({currentQuit, setSelectedQuit}) => {
 
                     <button
                         className=' p-2 border border-slate-500' 
+                        onClick={() => setIsmenuOpen(true)}
                     >
                         Menu
                     </button>

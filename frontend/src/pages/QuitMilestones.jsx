@@ -14,16 +14,12 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit}) => {
   useEffect(() => {
     fetchQuits("677337ddbc40fcf08b9b94b9");
   },[fetchQuits])
-  useEffect(()=>{
-    if(user.isLoggedIn === false) {
-      localStorage.removeItem('selectedQuit')
-    }
-  }, [user.isLoggedIn])
+
   useEffect(() => {
     const foundQuit = quits.find((quit) => quit._id === selectedQuit);
     setCurrentQuit(foundQuit || null);
   }, [quits, selectedQuit]);
-  console.log(currentQuit)
+
   useEffect(() => {
     if(currentQuit) {
 
@@ -62,7 +58,7 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit}) => {
         return b.goalAchieved - a.goalAchieved;
       }))
     }
-  },[currentQuit])
+  }, [currentQuit])
 
   return (
     <div

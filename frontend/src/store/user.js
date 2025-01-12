@@ -69,6 +69,9 @@ export const useUserStore = create((set) => ({
                     isLoading: false
                 }
             })
+            
+            localStorage.removeItem('selectedQuit')
+              
         }
     },
     logoutUser: async () => {
