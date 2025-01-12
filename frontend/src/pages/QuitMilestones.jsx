@@ -19,7 +19,10 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit}) => {
       localStorage.removeItem('selectedQuit')
     }
   }, [user.isLoggedIn])
-  
+  useEffect(() => {
+    const foundQuit = quits.find((quit) => quit._id === selectedQuit);
+    setCurrentQuit(foundQuit || null);
+  }, [quits, selectedQuit]);
   console.log(currentQuit)
   useEffect(() => {
     if(currentQuit) {
@@ -59,7 +62,7 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit}) => {
         return b.goalAchieved - a.goalAchieved;
       }))
     }
-  },[currentQuit,quits,selectedQuit])
+  },[currentQuit])
 
   return (
     <div
