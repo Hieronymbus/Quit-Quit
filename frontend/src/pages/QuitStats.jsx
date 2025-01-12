@@ -39,7 +39,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit}) => {
       <div className="h-4/6 grid grid-cols-2 grid-rows-3 gap-4">
         <div className="bg-blue-500 p-4">
           Start Date: <FormatDate date={currentQuit?.startDate}/>
-          End Date: <FormatDate date={currentQuit?.endDate}/>
+          6 Month Quit Completion Date: <FormatDate date={currentQuit?.endDate}/>
         </div>
         <div className="bg-blue-500 p-4">
           <QuitDuration startDate={currentQuit?.startDate}/>

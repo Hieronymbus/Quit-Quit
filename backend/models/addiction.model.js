@@ -40,6 +40,10 @@ const addictionSchema = new mongoose.Schema({
                 type: String,
                 required: true
             },
+            target: {
+                type: Number,
+                required: true
+            },
             imagePath:{
                 type: String,
                 required: true

@@ -4,10 +4,9 @@ import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
 import { useQuitStore } from '../store/quit.js'
 import { useUserStore } from '../store/user.js'
-import FormatDate from '../components/FormatDate.jsx'
-import QuitDuration from '../components/QuitDuration.jsx'
 
-const QuitAdvice = ({selectedQuit}) => {
+
+const QuitAdvice = ({selectedQuit,setSelectedQuit}) => {
 
   const {fetchQuits, quits} = useQuitStore();
   const {user } = useUserStore()
@@ -25,12 +24,13 @@ const QuitAdvice = ({selectedQuit}) => {
     <div
       className="h-screen"
     >
-      <Header />
+      <Header currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
       <div
-        className="h-4/6 overflow-auto"
+        className="h-4/6 p-4 overflow-auto prose whitespace-pre-line"
       >
         {currentQuit?.addictionTypeID.expertGuide}
       </div>
+      
       <Footer/>
 
     </div>

@@ -52,10 +52,6 @@ const Header = ({currentQuit, setSelectedQuit}) => {
                         </button>
                         <h1>
                             You are quitting {currentQuit?.addictionTypeID.name}
-                            {/* <div
-                                className='h-6 w-6'
-                                dangerouslySetInnerHTML={{ __html: currentQuit?.addictionTypeID.icon }} // Render the XML as raw HTML
-                            /> */}
                         </h1>
                         <button
                              className=' p-2 border border-slate-500' 
