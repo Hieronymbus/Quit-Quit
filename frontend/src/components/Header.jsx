@@ -1,12 +1,13 @@
 import React,{useState,useEffect} from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import DailyQuote from './DailyQuote.jsx'
+import Menu from './Menu.jsx'
 
 const Header = ({currentQuit, setSelectedQuit}) => {
 
     const location = useLocation()
     const navigate = useNavigate()
-    const [isMenuOpen, setIsmenuOpen] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const handleReturn = () => {
         setSelectedQuit("")
@@ -26,10 +27,20 @@ const Header = ({currentQuit, setSelectedQuit}) => {
 
                     <button
                         className=' p-2 border border-slate-500' 
-                        onClick={() => setIsmenuOpen(true)}
+                        onClick={() => setIsMenuOpen(true)}
                     >
                         Menu
                     </button>
+                    <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
+                    {
+                        isMenuOpen
+                        &&
+                        <div
+                            className="fixed inset-0 bg-black bg-opacity-70 z-40"
+                            onClick={() => setIsMenuOpen(false)} // Close menu when clicking on the overlay
+                        >
+                        </div>
+                    }
                     <DailyQuote />
                     <Link to={"/addQuit"}>
                         <button
