@@ -12,7 +12,9 @@ const QuitList = ({title, quits, setSelectedQuit}) => {
         <div>
             {title}           
         </div>
-        <div>
+        <div
+            className='h-5/6 flex flex-col gap-3'
+        >
             {quits.map((quit, index) => {
                 if(quit.status === title.toLowerCase()){
                     return (

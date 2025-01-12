@@ -13,6 +13,9 @@ const Header = ({currentQuit, setSelectedQuit}) => {
         setSelectedQuit("")
         navigate('/personalDashboard')
     }
+
+    
+
     return (
         <header
             className='h-1/6'
@@ -65,7 +68,7 @@ const Header = ({currentQuit, setSelectedQuit}) => {
                             Return to dashboard
                         </button>
                         <h1>
-                            You are quitting {currentQuit?.addictionTypeID.name}
+                             {currentQuit?.addictionTypeID.name} Quit Info
                         </h1>
                         <button
                              className=' p-2 border border-slate-500' 

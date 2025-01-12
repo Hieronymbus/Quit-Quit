@@ -14,7 +14,7 @@ const QuitCard = ({quit,setSelectedQuit}) => {
   return (
     <div
       onClick={handleQuitClick}
-      className='overflow-auto'
+      className='h-1/3 overflow-auto p-4 rounded bg-blue-600 hover:bg-blue-300 hover:cursor-pointer'
     >
 
       <h1>Addiction: {quit.addictionTypeID.name}</h1>

@@ -81,13 +81,17 @@ const AddQuit = () => {
   }
 
   return (
-    <div>
-      Create a New Quit Below
+    <div
+      className='h-screen w-screen p-4 flex flex-col justify-start items-center gap-4'
+    >
+      <h1>
+        Create a New Quit Below
+      </h1>
       
-      <br/>
-      <br/>
+      
         <form 
           onSubmit={handleAddQuit} 
+          className='flex flex-col gap-3'
         >
           <label htmlFor="addictionSelect">
             Select Addiction you wish to quit:
@@ -106,8 +110,7 @@ const AddQuit = () => {
               })}
             </select>
           </label>
-          <br/> 
-          <br/>
+          
           {
             newQuit.addictionTypeID
             &&
@@ -124,8 +127,6 @@ const AddQuit = () => {
               </label>
             )
           }
-          <br/>
-          <br/>
           
           {
 
@@ -147,9 +148,6 @@ const AddQuit = () => {
                       </label>
             })
           }
-          
-          <br/> 
-          <br/>
 
           {
             newQuit.addictionTypeID
@@ -219,14 +217,24 @@ const AddQuit = () => {
               </div>
             )
           }
-          <br/>
-          <br />
-
+          
+          
+          <div
+            className='flex gap-3'
+          >
           <button
             type='submit'
+            className='border-4 border-black'
           >
-              Start Quit
+            Start Quit
           </button>  
+          <button
+            className='border-4 border-black'
+            type='button' 
+          >
+            Cancel and return to dashbaord
+          </button>
+          </div>
         </form>      
     </div>
   )

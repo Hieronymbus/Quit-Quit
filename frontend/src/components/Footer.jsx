@@ -11,20 +11,31 @@ const Footer = () => {
     className="h-1/6 flex"
 > 
     <div
-      className={`w-1/3 h-full flex justify-center items-center border ${location.pathname === '/quitStats' && 'bg-lime-500'} border-r-slate-500`}
+      className={`w-1/3 h-full rounded flex justify-center items-center border
+         ${location.pathname === '/quitStats' && 'bg-lime-500'} border-r-slate-500
+         hover:cursor-pointer
+         `}
+
       onClick={() => navigate('/quitStats')}
     >
       Stats
     </div>
     <div
-      className={`w-1/3 h-full flex justify-center items-center border border-r-slate-500 ${location.pathname === '/quitMilestones' && 'bg-lime-500'}`}
+      className={`w-1/3 h-full rounded flex justify-center items-center border
+         border-r-slate-500 ${location.pathname === '/quitMilestones' && 'bg-lime-500'}
+         hover:cursor-pointer
+         `}
+
       onClick={() => navigate('/quitMilestones')}
 
     >
       Milestones
     </div>
     <div
-      className={`w-1/3 h-full flex justify-center items-center ${location.pathname === '/quitAdvice' && 'bg-lime-500'}`}
+      className={`w-1/3 h-full rounded flex justify-center items-center ${location.pathname === '/quitAdvice' && 'bg-lime-500'}
+      hover:cursor-pointer
+      `}
+
       onClick={() => navigate('/quitAdvice')}
 
     >
