@@ -24,7 +24,7 @@ const AmountAvoided = ({ startDate, amountPerDay }) => {
 
   return (
     <div>
-      {amountAvoided.toFixed(5)}
+      {amountAvoided >= 0 ? amountAvoided.toFixed(5) : "The quit hasn’t begun. One does not simply storm the gates of self-control without a final feast in the Great Hall of Poor Decisions."}
     </div>
   );
 };

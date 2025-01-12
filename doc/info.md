@@ -142,3 +142,5 @@
 9. As a user, when i register i want an email verification check for security
 
        AC: implement email verifcation on signup
+
+

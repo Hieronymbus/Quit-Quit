@@ -20,7 +20,7 @@ const QuitDuration = ({startDate}) => {
   
           setDuration(`${days}d ${hours}h ${minutes}m ${seconds}s`);
         } else {
-          setDuration("Quit hasn't started yet."); // Display this if the quit date is in the future
+          setDuration("Quitting is imminent, but the farewell tour isn’t complete. There are a few more indulgences that haven’t yet fulfilled their destiny."); // Display this if the quit date is in the future
         }
       };
   
