@@ -33,7 +33,9 @@ const LogoutButton = ({isLogoutClicked, setIsLogoutClicked}) => {
                         >
                             Yes
                         </button>
-                        <button>
+                        <button
+                          onClick={()=>setIsLogoutClicked(false)}
+                        >
                             No
                         </button>
                       </div>

@@ -3,7 +3,7 @@ import { useQuitStore } from '../store/quit.js'
 import Header from '../components/Header'
 import QuitList from '../components/QuitList'
 
-const PersonalDashboard = ({setSelectedQuit}) => {
+const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
 
 
   const { fetchQuits, quits } = useQuitStore();
@@ -17,7 +17,7 @@ const PersonalDashboard = ({setSelectedQuit}) => {
       className='h-screen'
     >
       
-      <Header/>
+      <Header setDarkMode={setDarkMode} darkMode={darkMode} />
       <div
         className='flex h-5/6'
       > 

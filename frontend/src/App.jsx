@@ -25,6 +25,22 @@ function App() {
     localStorage.setItem('selectedQuit', selectedQuit);
   }, [selectedQuit]);
   
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check localStorage for the theme
+    return localStorage.getItem('theme') === 'dark';
+  });
+
+  useEffect(() => {
+    // Add or remove the `dark` class on the root element
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
 
   return (
     <>
@@ -36,7 +52,7 @@ function App() {
           <Route element={<About /> } path="/about" />
 
           <Route element={<ProtectedRoutes /> } >
-            <Route element={<PersonalDashboard setSelectedQuit={setSelectedQuit} />} path="/personalDashboard"/>
+            <Route element={<PersonalDashboard setDarkMode={setDarkMode} darkMode={darkMode} setSelectedQuit={setSelectedQuit} />} path="/personalDashboard"/>
             <Route element={<QuitStats selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit} />} path="/quitStats"/>
             <Route element={<QuitMilestones selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit}/>} path="/quitMilestones"/>
             <Route element={<QuitAdvice  selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit}/>} path="/quitAdvice"/>

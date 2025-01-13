@@ -77,7 +77,10 @@ const AddQuit = () => {
     )
 
     alert(message)
-    navigate("/personalDashboard")
+    if(success) {
+
+      navigate("/personalDashboard")
+    }
   }
 
   return (

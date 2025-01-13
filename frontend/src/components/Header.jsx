@@ -5,7 +5,7 @@ import Menu from './Menu.jsx'
 import AbandonQuitButton from './AbandonQuitButton.jsx'
 import { DeleteQuitButton } from './DeleteQuitButton.jsx'
 
-const Header = ({currentQuit, setSelectedQuit}) => {
+const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
 
     const location = useLocation()
     const navigate = useNavigate()
@@ -36,7 +36,7 @@ const Header = ({currentQuit, setSelectedQuit}) => {
                     >
                         Menu
                     </button>
-                    <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
+                    <Menu setDarkMode={setDarkMode} darkMode={darkMode} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
                     {
                         isMenuOpen
                         &&
