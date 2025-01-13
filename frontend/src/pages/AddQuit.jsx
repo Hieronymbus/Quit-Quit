@@ -141,6 +141,7 @@ const AddQuit = () => {
                         <input 
                           type={parameter.type}
                           id={`parameter${index + 1}`}
+                          step="0.01"
                           onChange={(e) =>
                             setNewQuit(prev => ({...prev, usageParameters:{...prev.usageParameters, [name]: e.target.value }}))
                           }
@@ -231,6 +232,7 @@ const AddQuit = () => {
           <button
             className='border-4 border-black'
             type='button' 
+            onClick={() => navigate('/personalDashboard')}
           >
             Cancel and return to dashbaord
           </button>

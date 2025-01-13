@@ -34,6 +34,10 @@ const quitSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true
+    },
+    abandonedDate: {
+        type: Date,
+        required: false
     }
 },{
     timestamps: true

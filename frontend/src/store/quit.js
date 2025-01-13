@@ -49,5 +49,46 @@ export const useQuitStore = create((set) => ({
         const response  = await fetch(`/api/quits/${userID}`);
         const data = await response.json();
         set( {quits: data.data});
+    },
+    abandonQuit: async (quit) => {
+        
+        const forPatch = {
+            status: "abandoned",
+            abandonedDate: new Date()
+        }
+        console.log(quit._id)
+        try {
+            
+            const response = await fetch(`/api/quits/${quit._id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(forPatch)
+            })
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+            const data = await response.json()
+            console.log("updatedQuit", data.data)  
+        } catch (error) {
+            console.error(error)
+
+        }
+    },
+    deleteSingleQuit:  async (quitID) => {
+        console.log(quitID)
+        try {
+            const response = await fetch(`/api/quits/${quitID}`,{
+                method: "DELETE",
+            })
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json()
+        } catch (error) {
+            console.error(error)
+
+        }
     }
 }))

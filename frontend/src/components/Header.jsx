@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import DailyQuote from './DailyQuote.jsx'
 import Menu from './Menu.jsx'
+import AbandonQuitButton from './AbandonQuitButton.jsx'
+import { DeleteQuitButton } from './DeleteQuitButton.jsx'
 
 const Header = ({currentQuit, setSelectedQuit}) => {
 
@@ -70,11 +72,9 @@ const Header = ({currentQuit, setSelectedQuit}) => {
                         <h1>
                              {currentQuit?.addictionTypeID.name} Quit Info
                         </h1>
-                        <button
-                             className=' p-2 border border-slate-500' 
-                        >
-                            Abandon quit
-                        </button>
+
+                       {currentQuit?.status === "active" && <AbandonQuitButton currentQuit={currentQuit} />}
+                       {currentQuit?.status === "abandoned" && <DeleteQuitButton currentQuit={currentQuit} />}
                     </div>
                 )
             }

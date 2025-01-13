@@ -51,10 +51,12 @@ export const readQuits = async (req, res) => {
 //// update a quit: patch changed status
 export const updateQuit = async (req, res) => {
     const {quitID} = req.params;
-    const {status} = req.body;
-
+    const {status, abandonedDate} = req.body;
+console.log(quitID)
+console.log(status)
+console.log(abandonedDate)
     try {
-       const updatedQuit = await Quit.findByIdAndUpdate(quitID, {status: status}, {new: true} )
+       const updatedQuit = await Quit.findByIdAndUpdate(quitID, {status: status, abandonedDate: abandonedDate}, {new: true} )
        res.status(200).json({success: true, data: updatedQuit}) 
     } catch (err) {
         console.error("Error Updating Quit", err);
