@@ -17,7 +17,6 @@ const LogoutButton = ({isLogoutClicked, setIsLogoutClicked}) => {
 
     return (
         <div>
-
             {
                 isLogoutClicked 
                 ? (
