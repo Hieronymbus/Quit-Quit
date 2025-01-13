@@ -1,19 +1,23 @@
 import React from 'react'
 import QuitCard from './QuitCard'
-import { set } from 'mongoose'
+
 
 const QuitList = ({title, quits, setSelectedQuit}) => {
 
     
   return (
     <div
-        className='w-1/3 h-full border-4 flex flex-col items-center'
+        className='w-1/3 h-full p-1 flex flex-col items-center'
     >
         <div>
-            {title}           
+            <h2
+                className='text-3xl'
+            >
+             {title}  
+            </h2>         
         </div>
         <div
-            className='h-5/6 flex flex-col gap-3'
+            className='h-5/6 w-full flex flex-col gap-3'
         >
             {quits.map((quit, index) => {
                 if(quit.status === title.toLowerCase()){

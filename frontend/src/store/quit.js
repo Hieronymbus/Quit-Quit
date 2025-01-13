@@ -11,7 +11,7 @@ export const useQuitStore = create((set) => ({
                 || !newQuit.usageParameters || !newQuit.status ) {
                     return { success: false, message: "Please fill in all fields." };
             }
-            
+            console.log(newQuit.videoFile)
             const formData = new FormData();
             formData.append("userID", newQuit.userID)
             formData.append("addictionTypeID", newQuit.addictionTypeID)

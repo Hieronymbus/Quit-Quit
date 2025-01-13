@@ -44,6 +44,8 @@ const VideoRecorder = ({ setNewQuit }) => {
   };
 
   const stopRecording = () => {
+    console.log("yoyo")
+    console.log(recordedBlob)
     if (mediaRecorderRef.current) {
       mediaRecorderRef.current.stop();
     }
@@ -60,6 +62,8 @@ const VideoRecorder = ({ setNewQuit }) => {
 
   const uploadRecording = () => {
     if (recordedBlob) {
+      
+      console.log(recordedBlob)
       setNewQuit((prev) => ({ ...prev, videoFile: recordedBlob }));
     }
   };

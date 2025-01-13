@@ -4,6 +4,7 @@ import { useUserStore } from '../store/user.js';
 import { useAddictionStore } from '../store/addiction.js';
 import { useQuitStore } from '../store/quit.js';
 import VideoRecorder from '../components/VideoRecorder.jsx';
+
 const AddQuit = () => {
   const navigate = useNavigate();
   const {user} = useUserStore();
@@ -60,7 +61,7 @@ const AddQuit = () => {
 
   async function handleAddQuit(e) {
     e.preventDefault()
-    
+    console.log(newQuit.videoFile)
     const {success, message} = await createQuit(newQuit)
     console.log(message)
     setNewQuit(

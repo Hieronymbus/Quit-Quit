@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import LogoutButton from './LogoutButton.jsx'
+import LogoutButton from './ButtonLogout.jsx'
 
 const Menu = ({isMenuOpen, setIsMenuOpen, darkMode,setDarkMode}) => {
 
