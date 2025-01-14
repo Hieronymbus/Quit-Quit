@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route} from 'react-router-dom';
 
+import PreLoginRoutes from './utils/PreLoginRoutes.jsx';
 import ProtectedRoutes from './utils/ProtectedRoutes';
-import Home from './pages/Home';
+import Landing from './pages/Landing';
 import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -46,11 +47,12 @@ function App() {
     <>
       
         <Routes>
-          <Route element={<Home />} path='/' />
-          <Route element={<Login /> } path="/login" />
-          <Route element={<Register /> } path="/register" />
+          <Route element={<PreLoginRoutes />}>
+            <Route element={<Landing />} path='/' />
+            <Route element={<Login /> } path="/login" />
+            <Route element={<Register /> } path="/register" />
+          </Route>
           <Route element={<About /> } path="/about" />
-
           <Route element={<ProtectedRoutes /> } >
             <Route element={<PersonalDashboard setDarkMode={setDarkMode} darkMode={darkMode} setSelectedQuit={setSelectedQuit} />} path="/personalDashboard"/>
             <Route element={<QuitStats selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit} />} path="/quitStats"/>

@@ -5,9 +5,19 @@ import React , {useEffect} from 'react'
 const PreLoginRoutes = () => {
  
  
+    const {fetchUser, user} = useUserStore()
+    useEffect(() => {
+      fetchUser() 
+      
+    }, [fetchUser])
+
+    if(user.isLoading) {
+      return <div></div>
+    }
+
     return (
-    <div>PreLoginRoutes</div>
-  )
+       !user.isLoggedIn ? <Outlet /> : <Navigate to="/personalDashboard" />
+    )
 }
 
 export default PreLoginRoutes

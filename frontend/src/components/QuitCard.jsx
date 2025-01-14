@@ -33,8 +33,18 @@ const QuitCard = ({quit,setSelectedQuit}) => {
       >
         Addiction: {quit.addictionTypeID.name}
       </h1>
+      <h2
+        className='text-lg'
+      >
+        Quit Started On:
+      </h2> 
       <FormatDate date={quit.startDate} />
-      <QuitDuration startDate={quit.startDate}/>
+      <h2
+        className='text-lg'
+      >
+        Current Duration:
+      </h2>
+       <QuitDuration startDate={quit.startDate} />
     </div>
   )
 }

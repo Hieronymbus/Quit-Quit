@@ -3,6 +3,7 @@ import { useUserStore } from "../store/user.js";
 import React , {useEffect} from 'react'
 
 const ProtectedRoutes = () => {
+  
     const {fetchUser, user} = useUserStore()
     useEffect(() => {
       fetchUser() 

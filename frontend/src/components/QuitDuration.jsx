@@ -31,7 +31,7 @@ const QuitDuration = ({startDate}) => {
       return () => clearInterval(interval); // Cleanup on component unmount
     }, [startDate]);
   
-    return <div>Current Duration: {duration}</div>;
+    return <div> {duration}</div>;
 }
 
 export default QuitDuration
