@@ -24,7 +24,7 @@ export const createQuit = async (req,res) => {
         uploadPath = path.join(__dirname,'backend','public', 'uploads.test', uniqueFileName);
 
         videoFile.mv(uploadPath)
-        quit.videoPath = uploadPath
+        quit.videoPath = path.join('static', 'uploads.test', uniqueFileName)
     }
     const newQuit = new Quit(quit)
     try {
@@ -52,9 +52,9 @@ export const readQuits = async (req, res) => {
 export const updateQuit = async (req, res) => {
     const {quitID} = req.params;
     const {status, abandonedDate} = req.body;
-console.log(quitID)
-console.log(status)
-console.log(abandonedDate)
+    console.log(quitID)
+    console.log(status)
+    console.log(abandonedDate)
     try {
        const updatedQuit = await Quit.findByIdAndUpdate(quitID, {status: status, abandonedDate: abandonedDate}, {new: true} )
        res.status(200).json({success: true, data: updatedQuit}) 
@@ -62,7 +62,6 @@ console.log(abandonedDate)
         console.error("Error Updating Quit", err);
         res.status(500).json({success: false, message:"Server error"})
     }
-
 }
 
 ////  delete a single quit: 
@@ -78,8 +77,11 @@ export const deleteQuit = async (req,res) => {
         }
         
         await Quit.findByIdAndDelete(quitID);
+
         if(quit.videoPath){
-            fs.unlink(quit.videoPath,(err) => {
+            const filename = quit.videoPath.split("/")[2]
+            const filePath = path.join(__dirname,'backend','public', 'uploads.test', filename);
+            fs.unlink(filePath,(err) => {
                 if(err){
                     console.error("Error deleting file:", err.message );
                     return res.status(500).json({success: false, message: "Quit entry deleted from DB, but file deletion failed"})

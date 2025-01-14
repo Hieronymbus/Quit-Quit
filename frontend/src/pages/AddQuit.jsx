@@ -91,13 +91,11 @@ const AddQuit = () => {
       <h1>
         Create a New Quit Below
       </h1>
-      
-      
         <form 
           onSubmit={handleAddQuit} 
           className='flex flex-col gap-3'
         >
-          <label htmlFor="addictionSelect">
+          {/* <label htmlFor="addictionSelect">
             Select Addiction you wish to quit:
             <select 
               id="addictionSelect"
@@ -113,22 +111,54 @@ const AddQuit = () => {
                         </option>
               })}
             </select>
+          </label> */}
+          <label htmlFor="addictionSelect" className="block text-lg font-medium text-gray-700 mb-2">
+              Select Addiction you wish to quit:
           </label>
-          
+          <select
+              id="addictionSelect"
+              onChange={(e) => { setNewQuit(prev => ({ ...prev, addictionTypeID: e.target.value })) }}
+              value={newQuit.addictionTypeID}
+              className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
+          >
+              <option value="" disabled>
+                  -- Select an option --
+              </option>
+              {addictionsArr.map((addiction, index) => {
+                  return (
+                      <option value={addiction._id} key={index}>
+                          {addiction.name}
+                      </option>
+                  );
+              })}
+          </select>
           {
             newQuit.addictionTypeID
             &&
             (
-              <label
-                htmlFor='startDateInput'
-              >
+              // <label
+              //   htmlFor='startDateInput'
+              // > 
+              //   Choose a Start Date: 
+              //   <input
+              //     type="datetime-local" 
+              //     id='startDateInput'
+              //     onChange={(e) => setDates(e)}
+              //     value={newQuit.startDate ? newQuit.startDate.toISOString().slice(0, 16) : ""} // Formatting to YYYY-MM-DDTHH:mm
+              //   />
+              // </label>
+              <div>
+                <label htmlFor='startDateInput' className="block text-lg font-medium text-gray-700 mb-2">
+                    Choose a Start Date:
+                </label>
                 <input
-                  type="datetime-local" 
-                  id='startDateInput'
-                  onChange={(e) => setDates(e)}
-                  value={newQuit.startDate ? newQuit.startDate.toISOString().slice(0, 16) : ""} // Formatting to YYYY-MM-DDTHH:mm
+                    type="datetime-local"
+                    id='startDateInput'
+                    onChange={(e) => setDates(e)}
+                    value={newQuit.startDate ? newQuit.startDate.toISOString().slice(0, 16) : ""}
+                    className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
                 />
-              </label>
+              </div>
             )
           }
           
@@ -143,6 +173,7 @@ const AddQuit = () => {
                       >
                         {parameter.name}:
                         <input 
+                          className='ml-3'
                           type={parameter.type}
                           id={`parameter${index + 1}`}
                           step="0.01"
@@ -162,7 +193,7 @@ const AddQuit = () => {
                 <label
                   htmlFor='textReasonsTextArea'
                 >
-                  reasons for quiting(optional) :
+                  Reasons for quiting(optional) :
                   <textarea
                     id='textReasonsTextArea'
                     onChange={(e) => {setNewQuit(prev => ({...prev, reasonsToQuit: e.target.value }))}}
@@ -172,21 +203,25 @@ const AddQuit = () => {
                 </label>
                 <br />
                 <br />
-                <label
-                  htmlFor='modeSelect'
-                >
-                  Would you like to upload or record a video message to youself that you can rewatch in the future to remind youself 
-                  why you are making this change in  your life to quit(optional)?
-                  <select
-                    id='modeSelect'
-                    onChange={(e) => {setMode(e.target.value)}}
-                    value={mode}
+                {
+                  !newQuit.videoFile
+                  &&
+                  <label
+                    htmlFor='modeSelect'
                   >
-                    <option value='skip'>Skip</option>
-                    <option value="upload">Upload</option>
-                    <option value='record'>Record</option>
-                  </select>
-                </label>
+                    Would you like to upload or record a video message to youself that you can rewatch in the future to remind youself 
+                    why you are making this change in  your life to quit(optional)?
+                    <select
+                      id='modeSelect'
+                      onChange={(e) => {setMode(e.target.value)}}
+                      value={mode}
+                    >
+                      <option value='skip'>Skip</option>
+                      <option value="upload">Upload</option>
+                      <option value='record'>Record</option>
+                    </select>
+                  </label>
+                }
                 {
                   mode == 'skip'
                   &&
@@ -198,7 +233,7 @@ const AddQuit = () => {
                   <label 
                     htmlFor="fileUploadInput"
                   >
-                    choose file from device to upload -   
+                    Choose file from device to upload -   
                     <input 
                       type="file"
                       id="fileUploadInput"
@@ -215,32 +250,47 @@ const AddQuit = () => {
                 {
                   mode == 'record' 
                   &&
-                  <VideoRecorder 
-                    setNewQuit={setNewQuit}
-                  />
+                  <div>
+
+                    {
+                      newQuit.videoFile
+                      ?
+                     <div>
+                        Recorded Video Uploaded 
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="text-green-500 inline size-8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                        </svg>
+                     </div> 
+                      :
+                      <VideoRecorder 
+                        mode = {mode}
+                        setNewQuit={setNewQuit}
+                      />
+                    }
+                  </div>
                 }
+                <div
+                  className='flex gap-3 mt-10'
+                >
+                <button
+                  type='submit'
+                  className='border-4 border-black'
+                >
+                  Start Quit
+                </button>  
+                <button
+                  className='border-4 border-black'
+                  type='button' 
+                  onClick={() => navigate('/personalDashboard')}
+                >
+                  Cancel and return to dashbaord
+                </button>
+                </div>
               </div>
             )
           }
           
           
-          <div
-            className='flex gap-3'
-          >
-          <button
-            type='submit'
-            className='border-4 border-black'
-          >
-            Start Quit
-          </button>  
-          <button
-            className='border-4 border-black'
-            type='button' 
-            onClick={() => navigate('/personalDashboard')}
-          >
-            Cancel and return to dashbaord
-          </button>
-          </div>
         </form>      
     </div>
   )

@@ -18,7 +18,17 @@ const QuitList = ({title, quits, setSelectedQuit}) => {
         </div>
         <div
             className='h-5/6 w-full flex flex-col gap-3'
-        >
+        >   
+            {
+                quits.length == 0 && 
+                (
+                    <div
+                        className='h-40 p-5 flex justify-center items-center'
+                    >
+                        <i>Currently no quits in this category yet, to start a new quit click + button</i>
+                    </div>
+                )
+            }
             {quits.map((quit, index) => {
                 if(quit.status === title.toLowerCase()){
                     return (

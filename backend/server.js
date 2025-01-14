@@ -25,7 +25,7 @@ const __dirname = path.resolve(); // because __dirname is not available when pac
 app.use(fileUpload());
 app.use(express.json());
 app.use(cookieParser());
-
+app.use('/static', express.static(path.join(__dirname, 'backend', 'public')));
 export function authCookieMiddleware(req, res, next) {
     //Each fetch request grab token
     const token = req.cookies.authToken;

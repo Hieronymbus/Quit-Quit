@@ -42,7 +42,7 @@ const LogoutButton = ({isLogoutClicked, setIsLogoutClicked}) => {
                   )
                 : (
                     <div
-                      className="h-1/6 p-5 border-b-4 hover:cursor-pointer"
+                      className="h-1/6 p-5 border-b-2 border-slate-700 hover:cursor-pointer hover:bg-slate-200  dark:hover:bg-slate-700"
                       onClick={handleLogoutClick}
                     >
                       Logout
