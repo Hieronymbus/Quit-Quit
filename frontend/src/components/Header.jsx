@@ -133,6 +133,7 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                             </div>
                             }
                        {currentQuit?.status === "active" && <AbandonQuitButton currentQuit={currentQuit} />}
+                       {currentQuit?.status === "completed" && <AbandonQuitButton currentQuit={currentQuit} />}
                        {currentQuit?.status === "abandoned" && <DeleteQuitButton currentQuit={currentQuit} />}
                     </div>
                 )

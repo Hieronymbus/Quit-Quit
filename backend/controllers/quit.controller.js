@@ -41,6 +41,10 @@ export const readQuits = async (req, res) => {
     const {userID} = req.params
     try {
         const quits = await Quit.find({userID: userID}).populate("addictionTypeID");
+        for (const quit of quits) {
+            quit.updateStatusIfNeeded(); 
+            await quit.save(); 
+        }
         res.status(200).json({success: true, data: quits});
     } catch (err) {
         console.error("Error finding quits:", err.message);

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import LogoutButton from './ButtonLogout.jsx'
 
-const Menu = ({isMenuOpen, setIsMenuOpen, darkMode,setDarkMode}) => {
+const Menu = ({isMenuOpen, setIsMenuOpen, darkMode,setDarkMode, user}) => {
 
     const navigate = useNavigate()
     const [isLogoutClicked, setIsLogoutClicked] = useState(false)
@@ -17,24 +17,48 @@ const Menu = ({isMenuOpen, setIsMenuOpen, darkMode,setDarkMode}) => {
         className={`${isMenuOpen === false ? "hidden" : "" } z-50 h-screen bg-slate-400 dark:bg-slate-900 dark:text-gray-100 absolute left-0 top-0`}  
     >   
         <div
-            className='p-2 border-b-2 border-slate-700 bg-slate-400 dark:bg-slate-900 flex justify-between '
+            className='h-1/6 border-b-2 border-slate-700'
         >
-            <h1
+            <div
+                className='p-2  bg-slate-400 dark:bg-slate-900 flex justify-between '
+            >
+                <h1
+                    className=' text-xl'
+                >
+                    Menu
+                </h1>
+                <button
+                    onClick={() => {
+                        console.log("menuclose")
+                        setIsLogoutClicked(false)
+                        setIsMenuOpen(false)
+                    }}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="size-7">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div
                 className=' text-xl'
-            >
-                Menu
-            </h1>
-            <button
-                onClick={() => {
-                    console.log("menuclose")
-                    setIsLogoutClicked(false)
-                    setIsMenuOpen(false)
-                }}
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="size-7">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-            </button>
+                >
+                <div
+                    className='flex'
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+                    <h2>
+                        Logged In as: 
+                    </h2>   
+                </div>
+                <div
+                    className='text-center'
+                >
+
+                {user.userDetails.userName}
+                </div>
+            </div>
         </div>
         <div
             className=' p-5 border-b-2 border-slate-700 bg-slate-200 hover:cursor-pointer hover:bg-slate-100  dark:hover:bg-slate-700 dark:bg-slate-800'

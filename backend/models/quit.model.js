@@ -42,6 +42,15 @@ const quitSchema = new mongoose.Schema({
 },{
     timestamps: true
 })
+quitSchema.methods.updateStatusIfNeeded = function () {
+    const currentDate = new Date();
+    const startDate = this.startDate;
+    const sixMonthsInMilliseconds = 6 * 30 * 24 * 60 * 60 * 1000; // Approximation of 6 months
+
+    if (this.status != "abandoned" && currentDate - startDate >= sixMonthsInMilliseconds) {
+        this.status = "completed"  
+    } 
+}
 
 const Quit = mongoose.model("Quit", quitSchema);
 
