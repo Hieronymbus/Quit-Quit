@@ -37,7 +37,7 @@ export const useUserStore = create((set) => ({
             body: JSON.stringify(loginDetails)
         })
         const data = await response.json()
-
+        console.log(data)
         set({user: {
             isLoggedIn: true,
             userDetails: data.data,
@@ -52,6 +52,7 @@ export const useUserStore = create((set) => ({
             credentials: "include"
         });
         const data = await response.json();
+        console.log("fetch user", data)
         
         if (data.success) {
             set({

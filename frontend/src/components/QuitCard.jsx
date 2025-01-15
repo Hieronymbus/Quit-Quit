@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
+import { useNavigate } from 'react-router-dom';
+import { Tooltip } from 'react-tooltip';
 import QuitDuration from './QuitDuration.jsx';
 import FormatDate from './FormatDate.jsx';
-import { useNavigate } from 'react-router-dom';
 
 const QuitCard = ({quit,setSelectedQuit}) => {
   const navigate = useNavigate()
@@ -22,12 +23,20 @@ const QuitCard = ({quit,setSelectedQuit}) => {
     }
   },[quit])
 
+  console.log("QuitCard", quit)
   return (
     <div
       onClick={handleQuitClick}
       className={`h-1/3 w-full overflow-auto p-4 rounded ${bgColor} hover:cursor-pointer`}
+      data-tooltip-id='cardTooltip'
+      data-tooltip-content="Click to open advanced stats page"
+      data-tooltip-place='bottom-start'
+      data-tooltip-variant='dark'
+      data-tooltip-float='true'
+      data-tooltip-delay-show={500}
+      
     >
-
+      <Tooltip id="cardTooltip" opacity="0.4"/>
       <h1
         className='text-xl'
       >

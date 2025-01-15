@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { useQuitStore } from '../store/quit.js'
 import Header from '../components/Header'
 import QuitList from '../components/QuitList'
+import { useUserStore } from '../store/user.js'
 
 const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
 
-
+  const {user} = useUserStore()
   const { fetchQuits, quits } = useQuitStore();
 
+  console.log(quits)
+
   useEffect(() => {
-    fetchQuits("677337ddbc40fcf08b9b94b9");
+    fetchQuits(user.userDetails._id);
   },[fetchQuits])
 
   return (
@@ -23,16 +26,19 @@ const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
       > 
         <QuitList 
           title="Abandoned"
+          status="abandoned"
           quits={quits}
           setSelectedQuit={setSelectedQuit}
         />
         <QuitList 
-          title="Active"
+          title="Action-Phase"
+          status="active"
           quits={quits}
           setSelectedQuit={setSelectedQuit}
         />
         <QuitList 
-          title="Completed"
+          title="Maintenance-Phase"
+          status="completed"
           quits={quits}
           setSelectedQuit={setSelectedQuit}
         />

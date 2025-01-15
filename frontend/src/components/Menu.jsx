@@ -14,21 +14,36 @@ const Menu = ({isMenuOpen, setIsMenuOpen, darkMode,setDarkMode}) => {
 
   return (
     <div
-        className={`${isMenuOpen === false ? "hidden" : "" } z-50 h-screen bg-slate-300 dark:bg-slate-900 dark:text-gray-100 absolute left-0 top-0`}
-        onMouseLeave={() => {
-            console.log("menuclose")
-            setIsLogoutClicked(false)
-            setIsMenuOpen(false)
-        }}
-    >
+        className={`${isMenuOpen === false ? "hidden" : "" } z-50 h-screen bg-slate-400 dark:bg-slate-900 dark:text-gray-100 absolute left-0 top-0`}  
+    >   
         <div
-            className=' p-5 border-b-2 border-slate-700 hover:cursor-pointer hover:bg-slate-200  dark:hover:bg-slate-700'
+            className='p-2 border-b-2 border-slate-700 bg-slate-400 dark:bg-slate-900 flex justify-between '
+        >
+            <h1
+                className=' text-xl'
+            >
+                Menu
+            </h1>
+            <button
+                onClick={() => {
+                    console.log("menuclose")
+                    setIsLogoutClicked(false)
+                    setIsMenuOpen(false)
+                }}
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="size-7">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div
+            className=' p-5 border-b-2 border-slate-700 bg-slate-200 hover:cursor-pointer hover:bg-slate-100  dark:hover:bg-slate-700 dark:bg-slate-800'
             onClick={handleNavigateToAbout}
         >
             About
         </div>
         <div
-            className=' p-5 border-b-2 border-slate-700 hover:cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 '
+            className=' p-5 border-b-2 border-slate-700 bg-slate-200 hover:cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 dark:bg-slate-800'
             onClick={() => setDarkMode(!darkMode)}
         >
             ToggleDarkMode

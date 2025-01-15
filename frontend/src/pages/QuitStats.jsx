@@ -17,7 +17,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit}) => {
   const [whatConsumed,setWhatConsumed] = useState();
 
   useEffect(() => {
-    fetchQuits("677337ddbc40fcf08b9b94b9");
+    fetchQuits(user.userDetails._id);
   },[fetchQuits])
  
   const currentQuit = quits.find((quit) => quit._id === selectedQuit)
@@ -55,7 +55,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit}) => {
           {whatConsumed} avoided: <AmountAvoided startDate={currentQuit?.startDate} amountPerDay={currentQuit?.usageParameters.Cups}/>
         </div>
         <div className="bg-blue-500 p-4 ">
-          Hours reclaimed:<UsageTimeAvoided startDate={currentQuit?.startDate} timePerDay={currentQuit?.usageParameters.Time} />
+          Hours reclaimed: <UsageTimeAvoided startDate={currentQuit?.startDate} timePerDay={currentQuit?.usageParameters.Time} />
         </div>
         <div className="bg-blue-500 p-4  overflow-auto">
           Reasons for quitting: {currentQuit?.reasonsToQuit ? currentQuit.reasonsToQuit : "No reasons given. Just waking up one morning and deciding that perhaps, just perhaps, enough is enough. A fine, if somewhat mysterious, decision—no fanfare, no grand speeches—just the quiet resolve of someone who’s had enough of that particular nonsense. Carry on, then, with no particular reason but sheer will."}

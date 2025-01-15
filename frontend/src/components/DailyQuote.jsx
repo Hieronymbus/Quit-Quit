@@ -20,7 +20,16 @@ const DailyQuote = () => {
     },[fetchDailyQuote])
 
   return (
-    <div>{dailyQuote}</div>
+    <div
+        className='w-2/3 flex flex-col items-center'
+    >
+        <h1
+            className='text-center text-2xl'
+        >
+            Quote of the Day
+        </h1>
+        {dailyQuote}
+    </div>
   )
 }
 

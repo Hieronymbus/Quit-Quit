@@ -49,6 +49,7 @@ export const createLogin = async (req, res) => {
                 {userName: userNameEmail}
             ]
         })
+        console.log(user)
         if (!user){
            return res.status(400).send('No user found with those details')
         }
@@ -97,7 +98,7 @@ export const createLogout = async (req, res) => {
 
 export const readUser = async (req, res) => {
     const {_id, userName, role} = req.user;
-
+    
     try {
        
         const user = await User.findById(_id)
@@ -106,6 +107,7 @@ export const readUser = async (req, res) => {
           userName: user.userName,
           email: user.email
         }
+        console.log(userDataForFrontend)
         res.status(200).json( {success: true, data: userDataForFrontend } );
       } catch (err) {
         console.error("Error retreiving user details:", err.message);

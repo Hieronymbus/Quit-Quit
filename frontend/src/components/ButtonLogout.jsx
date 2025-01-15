@@ -21,7 +21,7 @@ const LogoutButton = ({isLogoutClicked, setIsLogoutClicked}) => {
                 isLogoutClicked 
                 ? (
                     <div
-                        className='flex flex-col h-1/6 p-5 border-b-4'
+                        className='flex flex-col p-5 border-b-4 bg-slate-200 dark:bg-slate-800'
                     >
                       <h3>
                         are you sure you want to log out?
@@ -42,7 +42,7 @@ const LogoutButton = ({isLogoutClicked, setIsLogoutClicked}) => {
                   )
                 : (
                     <div
-                      className="h-1/6 p-5 border-b-2 border-slate-700 hover:cursor-pointer hover:bg-slate-200  dark:hover:bg-slate-700"
+                      className="h-1/6 p-5 border-b-2 border-slate-700 bg-slate-200 hover:cursor-pointer hover:bg-slate-100  dark:hover:bg-slate-700 dark:bg-slate-800"
                       onClick={handleLogoutClick}
                     >
                       Logout

@@ -11,7 +11,7 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit}) => {
   const {fetchQuits, quits} = useQuitStore();
   const {user } = useUserStore()
   useEffect(() => {
-    fetchQuits("677337ddbc40fcf08b9b94b9");
+    fetchQuits(user.userDetails._id);
   },[fetchQuits])
   
   const currentQuit = quits.find((quit) => quit._id === selectedQuit)

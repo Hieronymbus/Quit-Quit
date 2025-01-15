@@ -46,7 +46,7 @@ export const useQuitStore = create((set) => ({
             }
     },
     fetchQuits: async (userID) => {
-        const response  = await fetch(`/api/quits/${userID}`);
+        const response = await fetch(`/api/quits/${userID}`);
         const data = await response.json();
         set( {quits: data.data});
     },

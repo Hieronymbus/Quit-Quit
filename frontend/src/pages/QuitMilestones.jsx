@@ -12,7 +12,7 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit}) => {
   const [currentQuit, setCurrentQuit] = useState(quits.find((quit) => quit._id === selectedQuit))
   const [sortedAdjustedAchievmentsArr, setSortedAdjustedAchievmentsArr] = useState([])
   useEffect(() => {
-    fetchQuits("677337ddbc40fcf08b9b94b9");
+    fetchQuits(user.userDetails._id);
   },[fetchQuits])
 
   useEffect(() => {
