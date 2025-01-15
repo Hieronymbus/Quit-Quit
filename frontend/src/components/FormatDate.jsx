@@ -16,7 +16,7 @@ const FormatDate = ({date}) => {
       }
 
   return (
-    <h1>{formatDate(date)}</h1>
+    <div>{formatDate(date)}</div>
   )
 }
 

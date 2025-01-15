@@ -4,12 +4,7 @@ import QuitCard from './QuitCard'
 
 const QuitList = ({title,status , quits, setSelectedQuit}) => {
 
-    // const [isLoading, setIsLoading] = useState(true)
-    // useEffect(() => {
-    //     if(quits){
-    //         setIsLoading(false)
-    //     }
-    // },[quits])
+    
     console.log("quitlist" , quits)
     return (
         <div

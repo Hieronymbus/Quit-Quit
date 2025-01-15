@@ -12,7 +12,7 @@ const Footer = () => {
 > 
     <div
       className={`w-1/3 h-full rounded flex justify-center items-center border
-         ${location.pathname === '/quitStats' && 'bg-lime-500'} border-r-slate-500
+         ${location.pathname === '/quitStats' && 'bg-slate-200'} border-r-slate-500
          hover:cursor-pointer
          `}
 
@@ -22,7 +22,7 @@ const Footer = () => {
     </div>
     <div
       className={`w-1/3 h-full rounded flex justify-center items-center border
-         border-r-slate-500 ${location.pathname === '/quitMilestones' && 'bg-lime-500'}
+         border-r-slate-500 ${location.pathname === '/quitMilestones' && 'bg-slate-200'}
          hover:cursor-pointer
          `}
 
@@ -32,7 +32,7 @@ const Footer = () => {
       Milestones
     </div>
     <div
-      className={`w-1/3 h-full rounded flex justify-center items-center ${location.pathname === '/quitAdvice' && 'bg-lime-500'}
+      className={`w-1/3 h-full rounded flex justify-center items-center ${location.pathname === '/quitAdvice' && 'bg-slate-200'}
       hover:cursor-pointer
       `}
 

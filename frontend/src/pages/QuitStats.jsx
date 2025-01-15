@@ -22,7 +22,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit}) => {
  
   const currentQuit = quits.find((quit) => quit._id === selectedQuit)
   
-  console.log(currentQuit)
+  console.log("y",currentQuit)
   
   useEffect(()=> {
 
@@ -30,8 +30,8 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit}) => {
   
       setWhatConsumed( Object.keys(currentQuit?.usageParameters)[0] )
     }
-  })
-  console.log(currentQuit?.videoPath)
+  },[])
+  
 
 
   return (
@@ -39,26 +39,120 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit}) => {
       className="h-screen"
     >
       <Header currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
-      <div className="h-4/6 grid grid-cols-2 grid-rows-3 gap-0 rounded">
-        <div className="bg-blue-500 p-4 ">
-          Start Date: <FormatDate date={currentQuit?.startDate}/>
-          6 Month Quit Completion Date: <FormatDate date={currentQuit?.endDate}/>
+      <div className="h-4/6 grid grid-cols-2 grid-rows-3 gap-2 p-2  bg-slate-100 rounded ">
+        <div className="grid grid-cols-2 grid-rows-2 border-4 rounded-lg  border-slate-400 p-4 ">
+          <div>
+            <h2
+              className='text-center text-xl text-blue-600'
+            >
+              Start Date: 
+            </h2>
+            <p
+              className='text-center '
+            >
+              <FormatDate date={currentQuit?.startDate}/> 
+            </p>
+          </div>
+          <div
+            className=''
+          >
+            <h2
+              className='text-center text-xl text-green-600' 
+            >
+              Action Phase Completion Date:  
+            </h2>
+            <p
+              className='text-center'
+            >
+              <FormatDate date={currentQuit?.endDate}/>
+            </p>
+          </div>
+            {
+              currentQuit?.abandonedDate 
+              && 
+              <div> 
+                <h2
+                  className='text-center text-xl text-red-600'
+                >
+                  Abandoned This Quit on: 
+                </h2>
+                <p
+                  className='text-center'
+                >
+                  <FormatDate date={currentQuit?.abandonedDate}/> 
+                </p>
+              </div>
+            }
         </div>
-        <div className="bg-blue-500 p-4 ">
-          <QuitDuration startDate={currentQuit?.startDate}/>
+        <div className="flex justify-center items-center  border-4 rounded-lg  border-slate-400 p-4">
+            <div>
+              <h2
+                className='text-center text-blue-600 text-3xl'
+              >
+                Quit Duration:
+              </h2>
+              <p
+                className='text-center text-xl'
+              >
+               <QuitDuration startDate={currentQuit?.startDate} abandonedDate={currentQuit?.abandonedDate} />  
+              </p>
+            </div> 
         </div>
-        <div className="bg-blue-500 p-4 ">
-          Money Saved: 
-          <MoneySaved startDate={currentQuit?.startDate} cupsPerDay={currentQuit?.usageParameters.Cups} costPerCup={currentQuit?.usageParameters.Cost} />
+        <div className="flex justify-center items-center  border-4 rounded-lg  border-slate-400 p-4">
+            <div>
+              <h2
+                className='text-center text-blue-600 text-3xl'
+              >
+                Money Saved: 
+              </h2>
+              <p
+                className='text-center text-xl'
+              >
+               <MoneySaved startDate={currentQuit?.startDate} abandonedDate={currentQuit?.abandonedDate} cupsPerDay={currentQuit?.usageParameters.Cups} costPerCup={currentQuit?.usageParameters.Cost} />
+              </p>
+            </div> 
         </div>
-        <div className="bg-blue-500 p-4 ">
-          {whatConsumed} avoided: <AmountAvoided startDate={currentQuit?.startDate} amountPerDay={currentQuit?.usageParameters.Cups}/>
+        <div className="flex justify-center items-center  border-4 rounded-lg  border-slate-400 p-4">
+            <div>
+              <h2
+                className='text-center text-blue-600 text-3xl'
+              >
+                {whatConsumed} avoided:
+              </h2>
+              <p
+                className='text-center text-xl'
+              >
+                <AmountAvoided startDate={currentQuit?.startDate} abandonedDate={currentQuit?.abandonedDate} amountPerDay={currentQuit?.usageParameters.Cups}/>
+              </p>
+            </div> 
         </div>
-        <div className="bg-blue-500 p-4 ">
-          Hours reclaimed: <UsageTimeAvoided startDate={currentQuit?.startDate} timePerDay={currentQuit?.usageParameters.Time} />
+        <div className="flex justify-center items-center  border-4 rounded-lg  border-slate-400 p-4">
+            <div>
+              <h2
+                className='text-center text-blue-600 text-3xl'
+              >
+                Time reclaimed:
+              </h2>
+              <p
+                className='text-center text-xl'
+              >
+                <UsageTimeAvoided startDate={currentQuit?.startDate} abandonedDate={currentQuit?.abandonedDate} timePerDay={currentQuit?.usageParameters.Time} />
+              </p>
+            </div> 
         </div>
-        <div className="bg-blue-500 p-4  overflow-auto">
-          Reasons for quitting: {currentQuit?.reasonsToQuit ? currentQuit.reasonsToQuit : "No reasons given. Just waking up one morning and deciding that perhaps, just perhaps, enough is enough. A fine, if somewhat mysterious, decision—no fanfare, no grand speeches—just the quiet resolve of someone who’s had enough of that particular nonsense. Carry on, then, with no particular reason but sheer will."}
+        <div className="flex justify-center items-center  border-4 rounded-lg  border-slate-400 p-4 overflow-auto">
+        <div>
+              <h2
+                className='text-center text-blue-600 text-3xl'
+              >
+                Reasons for quitting: 
+              </h2>
+              <p
+                className='text-center text-xl'
+              >
+                {currentQuit?.reasonsToQuit ? currentQuit.reasonsToQuit : "No reasons given. Just waking up one morning and deciding that perhaps, just perhaps, enough is enough. A fine, if somewhat mysterious, decision—no fanfare, no grand speeches—just the quiet resolve of someone who’s had enough of that particular nonsense. Carry on, then, with no particular reason but sheer will."}
+              </p>
+            </div> 
           {
             currentQuit?.videoPath
             &&  

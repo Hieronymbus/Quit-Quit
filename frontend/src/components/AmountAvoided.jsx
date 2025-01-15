@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const AmountAvoided = ({ startDate, amountPerDay }) => {
+const AmountAvoided = ({ startDate, abandonedDate, amountPerDay }) => {
   const [amountAvoided, setAmountAvoided] = useState(0);
   
   useEffect(() => {
@@ -8,7 +8,15 @@ const AmountAvoided = ({ startDate, amountPerDay }) => {
     const calculateAmountAvoided = () => {
       const start = new Date(startDate);
       const now = new Date();
-      const timeDifference = now - start;
+      const end = new Date(abandonedDate);
+      let timeDifference;
+
+      if(abandonedDate){
+        timeDifference = end - start;
+      } else { 
+        timeDifference = now - start;
+      }
+      
       const daysElapsed = timeDifference / (1000 * 60 * 60 * 24);
       return daysElapsed * amountPerDay;
     };

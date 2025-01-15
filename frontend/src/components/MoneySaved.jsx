@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 
-const MoneySaved = ({startDate, cupsPerDay, costPerCup}) => {
+const MoneySaved = ({startDate, abandonedDate,cupsPerDay, costPerCup}) => {
   
   const [moneySaved, setMoneySaved] = useState(0);
 
@@ -11,8 +11,13 @@ const MoneySaved = ({startDate, cupsPerDay, costPerCup}) => {
       const currentDate = new Date();
 
       const start = new Date(startDate);
-
-      const timeDiff = currentDate - start;
+      const end = new Date(abandonedDate)
+      let timeDiff;
+      if(abandonedDate) {
+        timeDiff = end - start
+      } else {
+        timeDiff = currentDate - start;
+      }
 
       const daysPassed = timeDiff / (1000 * 3600 * 24);
 
@@ -25,7 +30,7 @@ const MoneySaved = ({startDate, cupsPerDay, costPerCup}) => {
 
     calculateMoneySaved();
 
-    const interval = setInterval(calculateMoneySaved, 60000);
+    const interval = setInterval(calculateMoneySaved, 1000);
 
     // Cleanup the interval on component unmount
     return () => clearInterval(interval);

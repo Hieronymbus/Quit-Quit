@@ -7,6 +7,7 @@ import FormatDate from './FormatDate.jsx';
 const QuitCard = ({quit,setSelectedQuit}) => {
   const navigate = useNavigate()
   const [bgColor, setBgColor] = useState("")
+  const [isStarted, setIsStarted] = useState(false)
 
   function handleQuitClick () {
     setSelectedQuit(quit._id)
@@ -21,13 +22,17 @@ const QuitCard = ({quit,setSelectedQuit}) => {
     } else {
       setBgColor("bg-green-400 hover:bg-green-300")
     }
+    const startCheck =  new Date() - new Date(quit.startDate)
+    if(startCheck >= 0) {
+      setIsStarted(true)
+    }
   },[quit])
 
-  console.log("QuitCard", quit)
+  
   return (
     <div
       onClick={handleQuitClick}
-      className={`h-1/3 w-full overflow-auto p-4 rounded ${bgColor} hover:cursor-pointer`}
+      className={`h-1/3 w-full overflow-auto p-4 rounded ${bgColor} hover:cursor-pointer `}
       data-tooltip-id='cardTooltip'
       data-tooltip-content="Click to open advanced stats page"
       data-tooltip-place='bottom-start'
@@ -44,16 +49,30 @@ const QuitCard = ({quit,setSelectedQuit}) => {
       </h1>
       <h2
         className='text-lg'
-      >
-        Quit Started On:
+      > 
+        {
+          quit.abandonedDate
+          ?
+          <div>
+
+            {isStarted ? "Quit Started On:" : "Quit Would have started On:"}
+          </div>
+          :
+          <div>
+
+            {isStarted ? "Quit Started On:" : "Quit will start On:"}
+          </div>
+        }
+        
       </h2> 
       <FormatDate date={quit.startDate} />
       <h2
         className='text-lg'
       >
-        Current Duration:
+        {quit.abandonedDate ? "Quit Lasted For:" : "Current Duration:"}
+        
       </h2>
-       <QuitDuration startDate={quit.startDate} />
+       <QuitDuration startDate={quit.startDate} abandonedDate={quit.abandonedDate}/>
     </div>
   )
 }

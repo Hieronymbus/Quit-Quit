@@ -24,7 +24,7 @@ const DailyQuote = () => {
         className='w-2/3 flex flex-col items-center'
     >
         <h1
-            className='text-center text-2xl'
+            className='text-center text-4xl'
         >
             Quote of the Day
         </h1>
