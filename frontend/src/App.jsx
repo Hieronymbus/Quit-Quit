@@ -45,7 +45,6 @@ function App() {
 
   return (
     <>
-      
         <Routes>
           <Route element={<PreLoginRoutes />}>
             <Route element={<Landing />} path='/' />

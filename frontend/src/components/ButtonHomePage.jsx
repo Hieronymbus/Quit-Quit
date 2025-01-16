@@ -17,7 +17,7 @@ const ButtonHomePage = ({text}) => {
 
   return (
     <button
-        className="text-xl text-gray-100 bg-slate-700  border-4  border-gray-400 rounded-xl flex justify-center items-center hover:cursor-pointer hover:bg-slate-500"
+        className="h-1/2 text-xl text-gray-100  "
         onClick={handleClick}
     >
         {text}
