@@ -66,11 +66,11 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit}) => {
     >
       <Header currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
       
-      <div className="h-4/6 grid grid-rows-5 grid-cols-2 gap-2">
+      <div className="h-4/6 grid grid-rows-5 grid-cols-2 gap-2 bg-slate-200 dark:bg-slate-600 overflow-auto">
         {sortedAdjustedAchievmentsArr.map((milestone, index) => {
 
          return <div 
-                  className={`p-2  ${milestone.goalAchieved ? "bg-green-500 border-4 border-yellow-600" : "bg-slate-500 border-4 border-slate-700"} overflow-auto`}
+                  className={`min-h-[250px] p-2  ${milestone.goalAchieved ? "bg-green-500 border-4 border-yellow-600" : "bg-slate-500 border-4 border-slate-700"} overflow-auto no-scrollbar`}
                   key={index}
                 >
                   <h2 className='text-center'>

@@ -39,7 +39,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit}) => {
       className="h-screen"
     >
       <Header currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
-      <div className="h-4/6 grid grid-cols-2 grid-rows-3 gap-2 p-2  bg-slate-100 rounded ">
+      <div className="h-4/6 p-2 grid grid-cols-2 grid-rows-3 gap-2 rounded bg-slate-200 dark:bg-slate-600 dark:text-slate-100">
         <div className="grid grid-cols-2 grid-rows-2 border-4 rounded-lg  border-slate-400 p-4 ">
           <div>
             <h2

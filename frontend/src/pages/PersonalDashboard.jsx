@@ -22,7 +22,7 @@ const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
       
       <Header setDarkMode={setDarkMode} darkMode={darkMode} />
       <div
-        className='flex h-5/6 bg-slate-100'
+        className='flex h-5/6 bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
       > 
         <QuitList 
           title="Abandoned"

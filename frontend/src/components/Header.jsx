@@ -26,7 +26,7 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
 
     return (
         <header
-            className='h-1/6 flex justify-center items-center p-4 bg-slate-200'
+            className='h-1/6 flex justify-center items-center p-4 bg-slate-300 border-b-2 border-slate-700 dark:border-slate-100 dark:bg-slate-700 dark:text-slate-100 '
         >
             {
                 location.pathname === "/personalDashboard" 
@@ -39,14 +39,14 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                             className='flex items-center '
                         >
                             <button
-                                className=' p-2 hover:bg-slate-300' 
+                                className=' p-2 rounded-lg hover:bg-slate-400 dark:hover:bg-slate-800' 
                                 onClick={() => setIsMenuOpen(true)}
                                 data-tooltip-id="menuButton-tooltip"
                                 data-tooltip-content="Menu"
                                 data-tooltip-place="bottom"
                                 data-tooltip-delay-show={500}
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-12">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                                 </svg>
                                 <Tooltip id="menuButton-tooltip" />
@@ -67,14 +67,14 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                     <Link to={"/addQuit"}>
                         <div>
                             <button
-                                className=' p-2 hover:bg-slate-300 '
+                                className=' p-2 rounded-lg hover:bg-slate-400 dark:hover:bg-slate-800 '
                                 data-tooltip-id="my-tooltip"
                                 data-tooltip-content="Create Quit"
                                 data-tooltip-place="bottom"
                                 data-tooltip-variant='dark'
                                 data-tooltip-delay-show={500}
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-9">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-12">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                 </svg>    
                             </button>
@@ -113,9 +113,9 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                             (
 
                                 <h1
-                                    className='text-2xl'
+                                    className='text-4xl'
                                 >
-                                Create a New Quit Below
+                                    Create New Quit Below
                                 </h1>
                             )
                             
@@ -124,7 +124,7 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                             location.pathname == '/addQuit' 
                             && 
                             <div
-                                className=' p-2 text-slate-200' 
+                                className=' p-2 text-slate-300 dark:text-slate-700' 
                                 
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="size-10">

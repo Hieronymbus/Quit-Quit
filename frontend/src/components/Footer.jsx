@@ -11,10 +11,7 @@ const Footer = () => {
     className="h-1/6 flex"
 > 
     <div
-      className={`w-1/3 h-full rounded flex justify-center items-center border
-         ${location.pathname === '/quitStats' && 'bg-slate-200'} border-r-slate-500
-         hover:cursor-pointer
-         `}
+      className={`w-1/3 h-full flex justify-center items-center border rounded  ${location.pathname === '/quitStats' && 'bg-slate-200'} border-r-slate-500 hover:cursor-pointer`}
 
       onClick={() => navigate('/quitStats')}
     >

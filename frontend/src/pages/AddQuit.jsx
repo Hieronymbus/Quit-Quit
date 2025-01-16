@@ -93,51 +93,50 @@ const AddQuit = () => {
     > 
       <Header />
       <div
-        className='p-5 w-screen h-screen flex flex-col justify-start items-center gap-4 bg-slate-100'
+        className='p-5 h-5/6 w-full flex flex-col justify-start items-center bg-slate-200 overflow-y-auto no-scrollbar dark:bg-slate-600 dark:text-slate-100'
       >
-
-       
           <form 
             onSubmit={handleAddQuit} 
-            className='flex flex-col gap-3'
+            className='w-1/2 p-4 flex flex-col gap-3'
           >
-           
-            <label htmlFor="addictionSelect" className="block text-lg font-medium text-gray-700 mb-2">
-                Select Addiction you wish to quit:
-            </label>
-            <select
-                id="addictionSelect"
-                onChange={(e) => { setNewQuit(prev => ({ ...prev, addictionTypeID: e.target.value })) }}
-                value={newQuit.addictionTypeID}
-                className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
-            >
-                <option value="" disabled>
-                    -- Select an option --
-                </option>
-                {addictionsArr.map((addiction, index) => {
-                  // if(addiction.status != "active" || addiction.status != "completed")
-                    return (
-                        <option value={addiction._id} key={index}>
-                            {addiction.name}
-                        </option>
-                    );
-                })}
-            </select>
+            <div>
+              <label htmlFor="addictionSelect" className="block text-lg font-medium  mb-1">
+                  Select Addiction you wish to quit:
+              </label>
+              <select
+                  id="addictionSelect"
+                  onChange={(e) => { setNewQuit(prev => ({ ...prev, addictionTypeID: e.target.value })) }}
+                  value={newQuit.addictionTypeID}
+                  className="block w-full p-2.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700"
+              >
+                  <option value="" disabled>
+                      -- Select an option --
+                  </option>
+                  {addictionsArr.map((addiction, index) => {
+                    // if(addiction.status != "active" || addiction.status != "completed")
+                      return (
+                          <option value={addiction._id} key={index}>
+                              {addiction.name}
+                          </option>
+                      );
+                  })}
+              </select>
+            </div>
             {
               newQuit.addictionTypeID
               &&
               (
                
                 <div>
-                  <label htmlFor='startDateInput' className="block text-lg font-medium text-gray-700 mb-2">
+                  <label htmlFor='startDateInput' className="block text-lg font-medium  mb-1">
                       Choose a Start Date:
                   </label>
                   <input
+                      className="block w-full p-2 pl-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700"
                       type="datetime-local"
                       id='startDateInput'
                       onChange={(e) => setDates(e)}
                       value={newQuit.startDate ? newQuit.startDate.toISOString().slice(0, 16) : ""}
-                      className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
               )
@@ -146,21 +145,24 @@ const AddQuit = () => {
               addictionChoiceParameters.map((parameter, index) => {
                 const nameSplit = parameter.name.split(' ');
                 const name = nameSplit[0];
-                return  <label
-                          htmlFor={`parameter${index + 1}`}
-                          key={index}
-                        >
+                return  <div>
+                          <label
+                            htmlFor={`parameter${index + 1}`}
+                            className='block w-full text-lg font-medium  mb-1'
+                            key={index}
+                          >
                           {parameter.name}:
-                          <input 
-                            className='ml-3'
-                            type={parameter.type}
-                            id={`parameter${index + 1}`}
-                            step="0.01"
-                            onChange={(e) =>
-                              setNewQuit(prev => ({...prev, usageParameters:{...prev.usageParameters, [name]: e.target.value }}))
-                            }
-                          />
                         </label>
+                        <input 
+                          className='block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700'
+                          type={parameter.type}
+                          id={`parameter${index + 1}`}
+                          step="0.01"
+                          onChange={(e) =>
+                            setNewQuit(prev => ({...prev, usageParameters:{...prev.usageParameters, [name]: e.target.value }}))
+                          }
+                        />
+                        </div> 
               })
             }
 
@@ -168,29 +170,38 @@ const AddQuit = () => {
               newQuit.addictionTypeID
               &&
               (
+                <div
+                  className=' flex flex-col gap-3'
+                > 
                 <div>
                   <label
+                    className='block text-lg font-medium  mb-1'
                     htmlFor='textReasonsTextArea'
                   >
                     Reasons for quiting(optional) :
-                    <textarea
-                      id='textReasonsTextArea'
-                      onChange={(e) => {setNewQuit(prev => ({...prev, reasonsToQuit: e.target.value }))}}
-                      value={newQuit.reasonsToQuit}
-                    >
-                    </textarea>
                   </label>
-                  <br />
-                  <br />
+                  <textarea
+                    className='block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700'
+                    id='textReasonsTextArea'
+                    onChange={(e) => {setNewQuit(prev => ({...prev, reasonsToQuit: e.target.value }))}}
+                    value={newQuit.reasonsToQuit}
+                  >
+                  </textarea>
+                </div>
+                  
                   {
                     !newQuit.videoFile
                     &&
-                    <label
-                      htmlFor='modeSelect'
-                    >
-                      Would you like to upload or record a video message to youself that you can rewatch in the future to remind youself 
-                      why you are making this change in  your life to quit(optional)?
+                    <div>
+                      <label
+                        className='block w-full text-lg font-medium  mb-1'
+                        htmlFor='modeSelect'
+                      >
+                        Would you like to upload or record a video message to youself that you can rewatch in the future to remind youself 
+                        why you are making this change in  your life to quit(optional)?
+                      </label>
                       <select
+                        className='block w-full p-2 pt-2.5 pb-2.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700'
                         id='modeSelect'
                         onChange={(e) => {setMode(e.target.value)}}
                         value={mode}
@@ -199,7 +210,7 @@ const AddQuit = () => {
                         <option value="upload">Upload</option>
                         <option value='record'>Record</option>
                       </select>
-                    </label>
+                  </div>
                   }
                   {
                     mode == 'skip'
@@ -209,11 +220,16 @@ const AddQuit = () => {
                   {
                     mode == 'upload' 
                     &&
-                    <label 
-                      htmlFor="fileUploadInput"
-                    >
-                      Choose file from device to upload -   
+                    <div>
+
+                      <label 
+                        className='block w-full text-lg font-medium text-gray-700 mb-1'
+                        htmlFor="fileUploadInput"
+                      >
+                        Choose file from device to upload:   
+                      </label>  
                       <input 
+                        className='block w-full p-2 pt-2.5 pb-2.5 border bg-white border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500'
                         type="file"
                         id="fileUploadInput"
                         onChange={(e) => {
@@ -224,7 +240,7 @@ const AddQuit = () => {
                           }));
                         }}
                       />
-                    </label>  
+                    </div>
                   }
                   {
                     mode == 'record' 
@@ -249,27 +265,25 @@ const AddQuit = () => {
                     </div>
                   }
                   <div
-                    className='flex gap-3 mt-10'
+                    className='flex gap-3 mt-4'
                   >
                   <button
                     type='submit'
-                    className='border-4 '
+                    className='border-2 p-2 rounded-md'
                   >
                     Start Quit
                   </button>  
                   <button
-                    className='border-4 '
+                    className='border-2 p-2 rounded-md'
                     type='button' 
                     onClick={() => navigate('/personalDashboard')}
                   >
-                    Cancel and return to dashbaord
+                    Cancel 
                   </button>
                   </div>
                 </div>
               )
             }
-            
-            
           </form>      
       </div>
     </div>

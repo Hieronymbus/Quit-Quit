@@ -23,7 +23,7 @@ const About = () => {
       className='h-screen w-screen flex flex-col'
     >
       <nav
-        className='h-1/6 2-full flex justify-between items-center p-4 bg-slate-200'
+        className='h-1/6 2-full flex justify-between items-center p-4 bg-slate-300'
       >
         <button
           className=' p-2 hover:bg-slate-300 '
@@ -39,7 +39,7 @@ const About = () => {
           About Page
         </h1>
         <button
-          className=' p-4 text-slate-200'
+          className=' p-4 text-slate-300'
           
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="size-10">

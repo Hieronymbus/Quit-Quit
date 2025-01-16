@@ -8,17 +8,19 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
     console.log("quitlist" , quits)
     return (
         <div
-            className='w-1/3 h-full p-1 flex flex-col items-center'
+            className='w-1/3 h-full flex flex-col items-center '
         >
-            <div>
+            <div
+                className='w-full '
+            >
                 <h2
-                    className='text-3xl'
+                    className='text-3xl m-3 text-center'
                 >
-                {title}  
+                    {title}  
                 </h2>         
             </div>
             <div
-                className='h-5/6 w-full flex flex-col gap-3'
+                className=' w-full overflow-y-auto no-scrollbar flex flex-col '
             >   
                 {
                     quits.length == 0 
@@ -32,7 +34,6 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                     )
                     
                 }
-                
                 {quits.map((quit, index) => {
                     
                     if(quit.status === status){
@@ -46,11 +47,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                         )
                     }
                 })}
-                    
-                
-                
             </div>
-        
         </div>
     )
 }

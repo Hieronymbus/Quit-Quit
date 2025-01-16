@@ -22,7 +22,7 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit}) => {
     >
       <Header currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
       <div
-        className="h-4/6 p-4 overflow-auto prose whitespace-pre-line"
+        className="h-4/6 p-4 overflow-auto prose whitespace-pre-line bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
       >
         {currentQuit?.addictionTypeID.expertGuide}
       </div>

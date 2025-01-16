@@ -14,16 +14,16 @@ const Menu = ({isMenuOpen, setIsMenuOpen, darkMode,setDarkMode, user}) => {
 
   return (
     <div
-        className={`${isMenuOpen === false ? "hidden" : "" } z-50 h-screen bg-slate-400 dark:bg-slate-900 dark:text-gray-100 absolute left-0 top-0`}  
+        className={`${isMenuOpen === false ? "hidden" : "" } w-2/12 z-50 h-screen bg-slate-300 dark:bg-slate-900 dark:text-gray-100 absolute left-0 top-0`}  
     >   
         <div
-            className='h-1/6 border-b-2 border-slate-700'
+            className='h-1/6 border-b-2 border-slate-700 dark:border-slate-100'
         >
             <div
-                className='p-2  bg-slate-400 dark:bg-slate-900 flex justify-between '
+                className='h-2/6 p-1 bg-slate-300 dark:bg-slate-900 flex justify-between '
             >
                 <h1
-                    className=' text-xl'
+                    className='text-xl '
                 >
                     Menu
                 </h1>
@@ -40,12 +40,12 @@ const Menu = ({isMenuOpen, setIsMenuOpen, darkMode,setDarkMode, user}) => {
                 </button>
             </div>
             <div
-                className=' text-xl'
+                className='h-4/6 flex  flex-col justify-center items-center text-xl'
                 >
                 <div
                     className='flex'
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                     </svg>
                     <h2>
@@ -53,21 +53,20 @@ const Menu = ({isMenuOpen, setIsMenuOpen, darkMode,setDarkMode, user}) => {
                     </h2>   
                 </div>
                 <div
-                    className='text-center'
+                    className=''
                 >
-
-                {user.userDetails.userName}
+                    {user.userDetails.userName}
                 </div>
             </div>
         </div>
         <div
-            className=' p-5 border-b-2 border-slate-700 bg-slate-200 hover:cursor-pointer hover:bg-slate-100  dark:hover:bg-slate-700 dark:bg-slate-800'
+            className=' p-5 border-b-2 border-slate-700 bg-slate-100 hover:cursor-pointer hover:bg-slate-300  dark:hover:bg-slate-700 dark:bg-slate-800 dark:border-slate-100'
             onClick={handleNavigateToAbout}
         >
             About
         </div>
         <div
-            className=' p-5 border-b-2 border-slate-700 bg-slate-200 hover:cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 dark:bg-slate-800'
+            className=' p-5 border-b-2 border-slate-700 bg-slate-100 hover:cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-700 dark:bg-slate-800 dark:border-slate-100'
             onClick={() => setDarkMode(!darkMode)}
         >
             ToggleDarkMode
