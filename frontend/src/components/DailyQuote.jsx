@@ -10,25 +10,36 @@ const DailyQuote = () => {
             const data = await response.json()
             setDailyQuote(data.data)
         } catch (err) {
-            console.error("Error:",err)
+            console.error("Error:", err)
             setDailyQuote("Have you heard the joke about yoga. Nevermind its a bit of a stretch.")
         }
     }
     useEffect(()=>{
-        fetchDailyQuote()
-
+        fetchDailyQuote()    
     },[fetchDailyQuote])
-
   return (
     <div
-        className='w-2/3 flex flex-col items-center'
+        className=' flex flex-col gap-2'
     >
         <h1
-            className='text-center text-4xl'
+            className=' text-6xl '
         >
             Quote of the Day
         </h1>
-        {dailyQuote}
+        <div
+            className=''
+        >
+            <h2
+                className='text-4xl'
+            >
+                {dailyQuote[0]?.q}
+            </h2>
+            <h3
+                className='text-2xl text-gray-600'
+            >
+                {dailyQuote[0]?.a}
+            </h3>
+        </div>
     </div>
   )
 }

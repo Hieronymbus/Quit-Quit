@@ -26,7 +26,7 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
 
     return (
         <header
-            className='h-1/6 flex justify-center items-center p-4 bg-slate-300 border-b-2 border-slate-700 dark:border-slate-100 dark:bg-slate-700 dark:text-slate-100 '
+            className=' sticky top-0 flex justify-center items-center bg-slate-400  dark:bg-slate-700 dark:text-slate-100 '
         >
             {
                 location.pathname === "/personalDashboard" 
@@ -63,7 +63,6 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                         >
                         </div>
                     }
-                    <DailyQuote />
                     <Link to={"/addQuit"}>
                         <div>
                             <button

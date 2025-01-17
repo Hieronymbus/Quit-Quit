@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useQuitStore } from '../store/quit.js'
+import { useUserStore } from '../store/user.js'
 import Header from '../components/Header'
 import QuitList from '../components/QuitList'
-import { useUserStore } from '../store/user.js'
+import DailyQuote from '../components/DailyQuote.jsx';
 
 const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
 
@@ -17,13 +18,20 @@ const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
 
   return (
     <div
-      className='h-screen'
+      className=' bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
     >
       
       <Header setDarkMode={setDarkMode} darkMode={darkMode} />
+      
       <div
-        className='p-[16px] flex flex-col bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
+        className=' p-[16px] flex flex-col gap-[16px] overflow-auto '
       > 
+        <DailyQuote />
+        <h1
+          className='text-6xl'
+        >
+          All Quits
+        </h1>
         <QuitList 
           title="Action-Phase"
           status="active"
