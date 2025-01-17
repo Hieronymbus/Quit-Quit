@@ -32,7 +32,7 @@ const QuitCard = ({quit,setSelectedQuit}) => {
   return (
     <div
       onClick={handleQuitClick}
-      className={`min-h-[250px] w-full m-2 p-4 rounded flex flex-col items-center gap-6 ${bgColor} hover:cursor-pointer `}
+      className={` lg:w-[32%] md:w-[49%] sm:w-full w-full p-4 rounded snap-center flex flex-shrink-0 flex-col gap-6 ${bgColor} hover:cursor-pointer `}
       data-tooltip-id='cardTooltip'
       data-tooltip-content="Click to open advanced stats page"
       data-tooltip-place='bottom-start'

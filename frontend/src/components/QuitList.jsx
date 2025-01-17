@@ -8,19 +8,19 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
     console.log("quitlist" , quits)
     return (
         <div
-            className='w-1/3 h-full flex flex-col items-center '
+            className='w-full h-full flex flex-col items-center '
         >
             <div
-                className='w-full '
+                className= 'w-full  '
             >
                 <h2
-                    className='text-3xl m-3 text-center'
+                    className='pl-2 text-3xl  '
                 >
                     {title}  
                 </h2>         
             </div>
             <div
-                className=' w-full overflow-y-auto no-scrollbar flex flex-col '
+                className='w-full flex lg:gap-[2%] md:gap-[2%]  overflow-x-auto no-scrollbar  snap-x '
             >   
                 {
                     quits.length == 0 

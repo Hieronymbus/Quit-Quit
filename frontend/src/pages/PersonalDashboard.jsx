@@ -22,14 +22,8 @@ const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
       
       <Header setDarkMode={setDarkMode} darkMode={darkMode} />
       <div
-        className='flex h-5/6 bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
+        className='p-[16px] flex flex-col bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
       > 
-        <QuitList 
-          title="Abandoned"
-          status="abandoned"
-          quits={quits}
-          setSelectedQuit={setSelectedQuit}
-        />
         <QuitList 
           title="Action-Phase"
           status="active"
@@ -39,6 +33,12 @@ const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
         <QuitList 
           title="Maintenance-Phase"
           status="completed"
+          quits={quits}
+          setSelectedQuit={setSelectedQuit}
+        />
+        <QuitList 
+          title="Abandoned"
+          status="abandoned"
           quits={quits}
           setSelectedQuit={setSelectedQuit}
         />
