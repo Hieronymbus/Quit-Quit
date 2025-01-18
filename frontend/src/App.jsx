@@ -47,9 +47,9 @@ function App() {
     <>
         <Routes>
           <Route element={<PreLoginRoutes />}>
-            <Route element={<Landing />} path='/' />
-            <Route element={<Login /> } path="/login" />
-            <Route element={<Register /> } path="/register" />
+            <Route element={<Landing setDarkMode={setDarkMode} darkMode={darkMode}/>} path='/' />
+            <Route element={<Login setDarkMode={setDarkMode} darkMode={darkMode}/> } path="/login" />
+            <Route element={<Register setDarkMode={setDarkMode} darkMode={darkMode}/> } path="/register" />
           </Route>
           <Route element={<About /> } path="/about" />
           <Route element={<ProtectedRoutes /> } >

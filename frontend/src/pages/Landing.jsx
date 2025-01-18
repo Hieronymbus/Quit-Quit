@@ -1,54 +1,54 @@
 import React from 'react'
 import breakingChainsImage from '../assets/rb_35535.png';
-import ButtonHomePage from '../components/ButtonHomePage.jsx';
+import ButtonHomePage from '../components/ButtonLandingPage.jsx';
+import Header from '../components/Header.jsx';
 
-const Home = () => {
+const Home = ({ darkMode, setDarkMode}) => {
 
 
   return (
     <div
-      className='w-screen h-screen  flex flex-col bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% "'
+      className='w-full h-screen flex flex-col bg-slate-300 dark:bg-slate-600 dark:text-slate-100 '
     > 
-      <header
-        className='h-1/6 w-full p-5 flex justify-between border-b-2'
-      > 
+      <Header setDarkMode={setDarkMode} darkMode={darkMode}/>
         <div
-          className='flex justify-center items-center'
+          className=' w-full h-full-minus-16 grid grid-cols-2 grid-rows-1'
         >
-          <h2
-            className='text-5xl text-slate-100'
-          >
-
-          QuitQuit  
-          </h2>
-        </div>
-        <div
-          className='w-1/4 flex justify-between items-center '
-        >
-          <ButtonHomePage text='About' />
-          <ButtonHomePage text='Login'/>
-          <ButtonHomePage text='Register' />
-        </div>
-        
-      </header>
-    
-        <div
-          className='h-5/6 w-full grid grid-cols-2 grid-rows-1'
-        >
-
-          <div>
-
-          </div>
           <div
-            className='flex justify-center items-center overflow-hidden'
+            className='h-full flex flex-col justify-center items-center gap-10'
           >
+            <div
+              className='w-9/12 flex flex-col gap-2'
+            > 
+              <h1
+                className='text-4xl'
+              >
+                Welcome to QuitQuit, the place Bad Habits come to Retire
+              </h1>
+              <h2
+                className='text-xl'
+              >
+                From sneaky snacks to stubborn smokes, we offer tools so clever they might just trick you into success.
+                No finger-wagging here, just a sprinkle of wisdom,
+                a dollop of humor, and a gentle nudge to keep you moving forward (preferably away from Tyrone Biggums).
+              </h2>
+            </div>
+            <div
+              className='w-11/12 flex justify-end items-center gap-10 '
+            >
+              <ButtonHomePage text='Log In'/>
+              <ButtonHomePage text='Register' />
+            </div>
+          </div>
+          <div className="h-full flex justify-center items-center overflow-hidden ">
             <img 
               src={breakingChainsImage}
-              width="700" 
-              height="700"
+              className="h-full object-cover -rotate-45 transform transition-transform duration-500 hover:scale-110 hover:rotate-3"
               alt="picture of chains" 
             />
           </div>
+
+
         </div>
 
       

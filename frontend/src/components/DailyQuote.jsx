@@ -35,7 +35,7 @@ const DailyQuote = () => {
                 {dailyQuote[0]?.q}
             </h2>
             <h3
-                className='text-2xl text-gray-600'
+                className='text-2xl '
             >
                 {dailyQuote[0]?.a}
             </h3>
