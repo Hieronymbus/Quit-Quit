@@ -4,8 +4,6 @@ import { Tooltip } from 'react-tooltip'
 import { useQuitStore } from '../store/quit.js'
 import { useUserStore } from '../store/user.js'
 
-import PlusIcon from '../assets/svg/PlusIcon.jsx';
-
 import Header from '../components/Header'
 import QuitList from '../components/QuitList'
 import DailyQuote from '../components/DailyQuote.jsx';
@@ -14,57 +12,57 @@ const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
 
   const {user} = useUserStore()
   const { fetchQuits, quits } = useQuitStore();
+  const [isLoading, setIsLoading] = useState(true)
 
   console.log(quits)
 
   useEffect(() => {
-    fetchQuits(user.userDetails._id);
-  },[fetchQuits])
+    const loadData = async () => {
+      await fetchQuits(user.userDetails._id); // Wait for the fetch operation
+      setIsLoading(false); // Set loading to false after fetching
+      console.log("load")
+    };
+    loadData();
+  }, [fetchQuits]);
+  
 
   return (
     <div
-      className='w-full bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
+      className='min-h-screen w-full bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
     >
       <Header setDarkMode={setDarkMode} darkMode={darkMode} />
-      <div
-        className=' p-[16px] flex flex-col gap-[16px] overflow-auto '
-      > 
-        <DailyQuote />
-        
-                        <div>
-                          <Link to={"/addQuit"}>
-                            <button
-                                className=' p-2 rounded-lg hover:bg-slate-400 dark:hover:bg-slate-800 '
-                                data-tooltip-id="my-tooltip"
-                                data-tooltip-content="Create Quit"
-                                data-tooltip-place="bottom"
-                                data-tooltip-variant='dark'
-                                data-tooltip-delay-show={500}
-                            >
-                              <PlusIcon />  
-                              <Tooltip id="my-tooltip" />
-                            </button>
-                          </Link>   
-                        </div>
-        <QuitList 
-          title="Action-Phase"
-          status="active"
-          quits={quits}
-          setSelectedQuit={setSelectedQuit}
-        />
-        <QuitList 
-          title="Maintenance-Phase"
-          status="completed"
-          quits={quits}
-          setSelectedQuit={setSelectedQuit}
-        />
-        <QuitList 
-          title="Abandoned"
-          status="abandoned"
-          quits={quits}
-          setSelectedQuit={setSelectedQuit}
-        />
-      </div>
+      {
+        isLoading
+        ?
+        <div>
+          Loading..
+        </div>
+        :
+        <div
+          className=' p-[16px] flex flex-col gap-[16px] overflow-auto '
+        > 
+          <DailyQuote />
+          
+          <QuitList 
+            title="Action-Phase"
+            status="active"
+            quits={quits}
+            setSelectedQuit={setSelectedQuit}
+          />
+          <QuitList 
+            title="Maintenance-Phase"
+            status="completed"
+            quits={quits}
+            setSelectedQuit={setSelectedQuit}
+          />
+          <QuitList 
+            title="Abandoned"
+            status="abandoned"
+            quits={quits}
+            setSelectedQuit={setSelectedQuit}
+          />
+        </div>
+      }
     </div>
   )
 }

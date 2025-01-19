@@ -3,7 +3,7 @@ import React,{useEffect, useState} from 'react'
 
 const UsageTimeAvoided = ({startDate, abandonedDate, timePerDay}) => {
 
-    const [timeSaved, setTimeSaved] = useState(0);
+    const [timeSaved, setTimeSaved] = useState("");
 
     useEffect(() => {
     const calculateTimeSaved = () => {
@@ -20,13 +20,13 @@ const UsageTimeAvoided = ({startDate, abandonedDate, timePerDay}) => {
         return elapsedTimeInHours * timePerDay;
     };
 
-    const interval = setInterval(() => {
-         
+    formatTimeSaved(calculateTimeSaved())
+    const interval = setInterval(() => { 
         formatTimeSaved(calculateTimeSaved())
     }, 1000);
 
     return () => clearInterval(interval);
-    }, [startDate, timePerDay]);
+    }, [startDate, timePerDay, abandonedDate]);
 
     function formatTimeSaved (elapsedHours) {
             const days = Math.floor(elapsedHours  / 24);
@@ -37,13 +37,13 @@ const UsageTimeAvoided = ({startDate, abandonedDate, timePerDay}) => {
 
                 setTimeSaved(`${days}d ${hours}h ${minutes}m ${seconds}s`);
             } else {
-                setTimeSaved(null)
+                setTimeSaved("Quit? Not just yet. There's a solemn ceremony involved, one last glorious sacrifice to the altar of bad habbits. It’s tradition, after all.")
             }
       }
 
     return (
     <div>
-        {timeSaved ? timeSaved : "Quit? Not just yet. There's a solemn ceremony involved, one last glorious sacrifice to the altar of bad habbits. It’s tradition, after all."} 
+        {timeSaved}
     </div>
     );
         

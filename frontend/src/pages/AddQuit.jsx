@@ -82,7 +82,7 @@ const AddQuit = () => {
     if(success) {
 
       // navigate("/personalDashboard")
-      window.location = "/personalDashboard"
+      window.location = "/home"
       window.location()
     }
   }

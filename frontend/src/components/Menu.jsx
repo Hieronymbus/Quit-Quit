@@ -1,32 +1,35 @@
 import React,{useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-import LogoutButton from './ButtonLogout.jsx'
+import Button4Menu from './Button4Menu.jsx'
 
-const Menu = ({ isMenuOpen, isLogoutClicked, setIsLogoutClicked, darkMode,setDarkMode }) => {
+const Menu = ({ isMenuOpen, handleNavigatetoHome}) => {
 
     const navigate = useNavigate()
-    
+    const location = useLocation()
     function handleNavigateToAbout() {
-        navigate("/about")
+        if(location.pathname === '/about'){
+          window.location.reload()
+          
+        } else {
+
+          navigate("/about")
+        }
     }
+    
     
 
   return (
     <div
         className={`${isMenuOpen === false ? "hidden" : "" } 
-        w-2/12 z-40 h-screen bg-slate-400 dark:bg-slate-700 dark:text-gray-100 absolute top-16 left-0`}  
+        w-2/12 z-40 h-screen bg-slate-100 dark:bg-slate-900 dark:text-gray-100 absolute top-16 left-0`}  
     >   
         
-        <div
-            className=' p-5  bg-slate-100 hover:cursor-pointer hover:bg-slate-300  dark:hover:bg-slate-700 dark:bg-slate-800 '
-            onClick={handleNavigateToAbout}
-        >
-            About
-        </div>
-        
-        
-
+        <Button4Menu text="Home" onClick={handleNavigatetoHome} />
+        <Button4Menu text="Site Info" onClick={handleNavigateToAbout}/>
+        <Button4Menu text="Developer Info"  />
+        <Button4Menu text="Emergency Info" />
+        <Button4Menu text="Privacy Policy" />
     </div>
   )
 }

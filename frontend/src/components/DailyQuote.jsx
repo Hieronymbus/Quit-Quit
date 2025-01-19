@@ -22,7 +22,7 @@ const DailyQuote = () => {
         className=' flex flex-col gap-2'
     >
         <h1
-            className=' text-6xl '
+            className=' text-6xl text-blue-600 '
         >
             Quote of the Day
         </h1>

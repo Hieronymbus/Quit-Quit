@@ -10,7 +10,7 @@ export const DeleteQuitButton = ({currentQuit}) => {
 
     const handleDeleteQuit = async () => {
         await deleteSingleQuit(currentQuit._id)
-        navigate("/personalDashboard")
+        navigate("/home")
     }
   
     return (

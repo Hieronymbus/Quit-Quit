@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Header from '../components/Header.jsx'
-import Footer from '../components/Footer.jsx'
+import QuitNav from '../components/QuitNav.jsx'
 import { useQuitStore } from '../store/quit.js'
 import { useUserStore } from '../store/user.js'
 import FormatDate from '../components/FormatDate.jsx'
@@ -9,200 +9,186 @@ import AmountAvoided from '../components/AmountAvoided.jsx'
 import UsageTimeAvoided from '../components/UsageTimeAvoided.jsx'
 import MoneySaved from '../components/MoneySaved.jsx'
 import Overlay from '../components/Overlay.jsx'
+import ModalVideo from '../components/ModalVideo.jsx'
 
 const QuitDashboard = ({selectedQuit, setSelectedQuit}) => {
   const {fetchQuits, quits} = useQuitStore();
   const {user } = useUserStore();
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState();
-  const [whatConsumed,setWhatConsumed] = useState();
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [whatConsumed, setWhatConsumed] = useState(null);
+  const [currentQuit, setCurrentQuit] = useState(null)
 
   useEffect(() => {
-    fetchQuits(user.userDetails._id);
-  },[fetchQuits])
- 
-  const currentQuit = quits.find((quit) => quit._id === selectedQuit)
-  
-  console.log("y",currentQuit)
-  
-  useEffect(()=> {
-
-    if(currentQuit){
-  
-      setWhatConsumed( Object.keys(currentQuit?.usageParameters)[0] )
+    const loadData = async () => {
+      await fetchQuits(user.userDetails._id);   
+    };
+    loadData();
+    
+  }, [fetchQuits]);
+  useEffect(()=>{
+    if(quits){
+      const quit = quits.find((q) => q._id === selectedQuit);
+      setCurrentQuit(quit); // Set the quit or null if not found
     }
-  },[])
+  },[quits])
+  useEffect(()=> {
+    if(currentQuit){
+      setWhatConsumed( Object.keys(currentQuit?.usageParameters)[0])
+    }
+  }, [currentQuit])
   
 
 
   return (
     <div
-      className=""
+       className='w-full min-h-screen  bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
     >
       <Header currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
-      <div className=" p-2  rounded bg-slate-200 dark:bg-slate-600 dark:text-slate-100">
-        <div className="grid grid-cols-2 grid-rows-2 border-4 rounded-lg  border-slate-400 p-4 ">
-          <div>
-            <h2
-              className='text-center text-xl text-blue-600'
-            >
-              Start Date: 
-            </h2>
-            <p
-              className='text-center '
-            >
-              <FormatDate date={currentQuit?.startDate}/> 
-            </p>
-          </div>
-          <div
-            className=''
-          >
-            <h2
-              className='text-center text-xl text-green-600' 
-            >
-              Action Phase Completion Date:  
-            </h2>
-            <p
-              className='text-center'
-            >
-              <FormatDate date={currentQuit?.endDate}/>
-            </p>
-          </div>
-            {
-              currentQuit?.abandonedDate 
-              && 
-              <div> 
-                <h2
-                  className='text-center text-xl text-red-600'
-                >
-                  Abandoned This Quit on: 
-                </h2>
-                <p
-                  className='text-center'
-                >
-                  <FormatDate date={currentQuit?.abandonedDate}/> 
-                </p>
-              </div>
-            }
-        </div>
-        <div className="flex justify-center items-center  border-4 rounded-lg  border-slate-400 p-4">
-            <div>
-              <h2
-                className='text-center text-blue-600 text-3xl'
-              >
-                Quit Duration:
-              </h2>
-              <p
-                className='text-center text-xl'
-              >
-               <QuitDuration startDate={currentQuit?.startDate} abandonedDate={currentQuit?.abandonedDate} />  
-              </p>
-            </div> 
-        </div>
-        <div className="flex justify-center items-center  border-4 rounded-lg  border-slate-400 p-4">
-            <div>
-              <h2
-                className='text-center text-blue-600 text-3xl'
-              >
-                Money Saved: 
-              </h2>
-              <p
-                className='text-center text-xl'
-              >
-               <MoneySaved startDate={currentQuit?.startDate} abandonedDate={currentQuit?.abandonedDate} cupsPerDay={currentQuit?.usageParameters.Cups} costPerCup={currentQuit?.usageParameters.Cost} />
-              </p>
-            </div> 
-        </div>
-        <div className="flex justify-center items-center  border-4 rounded-lg  border-slate-400 p-4">
-            <div>
-              <h2
-                className='text-center text-blue-600 text-3xl'
-              >
-                {whatConsumed} avoided:
-              </h2>
-              <p
-                className='text-center text-xl'
-              >
-                <AmountAvoided startDate={currentQuit?.startDate} abandonedDate={currentQuit?.abandonedDate} amountPerDay={currentQuit?.usageParameters.Cups}/>
-              </p>
-            </div> 
-        </div>
-        <div className="flex justify-center items-center  border-4 rounded-lg  border-slate-400 p-4">
-            <div>
-              <h2
-                className='text-center text-blue-600 text-3xl'
-              >
-                Time reclaimed:
-              </h2>
-              <p
-                className='text-center text-xl'
-              >
-                <UsageTimeAvoided startDate={currentQuit?.startDate} abandonedDate={currentQuit?.abandonedDate} timePerDay={currentQuit?.usageParameters.Time} />
-              </p>
-            </div> 
-        </div>
-        <div className="flex justify-center items-center  border-4 rounded-lg  border-slate-400 p-4 overflow-auto">
+      <QuitNav />
+      {
+        !currentQuit
+        ?
         <div>
-              <h2
-                className='text-center text-blue-600 text-3xl'
-              >
-                Reasons for quitting: 
-              </h2>
-              <p
-                className='text-center text-xl'
-              >
-                {currentQuit?.reasonsToQuit ? currentQuit.reasonsToQuit : "No reasons given. Just waking up one morning and deciding that perhaps, just perhaps, enough is enough. A fine, if somewhat mysterious, decision—no fanfare, no grand speeches—just the quiet resolve of someone who’s had enough of that particular nonsense. Carry on, then, with no particular reason but sheer will."}
-              </p>
-            </div> 
-          {
-            currentQuit?.videoPath
-            &&  
-            <div>
-              <button
-                className='p-2 border-4 rounded-lg text-xl '
-                onClick={()=> setIsVideoModalOpen(true)}
-              >
-                Open Video Message from the Past.
-              </button>
-              {
-                isVideoModalOpen
-                &&
-                <Overlay /> 
-              }
+          Loading...
+        </div>
+        :
+        <div className="w-full p-5 rounded flex flex-col gap-10  bg-slate-200 dark:bg-slate-600 dark:text-slate-100">
+          <div
+            className='w- text-xl border-b border-black'
+          > 
+            <h2
+              className='text-3xl text-blue-600'
+            >
+              Key Dates
+            </h2>
+            <div
+              className='w-full p-5 grid grid-cols-2 gap-5'
+            >
+              <div> 
+                Start Date <FormatDate date={currentQuit.startDate}/> 
+              </div>
               <div
-                className={`${!isVideoModalOpen ? "hidden": "fixed"}  z-20 h-3/4 aspect-square m-auto inset-x-0 inset-y-0 border border-gray-100 bg-slate-800 rounded-sm shadow-lg shadow-gray-100`}
-              > 
-                <div
-                  className='flex justify-end'
-                >
-                  <button
-                    onClick={() => setIsVideoModalOpen(false)}
-                    className='text-gray-100'
+                className=''
+              >
+                Action Phase Completion Date  <FormatDate date={currentQuit.endDate}/> 
+              </div>
+              {
+                currentQuit?.abandonedDate 
+                && 
+                <div> 
+                  <h2
+                    className='text-center text-3xl text-red-600'
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="size-7">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                  </button>
+                    Abandoned This Quit on
+                  </h2>
+                  
+                    <FormatDate date={currentQuit.abandonedDate}/> 
                 </div>
-                <div
-                  className='flex flex-col items-center gap-5'
-                >
-                  <video 
-                    controls
-                    src={`http://localhost:3000/${currentQuit.videoPath}`}
-                  />
-                  <h3
-                    className='text-2xl text-gray-100'
+              }
+            </div>
+          </div>
+          
+          <div 
+            className="w-full text-xl border-b border-black "
+          >
+              <h2
+                className='text-3xl text-blue-600'
+              >
+                Statistics
+              </h2>
+              <div
+                className=' p-5 grid grid-cols-2 gap-5'
+              >
+                <div>
+                  <h2
+                    className=''
                   >
-                    Listen to past you
+                    Quit Duration
+                  </h2>
+                
+                  <QuitDuration startDate={currentQuit.startDate} abandonedDate={currentQuit.abandonedDate} />  
+                </div> 
+                <div>
+                  <h2
+                    className=''
+                  >
+                    Time reclaimed
+                  </h2>
+                  
+                    <UsageTimeAvoided startDate={currentQuit.startDate} abandonedDate={currentQuit.abandonedDate} timePerDay={currentQuit.usageParameters.Time} />
+                </div> 
+                <div>
+                  <h2
+                    className=''
+                  >
+                    Money Saved
+                  </h2>
+                  
+                  <MoneySaved startDate={currentQuit.startDate} abandonedDate={currentQuit.abandonedDate} cupsPerDay={currentQuit.usageParameters.Cups} costPerCup={currentQuit.usageParameters.Cost} />
+                </div> 
+                <div>
+                  <h2
+                    className=''
+                  >
+                    {whatConsumed} avoided
+                  </h2>
+                  
+                    <AmountAvoided startDate={currentQuit.startDate} abandonedDate={currentQuit.abandonedDate} amountPerDay={currentQuit.usageParameters.Cups}/>
+                </div> 
+              </div>
+          </div>
+          <div className="w-full text-xl">
+            <div>
+              <h2
+                className=' text-blue-600 text-3xl'
+              >
+                Reasons for quitting
+              </h2>
+              <div
+                className='p-5 grid grid-cols-2 gap-5'
+              > 
+                <div>
+                  <h3
+                    className='text-2xl text-blue-400'
+                  >
+                    Written
                   </h3>
+                  {currentQuit.reasonsToQuit ? currentQuit.reasonsToQuit : "No reasons given. Just waking up one morning and deciding that perhaps, just perhaps, enough is enough. A fine, if somewhat mysterious, decision—no fanfare, no grand speeches—just the quiet resolve of someone who’s had enough of that particular nonsense. Carry on, then, with no particular reason but sheer will."}
+                </div>
+                <div>
+                  <h3
+                    className='text-2xl text-blue-400'
+                  >
+                    Video
+                  </h3>
+                  {
+                    currentQuit.videoPath
+                    ?
+                    <div>
+                      <button
+                        className='p-2 rounded-3xl bg-blue-500 '
+                        onClick={()=> setIsVideoModalOpen(true)}
+                      >
+                        Open Video Message from the Past.
+                      </button>
+                      {
+                        isVideoModalOpen
+                        &&
+                        <Overlay /> 
+                      }
+                      <ModalVideo setIsVideoModalOpen={setIsVideoModalOpen} isVideoModalOpen={isVideoModalOpen} currentQuit={currentQuit}/>
+                    </div>
+                    :
+                    <div>
+                      No video recorded
+                    </div>
+                  }
                 </div>
               </div>
-            </div>
-          }
+            </div> 
+          </div>
         </div>
-      </div>
-
-      <Footer/>
+      }
     </div>
   )
 }

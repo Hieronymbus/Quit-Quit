@@ -4,8 +4,13 @@ import QuitCard from './QuitCard'
 
 const QuitList = ({title,status , quits, setSelectedQuit}) => {
 
-    
-    console.log("quitlist" , quits)
+    const [filteredQuitsArr, setFilteredQuitsArr] = useState(
+        quits.filter((quit)=>{
+           return quit.status === status
+        })
+    ) 
+
+
     return (
         <div
             className='w-full h-full flex flex-col items-center '
@@ -14,7 +19,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                 className= 'w-full  '
             >
                 <h2
-                    className='pl-2 text-3xl  '
+                    className=' text-3xl  '
                 >
                     {title}  
                 </h2>         
@@ -23,30 +28,32 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                 className='w-full flex lg:gap-[2%] md:gap-[2%]  overflow-x-auto no-scrollbar  snap-x '
             >   
                 {
-                    quits.length == 0 
+                    filteredQuitsArr.length == 0 
                     &&
                     (
                         <div
                             className='h-40 p-5 flex justify-center items-center'
                         >
-                            <i>Currently no quits in this category yet, to start a new quit click + button</i>
+                            <i>Currently no quits in this category.</i>
                         </div>
                     )
                     
                 }
-                {quits.map((quit, index) => {
-                    
-                    if(quit.status === status){
+                {
+                    quits.map((quit, index) => {
                         
-                        return (
-                            <QuitCard
-                                key={index}
-                                quit={quit}
-                                setSelectedQuit={setSelectedQuit}
-                            />
-                        )
-                    }
-                })}
+                        if(quit.status === status){
+                            
+                            return (
+                                <QuitCard
+                                    key={index}
+                                    quit={quit}
+                                    setSelectedQuit={setSelectedQuit}
+                                />
+                            )
+                        }
+                    })
+                }
             </div>
         </div>
     )

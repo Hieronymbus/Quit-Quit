@@ -4,7 +4,7 @@ import { Tooltip } from 'react-tooltip';
 import QuitDuration from './QuitDuration.jsx';
 import FormatDate from './FormatDate.jsx';
 
-const QuitCard = ({quit,setSelectedQuit}) => {
+const QuitCard = ({quit, setSelectedQuit}) => {
   const navigate = useNavigate()
   const [bgColor, setBgColor] = useState("")
   const [isStarted, setIsStarted] = useState(false)
@@ -13,6 +13,8 @@ const QuitCard = ({quit,setSelectedQuit}) => {
     setSelectedQuit(quit._id)
     navigate('/quitStats')
   }
+  
+
   useEffect(() => {
 
     if(quit.status === 'active'){

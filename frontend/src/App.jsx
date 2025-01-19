@@ -12,15 +12,13 @@ import QuitStats from './pages/QuitStats';
 import QuitAdvice from './pages/QuitAdvice';
 import QuitMilestones from './pages/QuitMilestones';
 import AddQuit from './pages/AddQuit';
-import { useUserStore } from './store/user.js';
 
 function App() {
-  const { user, fetchUser } = useUserStore()
   
   const [selectedQuit, setSelectedQuit] = useState(() => {
     const savedQuitID = localStorage.getItem('selectedQuit');
     console.log("0", savedQuitID)
-    return savedQuitID ? savedQuitID : ''; 
+    return savedQuitID ? savedQuitID : 'tbd'; 
   })
   useEffect(() => {
     localStorage.setItem('selectedQuit', selectedQuit);
@@ -47,13 +45,13 @@ function App() {
     <>
         <Routes>
           <Route element={<PreLoginRoutes />}>
-            <Route element={<Landing setDarkMode={setDarkMode} darkMode={darkMode}/>} path='/' />
-            <Route element={<Login setDarkMode={setDarkMode} darkMode={darkMode}/> } path="/login" />
-            <Route element={<Register setDarkMode={setDarkMode} darkMode={darkMode}/> } path="/register" />
+            <Route element={<Landing setDarkMode={setDarkMode} darkMode={darkMode} setSelectedQuit={setSelectedQuit}/>} path='/' />
+            <Route element={<Login setDarkMode={setDarkMode} darkMode={darkMode} setSelectedQuit={setSelectedQuit}/> } path="/login" />
+            <Route element={<Register setDarkMode={setDarkMode} darkMode={darkMode} setSelectedQuit={setSelectedQuit}/> } path="/register" />
           </Route>
-          <Route element={<About /> } path="/about" />
           <Route element={<ProtectedRoutes /> } >
-            <Route element={<PersonalDashboard setDarkMode={setDarkMode} darkMode={darkMode} setSelectedQuit={setSelectedQuit} />} path="/personalDashboard"/>
+            <Route element={<PersonalDashboard setDarkMode={setDarkMode} darkMode={darkMode} setSelectedQuit={setSelectedQuit} />} path="/home"/>
+            <Route element={<About /> } path="/about" />
             <Route element={<QuitStats selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit} />} path="/quitStats"/>
             <Route element={<QuitMilestones selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit}/>} path="/quitMilestones"/>
             <Route element={<QuitAdvice  selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit}/>} path="/quitAdvice"/>

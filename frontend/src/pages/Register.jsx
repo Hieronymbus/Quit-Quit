@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import { useUserStore } from '../store/user.js'
 import { useNavigate } from 'react-router-dom'
 
-const Register = () => {
+const Register = ({setSelectedQuit}) => {
 
   const [newUser, setNewUser] = useState({
     userName: "",
@@ -30,7 +30,11 @@ const Register = () => {
         navigate("/login")
       }
   };
+  useEffect(()=>{
 
+    localStorage.removeItem('selectedQuit')
+    setSelectedQuit("")
+  })
   return (
     <div 
       className='w-screen h-screen  flex flex-col justify-center items-center gap-3 bg-slate-800'

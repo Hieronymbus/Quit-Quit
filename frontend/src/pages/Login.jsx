@@ -1,8 +1,8 @@
-import React , {useState} from 'react'
+import React , {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useUserStore } from '../store/user.js'
 
-const Login = () => {
+const Login = ({setSelectedQuit}) => {
 
   const [loginDetails, setLoginDetails] = useState({
     userNameEmail: "",
@@ -25,10 +25,14 @@ const Login = () => {
           password: ""
         }
       )
-      navigate("/personalDashboard")
+      navigate("/home")
     }
   }
+  useEffect(()=>{
 
+    localStorage.removeItem('selectedQuit')
+    setSelectedQuit("")
+  })
   return (
     <div
       className='w-screen h-screen  flex flex-col justify-center items-center gap-3 bg-slate-800'

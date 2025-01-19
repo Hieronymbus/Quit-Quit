@@ -10,13 +10,12 @@ const PreLoginRoutes = () => {
       fetchUser() 
       
     }, [fetchUser])
-
     if(user.isLoading) {
       return <div></div>
     }
-
+    console.log(user)
     return (
-       !user.isLoggedIn ? <Outlet /> : <Navigate to="/personalDashboard" />
+       !user.isLoggedIn ? <Outlet /> : <Navigate to="/home" />
     )
 }
 
