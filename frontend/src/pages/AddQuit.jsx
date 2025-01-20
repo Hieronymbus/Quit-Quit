@@ -89,11 +89,11 @@ const AddQuit = () => {
 
   return (
     <div
-        className='h-screen w-screen'
+        className='h-screen'
     > 
       <Header />
       <div
-        className='p-5 h-5/6 w-full flex flex-col justify-start items-center bg-slate-200 overflow-y-auto no-scrollbar dark:bg-slate-600 dark:text-slate-100'
+        className='p-5 w-screen h-full-minus-16 flex flex-col justify-start items-center bg-slate-200 overflow-y-auto no-scrollbar dark:bg-slate-600 dark:text-slate-100'
       >
           <form 
             onSubmit={handleAddQuit} 
@@ -268,15 +268,17 @@ const AddQuit = () => {
                     className='flex gap-3 mt-4'
                   >
                   <button
+                     className="text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
+
                     type='submit'
-                    className='border-2 p-2 rounded-md'
                   >
                     Start Quit
                   </button>  
                   <button
-                    className='border-2 p-2 rounded-md'
+                     className="text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
+
                     type='button' 
-                    onClick={() => navigate('/personalDashboard')}
+                    onClick={() => navigate('/home')}
                   >
                     Cancel 
                   </button>
