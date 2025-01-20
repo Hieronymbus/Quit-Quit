@@ -17,12 +17,13 @@ export const createQuote = async (req, res) => {
         // Cache the new quote and update the fetch time
         cachedQuote =  data
         lastFetchedTime = now;
+        res.status(200).json({success: true, data: cachedQuote})
       } catch (err) {
         console.error(err)
         return res.status(500).json({success:false, message: "Failed to fetch quote" });
       }
     } else {
-
+      
       res.status(200).json({success:true, data: cachedQuote });
     }
   

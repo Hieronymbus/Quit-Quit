@@ -51,7 +51,7 @@ export const createLogin = async (req, res) => {
         })
         console.log(user)
         if (!user){
-           return res.status(400).send('No user found with those details')
+           return res.status(400).json({success: false, message: 'No users found with that email or username'})
         }
         //check for password match
         const match = await bcrypt.compare(password, user.password);

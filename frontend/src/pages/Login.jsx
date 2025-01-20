@@ -15,8 +15,9 @@ const Login = ({setSelectedQuit}) => {
   const handleLogin = async () => {
     const {success, message} = await loginUser(loginDetails);
 
-    if (!success) {
+    if (success === false) {
       alert(message)
+      console.log('userlogin fail')
     } else {
       alert(message)
       setLoginDetails(

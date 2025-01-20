@@ -26,25 +26,35 @@ export const useUserStore = create((set) => ({
         return { success: true, message: "User registered successfully" };
     },
     loginUser: async (loginDetails) => {
-        if(!loginDetails.userNameEmail || !loginDetails.password) {
-            return {success:false, message:"login details missing"}
-        }
-        const response = await fetch("/api/users/login", {
-            method:"POST",
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            body: JSON.stringify(loginDetails)
-        })
-        const data = await response.json()
-        console.log(data)
-        set({user: {
-            isLoggedIn: true,
-            userDetails: data.data,
-            isLoading:false
-        }});
 
-        return { success: true, message: data.message }
+       
+            
+            if(!loginDetails.userNameEmail || !loginDetails.password) {
+                return {success:false, message:"login details missing"}
+            }
+            const response = await fetch("/api/users/login", {
+                method:"POST",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify(loginDetails)
+            })
+            
+            const data = await response.json()
+            
+            if(data.success){
+                set({user: {
+                    isLoggedIn: true,
+                    userDetails: data.data,
+                    isLoading:false
+                }});
+
+                return { success: data.success, message: data.message}
+            } else {
+                return { success: data.success, message: data.message}
+            }
+        
+        
     },
     fetchUser: async () => {
         
