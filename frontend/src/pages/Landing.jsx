@@ -17,19 +17,20 @@ const Home = ({ darkMode, setDarkMode, setSelectedQuit}) => {
     > 
       <Header setDarkMode={setDarkMode} darkMode={darkMode}/>
         <div
-          className=' w-full h-full-minus-16 md:grid grid-cols-2 grid-rows-1'
+          className=' w-full h-full-minus-16 lg:grid grid-cols-2 grid-rows-1'
         >
           <div
-            className='h-full flex flex-col justify-center items-center gap-10'
-          >
+            className='h-full md:h-1/3 lg:h-full pt-6 flex flex-col lg:justify-center items-center gap-10 '
+          > 
             <div
               className='w-9/12 flex flex-col gap-2'
             > 
               <h1
-                className='text-4xl'
+                className='text-4xl '
               >
                 Welcome to QuitQuit, the place Bad Habits come to Retire
               </h1>
+              
               <h2
                 className='text-xl'
               >
@@ -39,16 +40,16 @@ const Home = ({ darkMode, setDarkMode, setSelectedQuit}) => {
               </h2>
             </div>
             <div
-              className='w-9/12 flex justify-start md:justify-end items-center gap-5 '
+              className='w-9/12 flex justify-start md:justify-end  gap-5 '
             >
               <ButtonHomePage text='Log In'/>
               <ButtonHomePage text='Register' />
             </div>
           </div>
-          <div className="hidden h-full lg:flex justify-center items-center overflow-hidden ">
+          <div className="hidden h-2/3 lg:h-full  md:flex lg:flex justify-center items-center overflow-hidden ">
             <img 
               src={breakingChainsImage}
-              className="h-full object-cover -rotate-45 transform transition-transform duration-500 hover:scale-110 hover:rotate-3"
+              className=" h-full object-scale-down -rotate-45 transform transition-transform duration-500 hover:scale-110 hover:rotate-3"
               alt="picture of chains" 
             />
           </div>

@@ -33,7 +33,7 @@ const QuitNav = () => {
       `}
       onClick={() => navigate('/quitAdvice')}
     >
-      Expert Advice
+      Advice
     </div> 
   </nav>
 

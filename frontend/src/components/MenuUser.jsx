@@ -11,7 +11,7 @@ const MenuUser = ({ user, isUserMenuOpen, setDarkMode, darkMode, setIsLogoutClic
     return (
         <div
             className={`${isUserMenuOpen === false ? 'hidden' : ""} 
-            w-2/12 z-40 rounded-2xl bg-slate-50 dark:bg-slate-900 dark:text-gray-100 absolute top-16 right-2`}
+            w-8/12 sm:w-3/12 z-40 rounded-2xl bg-slate-50 dark:bg-slate-900 dark:text-gray-100 absolute top-16 right-2`}
         >   
             <h2
                 className='h-20 pl-4 text-3xl flex justify-center items-center'

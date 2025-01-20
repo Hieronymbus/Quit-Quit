@@ -6,7 +6,7 @@ import { useQuitStore } from '../store/quit.js'
 import { useUserStore } from '../store/user.js'
 
 
-const QuitAdvice = ({selectedQuit,setSelectedQuit}) => {
+const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
 
   const {fetchQuits, quits} = useQuitStore();
   const {user } = useUserStore()
@@ -20,9 +20,9 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit}) => {
   const currentQuit = quits.find((quit) => quit._id === selectedQuit)
   return (
     <div
-      className=""
+      className="dark:text-slate-200"
     >
-      <Header currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
+      <Header setDarkMode={setDarkMode} darkMode={darkMode} currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
       <QuitNav/>
       <div
         className=" p-5 text-xl overflow-auto prose whitespace-pre-line bg-slate-200 dark:bg-slate-600 dark:text-slate-200"

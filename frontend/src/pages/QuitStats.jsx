@@ -11,7 +11,7 @@ import MoneySaved from '../components/MoneySaved.jsx'
 import Overlay from '../components/Overlay.jsx'
 import ModalVideo from '../components/ModalVideo.jsx'
 
-const QuitDashboard = ({selectedQuit, setSelectedQuit}) => {
+const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) => {
   const {fetchQuits, quits} = useQuitStore();
   const {user } = useUserStore();
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -43,7 +43,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit}) => {
     <div
        className='w-full min-h-screen  bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
     >
-      <Header currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
+      <Header setDarkMode={setDarkMode} darkMode={darkMode} currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
       <QuitNav />
       {
         !currentQuit

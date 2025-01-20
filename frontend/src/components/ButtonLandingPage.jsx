@@ -17,7 +17,7 @@ const ButtonHomePage = ({text}) => {
 
   return (
     <button
-        className="text-xl p-3 rounded-3xl bg-blue-400 hover:bg-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700 "
+        className="text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
         onClick={handleClick}
         data-tooltip-id='landing-button-tooltip'
         data-tooltip-delay-show={400}

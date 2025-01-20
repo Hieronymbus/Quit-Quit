@@ -111,11 +111,10 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                             </button>
                         }
                         <img
-                            className='hover:cursor-pointer'
+                            className='w-[140px] sm:w-[200px] hover:cursor-pointer'
                             onClick={handleNavigatetoHome}
                             src={quitQuitLogo} 
                             alt="logo"  
-                            width="200"
                             data-tooltip-id='logo-tooltip'
                             data-tooltip-content="Go to QuitQuit home"
                         />

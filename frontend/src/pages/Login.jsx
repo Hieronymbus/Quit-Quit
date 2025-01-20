@@ -35,10 +35,10 @@ const Login = ({setSelectedQuit}) => {
   })
   return (
     <div
-      className='w-screen h-screen  flex flex-col justify-center items-center gap-3 bg-slate-800'
-    >
+      className='w-screen h-screen  flex flex-col justify-center items-center gap-3 bg-slate-500 dark:bg-slate-800'
+    > 
       <form
-        className='w-1/3 p-3 aspect-square rounded-xl text-gray-100  bg-slate-700 border-2 shadow-lg shadow-gray-50 flex flex-col items-center justify-around'
+        className='w-3/4 md:w-2/3 lg:w-1/3 p-3 aspect-square rounded-xl dark:text-gray-100 bg-slate-400 dark:bg-slate-700 border-2 shadow-lg shadow-black dark:shadow-gray-50 flex flex-col items-center justify-around'
         onSubmit={(e) => {
           e.preventDefault()
           handleLogin()
@@ -78,15 +78,19 @@ const Login = ({setSelectedQuit}) => {
             onChange={(e) => {setLoginDetails(prev => ({...prev, password: e.target.value}));}}
           />
         </div>
-        <div>
+        <div
+          className='w-2/3 flex justify-around'
+        >
           <button
-            className='mr-10 p-4 border-4  border-gray-400 rounded-xl '
+            className="text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
             type="submit"
           >
             Login
           </button>
           <button
-            className=' p-4 border-4  border-gray-400 rounded-xl'
+            className="text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
+
+
             type='button'
             onClick={() => {navigate('/')}}
           >

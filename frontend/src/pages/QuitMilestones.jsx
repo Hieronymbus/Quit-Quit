@@ -5,7 +5,7 @@ import QuitNav from '../components/QuitNav.jsx'
 import { useQuitStore } from '../store/quit.js'
 import { useUserStore } from '../store/user.js'
 
-const QuitMilestones = ({selectedQuit, setSelectedQuit}) => {
+const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) => {
 
   const {fetchQuits, quits} = useQuitStore();
   const {user } = useUserStore()
@@ -67,7 +67,7 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit}) => {
     <div
       className='w-full min-h-screen  bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
     >
-      <Header currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
+      <Header setDarkMode={setDarkMode} darkMode={darkMode} currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
       <QuitNav/>
       
       <div className="p-5 grid grid-rows-5 grid-cols-2 gap-2 bg-slate-200 dark:bg-slate-600 overflow-auto">

@@ -22,7 +22,7 @@ const Menu = ({ isMenuOpen, handleNavigatetoHome}) => {
   return (
     <div
         className={`${isMenuOpen === false ? "hidden" : "" } 
-        w-2/12 z-40 h-screen bg-slate-100 dark:bg-slate-900 dark:text-gray-100 absolute top-16 left-0`}  
+        w-8/12 md:w-3/12 z-40 h-screen bg-slate-100 dark:bg-slate-900 dark:text-gray-100 absolute top-16 left-0`}  
     >   
         
         <Button4Menu text="Home" onClick={handleNavigatetoHome} />
