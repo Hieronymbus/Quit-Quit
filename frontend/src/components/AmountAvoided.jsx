@@ -28,7 +28,7 @@ const AmountAvoided = ({ startDate, abandonedDate, amountPerDay }) => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [startDate, amountAvoided]);
+  }, [startDate, abandonedDate, amountPerDay]);
 
   return (
     <div>

@@ -5,7 +5,7 @@ import NotificationIcon from '../assets/svg/NotificationIcon'
 const ButtonNotification = () => {
   return (
     <button
-        className=' p-2 rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800 '
+        className=' p-2 hidden sm:block rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800 '
         data-tooltip-id="notification-button-tooltip"
         data-tooltip-content="Show notifications"
         data-tooltip-place="bottom"

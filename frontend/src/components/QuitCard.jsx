@@ -71,22 +71,26 @@ const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
             :
             <div>
 
-              {isStarted ? "Quit Started On" : "Quit will start On"}
+              {isStarted ? "Quit Started On" : "Quit scheduled for start"}
             </div>
           }
           
         </h2> 
         <FormatDate date={quit.startDate} />
       </div>
-      <div>
-        <h2
-          className='text-lg'
-        >
-          {quit.abandonedDate ? "Quit Lasted For" : "Current Duration"}
-          
-        </h2>
-        <QuitDuration startDate={quit.startDate} abandonedDate={quit.abandonedDate}/>
-      </div>
+      {
+        isStarted
+        &&
+        <div>
+          <h2
+            className='text-lg'
+          >
+            {quit.abandonedDate ? "Quit Lasted For" : "Current Duration"}
+            
+          </h2>
+          <QuitDuration startDate={quit.startDate} abandonedDate={quit.abandonedDate}/>
+        </div>
+      }
     </div>
   )
 }

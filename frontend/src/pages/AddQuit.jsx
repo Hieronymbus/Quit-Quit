@@ -6,7 +6,7 @@ import { useQuitStore } from '../store/quit.js';
 import VideoRecorder from '../components/VideoRecorder.jsx';
 import Header from '../components/Header.jsx';
 
-const AddQuit = () => {
+const AddQuit = ({setDarkMode, darkMode}) => {
   const navigate = useNavigate();
   const {user} = useUserStore();
   const {addictionsArr, fetchAddictions} = useAddictionStore();
@@ -65,21 +65,11 @@ const AddQuit = () => {
     console.log(newQuit.videoFile)
     const {success, message} = await createQuit(newQuit)
     console.log(message)
-    setNewQuit(
-      {
-        userID: user._id,
-        addictionType:"",
-        startDate:"",
-        endDate:"",
-        usageParameters:{},
-        reasonsToQuit:"",
-        videoFile: "",
-        status: "active"
-    }
-    )
-
+    
+    
     alert(message)
     if(success) {
+     
 
       // navigate("/personalDashboard")
       window.location = "/home"
@@ -91,7 +81,7 @@ const AddQuit = () => {
     <div
         className='h-screen'
     > 
-      <Header />
+      <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
       <div
         className='p-5 w-screen h-full-minus-16 flex flex-col justify-start items-center bg-slate-200 overflow-y-auto no-scrollbar dark:bg-slate-600 dark:text-slate-100'
       >
@@ -145,11 +135,13 @@ const AddQuit = () => {
               addictionChoiceParameters.map((parameter, index) => {
                 const nameSplit = parameter.name.split(' ');
                 const name = nameSplit[0];
-                return  <div>
+                return  <div
+                          key={index}
+                        >
                           <label
                             htmlFor={`parameter${index + 1}`}
                             className='block w-full text-lg font-medium  mb-1'
-                            key={index}
+                            
                           >
                           {parameter.name}
                         </label>

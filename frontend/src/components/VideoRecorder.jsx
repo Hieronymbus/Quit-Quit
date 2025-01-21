@@ -20,9 +20,13 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
           console.error("Error accessing media devices.", error);
       }
     };
-    getMedia()
+    if(isPreRecording){
 
-  },[])
+      getMedia()
+    }
+
+  
+},[isPreRecording])
 
   const startRecording = async () => {
     if(mediaStream) {
@@ -63,12 +67,12 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
 
   const stopRecording = () => {
     
+    setIsPreRecording(false)
     
     if (mediaRecorderRef.current) {
       mediaRecorderRef.current.stop();
     }
     clearInterval(timerRef.current); // Clear interval
-    setIsPreRecording(false)
     setIsRecording(false);
   };
 
@@ -105,33 +109,41 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
             style={{ width: "100%" }}
           > 
           </video>
+          {
+            !isRecording
+            &&
+            <button 
+                className="text-xl p-2 rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
+
+                onClick={(e) => { e.preventDefault(); startRecording(); }}
+              >
+                Start Recording
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="size-6 ml-2 inline">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                </svg>
+            </button>
+          }
         </div>
+
       }
       <div>
-        {isRecording ? (
-            <button 
-              className="text-xl p-2 rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
+        {
+          isRecording 
+          &&
+          ( 
+              <button 
+                className="text-xl p-2 rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
 
-              onClick={(e) => { e.preventDefault(); stopRecording(); }}
-            >
-              Stop Recording
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="size-6 ml-2 inline">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z" />
-              </svg>
-
-            </button>
-        ) : (
-            <button 
-              className="text-xl p-2 rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
-
-              onClick={(e) => { e.preventDefault(); startRecording(); }}
-            >
-              Start Recording
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="size-6 ml-2 inline">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
-              </svg>
-          </button>
-        )}
+                onClick={(e) => { e.preventDefault(); stopRecording(); }}
+              >
+                Stop Recording
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="size-6 ml-2 inline">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z" />
+                </svg>
+              </button>
+            
+          )      
+        }
       </div>
 
       {isRecording && <p>Recording... {timer}s</p>}
@@ -148,8 +160,18 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
             src={URL.createObjectURL(recordedBlob)}
           ></video>
           <div>
-            <button onClick={(e) => {e.preventDefault(); setIsPreRecording(true); setRecordedBlob(null)}}>Re-record</button>
-            <button onClick={(e) => {e.preventDefault(); uploadRecording()}}>Accept & Upload</button>
+            <button 
+              className="text-xl p-2 rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
+              onClick={(e) => {e.preventDefault(); setIsPreRecording(true); setRecordedBlob(null)}}
+            >
+              Re-record
+            </button>
+            <button 
+              className="text-xl p-2 rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
+              onClick={(e) => {e.preventDefault(); uploadRecording()}}
+            >
+              Accept & Upload
+            </button>
           </div>
         </div>
       )}

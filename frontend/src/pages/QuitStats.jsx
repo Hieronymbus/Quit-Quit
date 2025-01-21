@@ -62,7 +62,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
               Key Dates
             </h2>
             <div
-              className='w-full p-5 grid grid-cols-2 gap-5'
+              className='w-full p-5 grid sm:grid-cols-2 gap-5'
             >
               <div> 
                 <h3
@@ -107,7 +107,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 Statistics
               </h2>
               <div
-                className=' p-5 grid grid-cols-2 gap-5'
+                className=' p-5 grid sm:grid-cols-2 gap-5'
               >
                 <div>
                   <h2
@@ -155,7 +155,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 Reasons for quitting
               </h2>
               <div
-                className='p-5 grid grid-cols-2 gap-5'
+                className='p-5 grid sm:grid-cols-2 gap-5'
               > 
                 <div>
                   <h3

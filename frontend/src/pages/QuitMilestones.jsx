@@ -70,14 +70,14 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) 
       <Header setDarkMode={setDarkMode} darkMode={darkMode} currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
       <QuitNav/>
       
-      <div className="p-5 grid grid-rows-5 grid-cols-2 gap-2 bg-slate-200 dark:bg-slate-600 overflow-auto">
+      <div className="p-5 grid sm:grid-rows-5 sm:grid-cols-2 gap-2 bg-slate-200 dark:bg-slate-600 overflow-auto">
         {sortedAdjustedAchievmentsArr.map((milestone, index) => {
 
           return  <div 
                     className={
-                      `max-h-[250px] p-2 
-                      ${milestone.goalAchieved ? "bg-green-500 dark:bg-green-700 border-4 border-yellow-600" : "bg-slate-500 border-4 border-slate-700"} 
-                      overflow-auto no-scrollbar`}
+                      ` sm:h-[300px] p-2 
+                      ${milestone.goalAchieved ? "bg-green-500 dark:bg-green-700 border-4 border-yellow-600" : "bg-slate-300 dark:bg-slate-500 border-4 border-slate-700"} 
+                      overflow-auto `}
                     key={index}
                   > 
                     <div

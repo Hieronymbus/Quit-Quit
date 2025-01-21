@@ -105,33 +105,36 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
             }
             
           </div>
-         
-            <div
-              className='sm:h-[250px] w-full sm:w-fit  flex sm:flex-col rounded-b-lg'
-            >
-              <button
-                className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
-                onClick={() => {
-                  containerRef.current.scrollBy({
-                    left: 300,
-                    behavior: "smooth",
-                  });
-                }}
+            {
+              filteredQuitsArr.length > 1
+              &&
+              <div
+                className='sm:h-[250px] w-full sm:w-fit  flex sm:flex-col rounded-b-lg'
               >
-                ▶
-              </button>
-              <button
-                className="w-1/2 order-1 sm:order-2 sm:h-1/2 sm:w-full p-2 rounded-l-lg sm:rounded-l-none sm:rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
-                onClick={() => {
-                  containerRef.current.scrollBy({
-                    left: -300,
-                    behavior: "smooth",
-                  });
-                }}
-              >
-                ◀
-              </button>
-            </div>
+                <button
+                  className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
+                  onClick={() => {
+                    containerRef.current.scrollBy({
+                      left: 300,
+                      behavior: "smooth",
+                    });
+                  }}
+                >
+                  ▶
+                </button>
+                <button
+                  className="w-1/2 order-1 sm:order-2 sm:h-1/2 sm:w-full p-2 rounded-l-lg sm:rounded-l-none sm:rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
+                  onClick={() => {
+                    containerRef.current.scrollBy({
+                      left: -300,
+                      behavior: "smooth",
+                    });
+                  }}
+                >
+                  ◀
+                </button>
+              </div>
+            }
           
         </div>
       </div>

@@ -4,7 +4,7 @@ import { useUserStore } from '../store/user'
 
 import Header from '../components/Header'
 
-const About = () => {
+const About = ({darkMode, setDarkMode}) => {
   
   const navigate = useNavigate()
   const {fetchUser, user} = useUserStore()
@@ -25,7 +25,7 @@ const About = () => {
     <div
       className='min-h-screen w-screen flex flex-col bg-slate-200 dark:bg-slate-600 dark:text-slate-50'
     >
-      <Header />
+      <Header setDarkMode={setDarkMode} darkMode={darkMode} />
       <div
         className='p-10 flex flex-col gap-4'
       >
