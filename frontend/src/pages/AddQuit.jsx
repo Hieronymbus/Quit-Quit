@@ -97,11 +97,11 @@ const AddQuit = () => {
       >
           <form 
             onSubmit={handleAddQuit} 
-            className='w-1/2 p-4 flex flex-col gap-3'
+            className=' sm:w-1/2 p-4 flex flex-col gap-3'
           >
             <div>
               <label htmlFor="addictionSelect" className="block text-lg font-medium  mb-1">
-                  Select Addiction you wish to quit:
+                  Select Addiction you wish to quit
               </label>
               <select
                   id="addictionSelect"
@@ -129,7 +129,7 @@ const AddQuit = () => {
                
                 <div>
                   <label htmlFor='startDateInput' className="block text-lg font-medium  mb-1">
-                      Choose a Start Date:
+                      Choose a Start Date
                   </label>
                   <input
                       className="block w-full p-2 pl-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700"
@@ -151,7 +151,7 @@ const AddQuit = () => {
                             className='block w-full text-lg font-medium  mb-1'
                             key={index}
                           >
-                          {parameter.name}:
+                          {parameter.name}
                         </label>
                         <input 
                           className='block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700'
@@ -178,7 +178,7 @@ const AddQuit = () => {
                     className='block text-lg font-medium  mb-1'
                     htmlFor='textReasonsTextArea'
                   >
-                    Reasons for quiting(optional) :
+                    Reasons for quiting(optional) 
                   </label>
                   <textarea
                     className='block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700'
@@ -197,8 +197,8 @@ const AddQuit = () => {
                         className='block w-full text-lg font-medium  mb-1'
                         htmlFor='modeSelect'
                       >
-                        Would you like to upload or record a video message to youself that you can rewatch in the future to remind youself 
-                        why you are making this change in  your life to quit(optional)?
+                        Would you like to upload or record a video message for yourself? 
+                        This message can serve as a reminder of why you’re making this important change in your life to quit. (Optional)
                       </label>
                       <select
                         className='block w-full p-2 pt-2.5 pb-2.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700'
@@ -265,10 +265,10 @@ const AddQuit = () => {
                     </div>
                   }
                   <div
-                    className='flex gap-3 mt-4'
+                    className='flex flex-col gap-3 mt-4'
                   >
                   <button
-                     className="text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
+                    className="text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
 
                     type='submit'
                   >
@@ -278,7 +278,10 @@ const AddQuit = () => {
                      className="text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
 
                     type='button' 
-                    onClick={() => navigate('/home')}
+                    onClick={() => {
+                      window.location = "/home"
+                      window.location()
+                    }}
                   >
                     Cancel 
                   </button>

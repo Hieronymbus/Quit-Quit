@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 const VideoRecorder = ({ setNewQuit, mode }) => {
   const [isRecording, setIsRecording] = useState(false);
-  const [isPreRecording, setIsPreRecording] = useState(false);
+  const [isPreRecording, setIsPreRecording] = useState(true);
   const [recordedBlob, setRecordedBlob] = useState(null);
   const [mediaStream, setMediaStream] = useState(null);
   const [timer, setTimer] = useState(0);
@@ -68,6 +68,7 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
       mediaRecorderRef.current.stop();
     }
     clearInterval(timerRef.current); // Clear interval
+    setIsPreRecording(false)
     setIsRecording(false);
   };
 
@@ -88,15 +89,29 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
 
   return (
     <div>
-      <h2
-        className="text-xl"
-      >
-        Record Video
-      </h2>
-      <video ref={videoRef} autoPlay muted style={{ width: "100%" }}></video>
+      {
+        isPreRecording
+        &&
+        <div>
+          <h2
+            className="text-xl mb-1"
+          >
+          </h2>
+          <video
+            className="rounded-t-lg rounded-r-lg"
+            ref={videoRef}
+            autoPlay 
+            muted 
+            style={{ width: "100%" }}
+          > 
+          </video>
+        </div>
+      }
       <div>
         {isRecording ? (
             <button 
+              className="text-xl p-2 rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
+
               onClick={(e) => { e.preventDefault(); stopRecording(); }}
             >
               Stop Recording
@@ -107,6 +122,8 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
             </button>
         ) : (
             <button 
+              className="text-xl p-2 rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
+
               onClick={(e) => { e.preventDefault(); startRecording(); }}
             >
               Start Recording
@@ -131,7 +148,7 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
             src={URL.createObjectURL(recordedBlob)}
           ></video>
           <div>
-            <button onClick={(e) => {e.preventDefault(); setRecordedBlob(null)}}>Re-record</button>
+            <button onClick={(e) => {e.preventDefault(); setIsPreRecording(true); setRecordedBlob(null)}}>Re-record</button>
             <button onClick={(e) => {e.preventDefault(); uploadRecording()}}>Accept & Upload</button>
           </div>
         </div>

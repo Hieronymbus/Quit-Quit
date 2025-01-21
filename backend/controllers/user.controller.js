@@ -77,7 +77,7 @@ export const createLogin = async (req, res) => {
             return res.status(400).json( { success: false, message: "incorrect password" })
         }
   
-        res.status(201).json( { message:'logged in', data: userDataForFrontend });
+        res.status(201).json( { message:'log in succesful', data: userDataForFrontend });
       } catch (err) {
         console.error("Server Error:", err.message)
         res.status(500).json( {success: false, message: "Server Error, failure to log in"})

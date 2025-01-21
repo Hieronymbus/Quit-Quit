@@ -54,7 +54,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
         :
         <div className="w-full p-5 rounded flex flex-col gap-10  bg-slate-200 dark:bg-slate-600 dark:text-slate-100">
           <div
-            className='w- text-xl border-b border-black'
+            className='w-full text-xl border-b border-black'
           > 
             <h2
               className='text-3xl text-blue-600'
@@ -65,12 +65,22 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
               className='w-full p-5 grid grid-cols-2 gap-5'
             >
               <div> 
-                Start Date <FormatDate date={currentQuit.startDate}/> 
+                <h3
+                  className='text-blue-400'
+                >
+                  Start Date 
+                </h3>
+                <FormatDate date={currentQuit.startDate}/> 
               </div>
               <div
                 className=''
-              >
-                Action Phase Completion Date  <FormatDate date={currentQuit.endDate}/> 
+              > 
+                <h3
+                  className='text-blue-400'
+                >
+                  Action Phase Completion Date  
+                </h3>
+                  <FormatDate date={currentQuit.endDate}/> 
               </div>
               {
                 currentQuit?.abandonedDate 
@@ -101,7 +111,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
               >
                 <div>
                   <h2
-                    className=''
+                    className='text-blue-400'
                   >
                     Quit Duration
                   </h2>
@@ -110,7 +120,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 </div> 
                 <div>
                   <h2
-                    className=''
+                    className='text-blue-400'
                   >
                     Time reclaimed
                   </h2>
@@ -119,7 +129,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 </div> 
                 <div>
                   <h2
-                    className=''
+                    className='text-blue-400'
                   >
                     Money Saved
                   </h2>
@@ -128,7 +138,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 </div> 
                 <div>
                   <h2
-                    className=''
+                    className='text-blue-400'
                   >
                     {whatConsumed} avoided
                   </h2>

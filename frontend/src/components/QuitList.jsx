@@ -54,7 +54,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
         <div className="w-full mb-2">
           <h2 className="text-3xl">{title}</h2>
         </div>
-        <div className="relative w-full flex flex-col sm:flex-row items-center bg-slate-300 dark:bg-slate-500 ">
+        <div className="relative w-full flex flex-col sm:flex-row items-center  ">
          
     
           {/* Scrollable Container */}
@@ -63,7 +63,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
             style={{
               scrollBehavior: "smooth"
             }}
-            className="w-full flex lg:gap-[2%] md:gap-[2%] overflow-x-auto no-scrollbar snap-x"
+            className="w-full flex lg:gap-[2%] md:gap-[2%] rounded-t-lg overflow-x-auto no-scrollbar snap-x  "
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUpOrLeave}
@@ -72,7 +72,19 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
             {/* No quits message */}
             {filteredQuitsArr.length === 0 && (
               <div className="h-[250px] w-full p-5 flex justify-center items-center text-center">
-                <i>Currently no quits in this category.</i>
+                <i>
+                  Currently no quits in this category.<i> </i> 
+                  {
+                    title === "Action-Phase"
+                    &&
+                    <i>
+                       To start a new quit click the plus icon at the top of the page.
+                    </i>
+                  }
+                </i>
+                
+                  
+                
               </div>
             )}
             {/* Quit cards */}
@@ -80,7 +92,6 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                 quits.map((quit, index) => {
                     
                     if(quit.status === status){
-                        
                         return (
                             <QuitCard
                                 key={index}
@@ -96,10 +107,10 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
           </div>
          
             <div
-              className='sm:h-[250px] w-full sm:w-fit  flex sm:flex-col '
+              className='sm:h-[250px] w-full sm:w-fit  flex sm:flex-col rounded-b-lg'
             >
               <button
-                className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 bg-slate-400 dark:bg-slate-700 text-white "
+                className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
                 onClick={() => {
                   containerRef.current.scrollBy({
                     left: 300,
@@ -110,7 +121,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                 ▶
               </button>
               <button
-                className="w-1/2 order-1 sm:h-1/2 sm:w-full p-2 bg-slate-400 dark:bg-slate-700 text-white "
+                className="w-1/2 order-1 sm:order-2 sm:h-1/2 sm:w-full p-2 rounded-l-lg sm:rounded-l-none sm:rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
                 onClick={() => {
                   containerRef.current.scrollBy({
                     left: -300,
