@@ -12,7 +12,7 @@ import PlusIcon from '../assets/svg/PlusIcon.jsx';
 import BackArrowIcon from '../assets/svg/BackArrowIcon.jsx'
 
 import Menu from './Menu.jsx'
-import MenuUser from './menuUser.jsx'
+import MenuUser from './MenuUser.jsx'
 import ButtonAddQuit from './ButtonAddQuit.jsx'
 import ButtonNotification from './ButtonNotification.jsx'
 import AbandonQuitButton from './ButtonAbandonQuit.jsx'
