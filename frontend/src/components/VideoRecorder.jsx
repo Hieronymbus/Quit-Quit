@@ -25,7 +25,6 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
       getMedia()
     }
 
-  
 },[isPreRecording])
 
   const startRecording = async () => {
