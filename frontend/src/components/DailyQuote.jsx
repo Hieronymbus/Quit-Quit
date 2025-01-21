@@ -19,7 +19,7 @@ const DailyQuote = () => {
     },[fetchDailyQuote])
   return (
    
-    <div className="flex flex-col items-center gap-4 border pb-4 border-b-slate-500 ">
+    <div className="flex flex-col items-center gap-4 pb-4 border-b border-b-slate-500 ">
         <h1 className="text-5xl text-center font-bold text-blue-600 dark:text-blue-400">
             Quote of the Day
         </h1>

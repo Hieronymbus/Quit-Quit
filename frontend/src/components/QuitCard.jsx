@@ -1,17 +1,24 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
 import QuitDuration from './QuitDuration.jsx';
 import FormatDate from './FormatDate.jsx';
 
-const QuitCard = ({quit, setSelectedQuit}) => {
+const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
   const navigate = useNavigate()
   const [bgColor, setBgColor] = useState("")
   const [isStarted, setIsStarted] = useState(false)
-
+  const cardContainerRef = useRef()
   function handleQuitClick () {
-    setSelectedQuit(quit._id)
-    navigate('/quitStats')
+    if (isDragging) {
+      e.preventDefault();
+      
+    } else {
+      // Navigate to the desired location
+      setSelectedQuit(quit._id)
+      navigate('/quitStats')
+     
+    }
   }
   
 
@@ -33,7 +40,8 @@ const QuitCard = ({quit, setSelectedQuit}) => {
   
   return (
     <div
-      onClick={handleQuitClick}
+      ref={cardContainerRef}
+      onMouseUp={(e) => handleQuitClick(e)}
       className={` lg:w-[32%] md:w-[49%] sm:w-full w-full p-4 rounded  snap-center flex flex-shrink-0 flex-col gap-6 ${bgColor} hover:cursor-pointer `}
       data-tooltip-id='cardTooltip'
       data-tooltip-content="Click to open advanced stats page"
