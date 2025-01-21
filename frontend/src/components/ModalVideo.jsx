@@ -27,7 +27,7 @@ const ModalVideo = ({ setIsVideoModalOpen, isVideoModalOpen, currentQuit}) => {
                 <video 
                     className='rounded-xl  '
                     controls
-                    src={`https://quitforealtho.onrender.com//${currentQuit.videoPath}`}
+                    src={`https://quitforealtho.onrender.com/${currentQuit.videoPath}`}
                 />
                 <h3
                     className='text-2xl text-gray-100 ' 
