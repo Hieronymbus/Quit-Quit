@@ -138,7 +138,18 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                                     {   
                                         location.pathname == '/quitStats'
                                         &&
-                                        <div>
+                                        <div
+                                            className='flex'
+                                        >
+                                            <button
+                                                className=' p-2 rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800' 
+                                                onClick={()=>{navigate('/home')}}
+                                                data-tooltip-id='back-button-tooltip'
+                                                data-tooltip-content='Return to home page'
+                                            >
+                                                <BackArrowIcon />
+                                                <Tooltip id='back-button-tooltip'/>
+                                            </button>
                                             {
                                                 currentQuit?.status === 'abandoned'
                                                 ?
@@ -151,7 +162,18 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                                     {   
                                         location.pathname == '/quitMilestones'
                                         &&
-                                        <div>
+                                        <div
+                                            className='flex'
+                                        >
+                                            <button
+                                                className=' p-2 rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800' 
+                                                onClick={()=>{navigate('/home')}}
+                                                data-tooltip-id='back-button-tooltip'
+                                                data-tooltip-content='Return to home page'
+                                            >
+                                                <BackArrowIcon />
+                                                <Tooltip id='back-button-tooltip'/>
+                                            </button>
                                             {
                                                 currentQuit?.status === 'abandoned'
                                                 ?
@@ -164,7 +186,18 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                                     {   
                                         location.pathname == '/quitAdvice'
                                         &&
-                                        <div>
+                                        <div
+                                            className='flex'
+                                        >
+                                            <button
+                                                className=' p-2 rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800' 
+                                                onClick={()=>{navigate('/home')}}
+                                                data-tooltip-id='back-button-tooltip'
+                                                data-tooltip-content='Return to home page'
+                                            >
+                                                <BackArrowIcon />
+                                                <Tooltip id='back-button-tooltip'/>
+                                            </button>
                                             {
                                                 currentQuit?.status === 'abandoned'
                                                 ?

@@ -51,10 +51,10 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
     return (
 
       <div className="w-full h-full flex flex-col items-center">
-        <div className="w-full">
+        <div className="w-full mb-2">
           <h2 className="text-3xl">{title}</h2>
         </div>
-        <div className="relative w-full flex flex-col sm:flex-row items-center">
+        <div className="relative w-full flex flex-col sm:flex-row items-center bg-slate-300 dark:bg-slate-500 ">
          
     
           {/* Scrollable Container */}
@@ -71,7 +71,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
           >
             {/* No quits message */}
             {filteredQuitsArr.length === 0 && (
-              <div className="h-40 p-5 flex justify-center items-center">
+              <div className="h-[250px] w-full p-5 flex justify-center items-center text-center">
                 <i>Currently no quits in this category.</i>
               </div>
             )}
@@ -94,34 +94,34 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
             }
             
           </div>
-          <div
-            className='h-full ml-2 flex  sm:flex-col '
-          >
-             
-            <button
-              className="w-1/2  sm:h-1/2 sm:w-full p-2 bg-blue-500 text-white "
-              onClick={() => {
-                containerRef.current.scrollBy({
-                  left: -300,
-                  behavior: "smooth",
-                });
-              }}
+         
+            <div
+              className='sm:h-[250px] w-full sm:w-fit  flex sm:flex-col '
             >
-              ◀
-            </button>
-            
-            <button
-              className="h-1/2 p-2 bg-blue-500 text-white "
-              onClick={() => {
-                containerRef.current.scrollBy({
-                  left: 300,
-                  behavior: "smooth",
-                });
-              }}
-            >
-              ▶
-            </button>
-          </div>
+              <button
+                className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 bg-slate-400 dark:bg-slate-700 text-white "
+                onClick={() => {
+                  containerRef.current.scrollBy({
+                    left: 300,
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                ▶
+              </button>
+              <button
+                className="w-1/2 order-1 sm:h-1/2 sm:w-full p-2 bg-slate-400 dark:bg-slate-700 text-white "
+                onClick={() => {
+                  containerRef.current.scrollBy({
+                    left: -300,
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                ◀
+              </button>
+            </div>
+          
         </div>
       </div>
       
