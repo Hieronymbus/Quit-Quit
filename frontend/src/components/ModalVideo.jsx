@@ -2,11 +2,10 @@ import React from 'react'
 
 const ModalVideo = ({ setIsVideoModalOpen, isVideoModalOpen, currentQuit}) => {
 
-
   return (
         <div
             className={`${!isVideoModalOpen ? "hidden": "fixed"}  rounded-lg
-            z-20 w-11/12 sm:h-2/4 aspect-square m-auto inset-x-0 inset-y-0 border border-gray-100 bg-slate-950  shadow-lg shadow-gray-100`}
+            z-20 w-11/12 md:w-1/3 aspect-square m-auto inset-x-0 inset-y-0 border border-gray-100 bg-slate-950  shadow-md shadow-gray-100`}
         > 
             <div
             className='flex justify-end'
@@ -22,17 +21,18 @@ const ModalVideo = ({ setIsVideoModalOpen, isVideoModalOpen, currentQuit}) => {
             </div>
              
             <div
-                className=' flex flex-col items-center gap-5'
+                className='p-2 flex flex-col items-center gap-5'
             >
                 <video 
                     className='rounded-xl  '
                     controls
-                    src={`https://quitforealtho.onrender.com/${currentQuit.videoPath}`}
+                    src={`${import.meta.env.VITE_PORT}/${currentQuit.videoPath}`}
                 />
                 <h3
                     className='text-2xl text-gray-100 ' 
                 >
                     Message from past you..
+                    
                 </h3>        
             </div>
         </div>
