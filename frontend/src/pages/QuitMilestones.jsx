@@ -56,6 +56,7 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) 
             return achievment
           } else {
             achievment.goalAchieved = false
+            achievment.goalPercent = 0
             return achievment
           }
       })
