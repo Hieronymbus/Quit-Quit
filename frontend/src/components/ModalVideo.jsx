@@ -21,19 +21,14 @@ const ModalVideo = ({ setIsVideoModalOpen, isVideoModalOpen, currentQuit}) => {
             </div>
              
             <div
-                className='p-2 flex flex-col items-center gap-5'
+                className='p-2 flex flex-col items-center '
             >
                 <video 
                     className='rounded-xl  '
                     controls
                     src={`${import.meta.env.VITE_PORT}/${currentQuit.videoPath}`}
                 />
-                <h3
-                    className='text-2xl text-gray-100 ' 
-                >
-                    Message from past you..
-                    
-                </h3>        
+                
             </div>
         </div>
   )

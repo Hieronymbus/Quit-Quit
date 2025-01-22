@@ -144,29 +144,41 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
           )      
         }
       </div>
+      
 
-      {isRecording && <p>Recording... {timer}s</p>}
+        {
+          isRecording 
+          && 
+          <p
+            className="mt-2 sm:mt-5 text-lg"
+          >
+            Recording... {timer}s
+          </p>
+        }
+      
       {recordedBlob && (
         <div>
           <h3
-            className="text-xl"
+            className="text-xl mb-3"
           >
-            Preview
+            Video preview
           </h3>
+            <button 
+              className="text-xl w-full p-2 rounded-t-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
+              onClick={(e) => {e.preventDefault(); setIsPreRecording(true); setRecordedBlob(null)}}
+            >
+              Re-record
+            </button>
           <video
             controls
             style={{ width: "100%" }}
             src={URL.createObjectURL(recordedBlob)}
           ></video>
-          <div>
-            <button 
-              className="text-xl p-2 rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
-              onClick={(e) => {e.preventDefault(); setIsPreRecording(true); setRecordedBlob(null)}}
-            >
-              Re-record
-            </button>
-            <button 
-              className="text-xl p-2 rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
+          <div
+            className="flex flex-col"
+          >
+            <button  
+              className="text-xl w-full p-2 rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
               onClick={(e) => {e.preventDefault(); uploadRecording()}}
             >
               Accept & Upload

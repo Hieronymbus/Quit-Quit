@@ -57,7 +57,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
             className='w-full text-xl border-b border-black'
           > 
             <h2
-              className='text-3xl text-blue-600'
+              className='text-3xl text-blue-600 dark:text-blue-500'
             >
               Key Dates
             </h2>
@@ -66,9 +66,9 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
             >
               <div> 
                 <h3
-                  className='text-blue-400'
+                  className='text-xl text-blue-400 dark:text-blue-300'
                 >
-                  Start Date 
+                  Start date 
                 </h3>
                 <FormatDate date={currentQuit.startDate}/> 
               </div>
@@ -76,9 +76,9 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 className=''
               > 
                 <h3
-                  className='text-blue-400'
+                  className='text-xl text-blue-400 dark:text-blue-300'
                 >
-                  Action Phase Completion Date  
+                  Action phase completion date  
                 </h3>
                   <FormatDate date={currentQuit.endDate}/> 
               </div>
@@ -87,11 +87,10 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 && 
                 <div> 
                   <h2
-                    className='text-center text-3xl text-red-600'
+                    className='text-xl  text-red-600 dark:text-red-500'
                   >
-                    Abandoned This Quit on
+                    Abandoned this quit on
                   </h2>
-                  
                     <FormatDate date={currentQuit.abandonedDate}/> 
                 </div>
               }
@@ -102,7 +101,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
             className="w-full text-xl border-b border-black "
           >
               <h2
-                className='text-3xl text-blue-600'
+                className='text-3xl text-blue-600 dark:text-blue-500'
               >
                 Statistics
               </h2>
@@ -111,7 +110,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
               >
                 <div>
                   <h2
-                    className='text-blue-400'
+                    className='text-blue-400 dark:text-blue-300'
                   >
                     Quit Duration
                   </h2>
@@ -120,7 +119,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 </div> 
                 <div>
                   <h2
-                    className='text-blue-400'
+                    className='text-blue-400 dark:text-blue-300'
                   >
                     Time reclaimed
                   </h2>
@@ -129,7 +128,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 </div> 
                 <div>
                   <h2
-                    className='text-blue-400'
+                    className='text-blue-400 dark:text-blue-300'
                   >
                     Money Saved
                   </h2>
@@ -138,7 +137,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 </div> 
                 <div>
                   <h2
-                    className='text-blue-400'
+                    className='text-blue-400 dark:text-blue-300'
                   >
                     {whatConsumed} avoided
                   </h2>
@@ -150,7 +149,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
           <div className="w-full text-xl">
             <div>
               <h2
-                className=' text-blue-600 text-3xl'
+                className=' text-blue-600 dark:text-blue-500 text-3xl'
               >
                 Reasons for quitting
               </h2>
@@ -159,7 +158,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
               > 
                 <div>
                   <h3
-                    className='text-2xl text-blue-400'
+                    className='text-2xl text-blue-400 dark:text-blue-300'
                   >
                     Written
                   </h3>
@@ -167,19 +166,20 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 </div>
                 <div>
                   <h3
-                    className='text-2xl text-blue-400'
+                    className='text-2xl text-blue-400 dark:text-blue-300'
                   >
-                    Video
+                    Video reminder
                   </h3>
                   {
                     currentQuit.videoPath
                     ?
                     <div>
                       <button
-                        className='p-2 rounded-3xl bg-blue-500 '
+                        className=" text-lg p-2 mt-2 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2" 
+
                         onClick={()=> setIsVideoModalOpen(true)}
                       >
-                        Open Video Message from the Past.
+                        Open video message
                       </button>
                       {
                         isVideoModalOpen
