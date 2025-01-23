@@ -133,8 +133,20 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                                         location.pathname === '/home'
                                         &&
                                         <ButtonAddQuit />
-                                    }
-                                        
+                                    }   
+                                    {
+                                        location.pathname === '/addQuit'
+                                        &&
+                                        <button
+                                                className=' p-2 rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800' 
+                                                onClick={()=>{navigate('/home')}}
+                                                data-tooltip-id='back-button-tooltip'
+                                                data-tooltip-content='Return to home page'
+                                        >
+                                            <BackArrowIcon />
+                                            <Tooltip id='back-button-tooltip'/>
+                                        </button>
+                                    }                                    
                                     {   
                                         location.pathname == '/quitStats'
                                         &&
@@ -177,9 +189,9 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                                             {
                                                 currentQuit?.status === 'abandoned'
                                                 ?
-                                                <DeleteQuitButton currentQuit={currentQuit}/>
+                                                <DeleteQuitButton currentQuit={currentQuit} />
                                                 :
-                                                <AbandonQuitButton currentQuit={currentQuit}/>
+                                                <AbandonQuitButton currentQuit={currentQuit} />
                                             }
                                         </div>
                                     } 
@@ -206,8 +218,7 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                                                 <AbandonQuitButton currentQuit={currentQuit}/>
                                             }
                                         </div>
-                                    }   
-                                    
+                                    }                                       
                                     <ButtonNotification />
                                     <button
                                         className=' p-2 rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800' 

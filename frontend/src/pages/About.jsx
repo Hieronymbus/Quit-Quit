@@ -27,40 +27,46 @@ const About = ({darkMode, setDarkMode}) => {
     >
       <Header setDarkMode={setDarkMode} darkMode={darkMode} />
       <div
-        className='p-10 flex flex-col gap-4'
-      >
-        <h1
-          className='text-4xl'
-        >
-          Introduction
-        </h1>
-        <h2
-          className='text-lg '
-        >
-          Congratulations on taking this incredible step toward a healthier, 
-          addiction-free life! Deciding to confront and overcome addiction is no small feat, and it shows your strength, courage, and commitment to change. 
-          By coming to this website, you've demonstrated a willingness to invest in yourself and your future—a choice that takes immense bravery. 
-          Remember, every great journey begins with a single step, and you're already on the path to success. 
-          Celebrate this moment, trust in your resilience, and know that you are never alone on this journey.
-          We're here to support and guide you every step of the way. You've got this!
-        </h2>
-        <h1
-          className='text-4xl'
-        >
-          About Addiction
-        </h1>
-        <h2>
-          Addiction is a widespread challenge affecting millions of individuals worldwide, transcending age, gender, and cultural boundaries. 
-          Globally, over 35 million people are estimated to suffer from substance use disorders, with only 1 in 7 receiving the necessary treatment. 
-          Alcohol consumption accounts for 5.3% of all global deaths annually, and tobacco use causes over 8 million deaths each year. 
-          Beyond substances, behavioral addictions such as gambling, gaming, and internet use are on the rise, highlighting the diverse forms addiction can take.
-          The effects of addiction extend beyond the individual, often impacting families, communities, and economies through increased healthcare costs and lost productivity
-        </h2>
+        className='p-5 text-justify flex flex-col gap-5'
+      > 
+        <div>
+
+          <h1
+            className='text-4xl mb-2 text-center sm:text-left'
+          >
+            Introduction
+          </h1>
+          <h2
+            className='text-lg text-wrap'
+          >
+            Congratulations on taking this incredible step toward a healthier, 
+            addiction-free life! Deciding to confront and overcome addiction is no small feat, and it shows your strength, courage, and commitment to change. 
+            By coming to this website, you've demonstrated a willingness to invest in yourself and your future—a choice that takes immense bravery. 
+            Remember, every great journey begins with a single step, and you're already on the path to success. 
+            Celebrate this moment, trust in your resilience, and know that you are never alone on this journey.
+            We're here to support and guide you every step of the way. You've got this!
+          </h2>
+        </div>
+        <div>
+
+          <h1
+            className='text-4xl mb-2 text-center sm:text-left'
+          >
+            About Addiction
+          </h1>
+          <h2>
+            Addiction is a widespread challenge affecting millions of individuals worldwide, transcending age, gender, and cultural boundaries. 
+            Globally, over 35 million people are estimated to suffer from substance use disorders, with only 1 in 7 receiving the necessary treatment. 
+            Alcohol consumption accounts for 5.3% of all global deaths annually, and tobacco use causes over 8 million deaths each year. 
+            Beyond substances, behavioral addictions such as gambling, gaming, and internet use are on the rise, highlighting the diverse forms addiction can take.
+            The effects of addiction extend beyond the individual, often impacting families, communities, and economies through increased healthcare costs and lost productivity
+          </h2>
+        </div>
         <div>
           <h1
-            className='text-4xl'
+            className='text-4xl mb-2 text-center sm:text-left'
           >
-            Aboutthe website
+            About the website
           </h1>
           <p>
             This website is your dedicated companion on the journey to breaking free from addiction, offering tools and structure to keep you motivated and focused.

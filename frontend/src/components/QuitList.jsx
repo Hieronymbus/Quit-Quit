@@ -52,7 +52,9 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
 
       <div className="w-full h-full flex flex-col items-center">
         <div className="w-full mb-2">
-          <h2 className="text-3xl">{title}</h2>
+          <h2 className="text-3xl text-center">
+            {title}
+          </h2>
         </div>
         <div className="relative w-full flex flex-col sm:flex-row items-center  ">
          
