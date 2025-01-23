@@ -8,7 +8,6 @@ import ScrollToTop from './utils/ScrollToTop.jsx';
 createRoot(document.getElementById('root')).render(
  
     <BrowserRouter>
-      <ScrollToTop />
       <App />
     </BrowserRouter>
   
