@@ -12,6 +12,7 @@ import QuitStats from './pages/QuitStats';
 import QuitAdvice from './pages/QuitAdvice';
 import QuitMilestones from './pages/QuitMilestones';
 import AddQuit from './pages/AddQuit';
+import ScrollToTop from './utils/ScrollToTop.jsx';
 
 function App() {
   
