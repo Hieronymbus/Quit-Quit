@@ -44,6 +44,7 @@ function App() {
   return (
     <>
         <Routes>
+          
           <Route element={<PreLoginRoutes />}>
             <Route element={<Landing setDarkMode={setDarkMode} darkMode={darkMode} setSelectedQuit={setSelectedQuit}/>} path='/' />
             <Route element={<Login setDarkMode={setDarkMode} darkMode={darkMode} setSelectedQuit={setSelectedQuit}/> } path="/login" />
