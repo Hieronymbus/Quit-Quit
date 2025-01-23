@@ -23,11 +23,11 @@ const About = ({darkMode, setDarkMode}) => {
 
   return (
     <div
-      className='min-h-screen w-screen flex flex-col bg-slate-200 dark:bg-slate-600 dark:text-slate-50'
+      className='min-h-screen w-screen flex flex-col bg-slate-200 dark:bg-slate-600 dark:text-slate-50 '
     >
       <Header setDarkMode={setDarkMode} darkMode={darkMode} />
       <div
-        className='p-5 text-justify flex flex-col gap-5'
+        className='w-11/12 p-5 text-justify flex flex-col gap-5 '
       > 
         <div>
 
@@ -54,7 +54,9 @@ const About = ({darkMode, setDarkMode}) => {
           >
             About Addiction
           </h1>
-          <h2>
+          <h2
+            className='text-lg text-wrap'
+          >
             Addiction is a widespread challenge affecting millions of individuals worldwide, transcending age, gender, and cultural boundaries. 
             Globally, over 35 million people are estimated to suffer from substance use disorders, with only 1 in 7 receiving the necessary treatment. 
             Alcohol consumption accounts for 5.3% of all global deaths annually, and tobacco use causes over 8 million deaths each year. 
@@ -68,9 +70,11 @@ const About = ({darkMode, setDarkMode}) => {
           >
             About the website
           </h1>
-          <p>
-            This website is your dedicated companion on the journey to breaking free from addiction, offering tools and structure to keep you motivated and focused.
-           It is designed around a proven two-phase approach: a six-month **Action Phase**, where the primary goal is to establish and solidify your quit, followed by the **Maintenance Phase**, which is ongoing and lasts a lifetime. While the Maintenance Phase will be much easier than the Action Phase, the tools provided by this website will ensure you stay on track and committed.  
+          <p
+            className='text-lg text-wrap'
+          >
+          This website is your dedicated companion on the journey to breaking free from addiction, offering tools and structure to keep you motivated and focused.
+          It is designed around a proven two-phase approach: a six-month **Action Phase**, where the primary goal is to establish and solidify your quit, followed by the **Maintenance Phase**, which is ongoing and lasts a lifetime. While the Maintenance Phase will be much easier than the Action Phase, the tools provided by this website will ensure you stay on track and committed.  
 
           The site features stat tracking to help you monitor key metrics, such as how long you've been free from your habit, the money you've saved, and the time you've regained—powerful motivators to remind you of your progress. Celebrate your journey with milestone achievements that mark significant moments, inspiring you to push forward and succeed.  
 

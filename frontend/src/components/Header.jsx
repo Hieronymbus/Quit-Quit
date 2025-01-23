@@ -88,7 +88,7 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
     return (
         <>
             <header
-                className='w-full h-16  pl-2 pr-2 sticky top-0 z-50 flex justify-center items-center bg-slate-400  dark:bg-slate-700 dark:text-slate-100 '
+                className='w-full h-16  px-2 sticky top-0 z-50 flex justify-center items-center bg-slate-400  dark:bg-slate-700 dark:text-slate-100 '
             >   
                 <div 
                     className='w-full flex justify-between items-center  '
@@ -146,7 +146,20 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                                             <BackArrowIcon />
                                             <Tooltip id='back-button-tooltip'/>
                                         </button>
-                                    }                                    
+                                    }  
+                                    {
+                                        location.pathname === '/about'
+                                        &&
+                                        <button
+                                                className=' p-2 rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800' 
+                                                onClick={()=>{navigate('/home')}}
+                                                data-tooltip-id='back-button-tooltip'
+                                                data-tooltip-content='Return to home page'
+                                        >
+                                            <BackArrowIcon />
+                                            <Tooltip id='back-button-tooltip'/>
+                                        </button>
+                                    }                                   
                                     {   
                                         location.pathname == '/quitStats'
                                         &&

@@ -60,7 +60,7 @@ const CardMilestone = ({goalAchieved,description,title}) => {
 
                         <Overlay />
                         <div 
-                            className={`max-h-[80vh]  p-2 m-4   md:m-auto md:w-1/2 fixed top-20 inset-x-0 rounded-xl   overflow-auto ${goalAchieved ? "bg-gradient-to-br from-blue-500 to-purple-600  text-white p-6 rounded-lg shadow-lg  " : "bg-gradient-to-r from-orange-200 via-orange-300 to-amber-200 text-orange-900 p-6 rounded-lg shadow-lg"} `}
+                            className={`max-h-[80vh] p-2 m-4 md:m-auto md:w-1/2 fixed top-20 inset-x-0 rounded-xl   overflow-auto ${goalAchieved ? "bg-gradient-to-br from-blue-500 to-purple-600  text-white p-6 rounded-lg shadow-lg  " : "bg-gradient-to-r from-orange-200 via-orange-300 to-amber-200 text-orange-900 p-6 rounded-lg shadow-lg"} `}
                         >   
                         <div
                             className='flex flex-col items-center'
