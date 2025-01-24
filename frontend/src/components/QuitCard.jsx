@@ -55,7 +55,7 @@ const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
       <h1
         className='text-2xl'
       >
-        Addiction: {quit.addictionTypeID.name}
+        {quit.addictionTypeID.name}
       </h1>
       <div>
         <h2

@@ -18,6 +18,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
       startDate:"",
       endDate:"",
       usageParameters:{},
+      minsOrHours:"minutes",
       reasonsToQuit:"",
       videoFile: null,
       status: "active"
@@ -144,16 +145,43 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                             
                           >
                           {parameter.name}
-                        </label>
-                        <input 
-                          className='block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700'
-                          type={parameter.type}
-                          id={`parameter${index + 1}`}
-                          step="0.01"
-                          onChange={(e) =>
-                            setNewQuit(prev => ({...prev, usageParameters:{...prev.usageParameters, [name]: e.target.value }}))
-                          }
-                        />
+                          </label>
+                          <div
+                            className='w-full flex justify-between'
+                          >
+
+                            <input 
+                              className={`${index == 2 ? "inline w-4/6" : "block w-full"}  p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700`}
+                              type={parameter.type}
+                              id={`parameter${index + 1}`}
+                              step="0.01"
+                              onChange={(e) =>
+                                setNewQuit(prev => ({...prev, usageParameters:{...prev.usageParameters, [name]: e.target.value }}))
+                              }
+                            />
+                            {
+                              index == 2
+                              &&
+                              <select
+                                id="timeUnitSelect"
+                                onChange={(e) => { setNewQuit(prev => ({ ...prev, minsOrHours: e.target.value })) }}
+                                value={newQuit.minsOrHours}
+                                className="inline p-2 ml-1 w-2/5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700"
+                              > 
+                                
+                                <option
+                                  value="minutes"
+                                >
+                                  Mins
+                                </option>
+                                <option
+                                  value="hours"
+                                >
+                                  Hours
+                                </option>
+                              </select>
+                            }
+                          </div>
                         </div> 
               })
             }

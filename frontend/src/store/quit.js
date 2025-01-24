@@ -8,9 +8,14 @@ export const useQuitStore = create((set) => ({
                 || !newQuit.addictionTypeID 
                 || !newQuit.startDate
                 || !newQuit.endDate 
-                || !newQuit.usageParameters || !newQuit.status ) {
+                || !newQuit.usageParameters || !newQuit.status || !newQuit.minsOrHours ) {
                     return { success: false, message: "Please fill in all fields." };
             }
+
+            if(newQuit.minsOrHours === "minutes") {
+                newQuit.usageParameters.Time = newQuit.usageParameters.Time / 60
+            }
+
             console.log(newQuit.videoFile)
             const formData = new FormData();
             formData.append("userID", newQuit.userID)
