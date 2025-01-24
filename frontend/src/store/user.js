@@ -8,22 +8,35 @@ export const useUserStore = create((set) => ({
     },
     registerUser: async (newUser) => {
         if(!newUser.userName ||!newUser.email || !newUser.password || !newUser.confirmationPassword){
-            if(newUser.password != newUser.confirmationPassword){
-                return {success: false, message:"password does not match conifrmation password"}
-            }
             return { success: false, message: "Please fill in all fields."};
         }
+        if(newUser.password != newUser.confirmationPassword){
+            console.log("password no match")
+            return {success: false, message:"password does not match conifrmation password"}
+        }
         console.log(newUser)
-        const response = await fetch("/api/users/register", {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            body: JSON.stringify(newUser)
-        })
-
-        const data = await response.json()
-        return { success: true, message: "User registered successfully" };
+        try {
+            const response = await fetch("/api/users/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify(newUser)
+            })
+            
+            if(!response.ok){
+                const errorData = await response.json()
+                throw new Error(errorData.message || "Somthing went wrong")
+            }
+            
+            const data = await response.json()
+            return { success: true, message: "User registered successfully" };
+            
+        } catch (err) {
+            return { success: false, message: err.message}
+           
+            
+        }
     },
     loginUser: async (loginDetails) => {
 

@@ -12,12 +12,13 @@ export const createRegister = async (req, res) => {
         return res.status(400).json({success: false, message: 'password does not match confirmation password'})
     }
     const existingUserName = await User.findOne({userName: userName});
-    if(existingUserName){
-        return res.status(400).json({success: false, message: 'username already taken'});
-    }
     const existingEmail = await User.findOne({email: email});
     if(existingEmail) {
         return res.status(400).json({success: false, message: 'email already registered'});
+    }
+    if(existingUserName){
+        console.log("existingNamecheck")
+        return res.status(400).json({success: false, message: 'username already taken'});
     }
     console.log(password)
     const hashedPassword = await bcrypt.hash(password, 10);
