@@ -26,6 +26,7 @@ const Login = ({setSelectedQuit}) => {
           password: ""
         }
       )
+      
       navigate("/home")
     }
   }

@@ -11,7 +11,7 @@ const Register = ({setSelectedQuit}) => {
     confirmationPassword: ""
   })
   const navigate = useNavigate()
-  const {registerUser, user} = useUserStore();
+  const {registerUser, loginUser, user} = useUserStore();
 
   const handleRegisterUser = async () => {
       const {success, message} = await registerUser(newUser)
@@ -19,6 +19,11 @@ const Register = ({setSelectedQuit}) => {
         alert(message)
       } else {
         alert(message)
+        const loginDetails ={
+          userNameEmail: newUser.email,
+          password: newUser.password
+        }
+        await loginUser(loginDetails)
         setNewUser(
           {
             userName: "",
@@ -27,7 +32,7 @@ const Register = ({setSelectedQuit}) => {
             confirmationPassword: ""
           }
         )
-        navigate("/login")
+        navigate("/home")
       }
   };
   useEffect(()=>{
