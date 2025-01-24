@@ -39,7 +39,7 @@ const MoneySaved = ({startDate, abandonedDate,cupsPerDay, costPerCup}) => {
 
   return (
     <div>
-      {moneySaved >= 0 ? moneySaved + "$" : "The quit has yet to begin, so the money saved remains precisely where it was—nowhere."}
+      {moneySaved >= 0 ? "$" + moneySaved  : "The quit has yet to begin, so the money saved remains precisely where it was—nowhere."}
     </div>
   );
 

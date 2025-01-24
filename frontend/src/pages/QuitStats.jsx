@@ -52,7 +52,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
           Loading...
         </div>
         :
-        <div className="w-full p-5 rounded flex flex-col gap-10  bg-slate-200 dark:bg-slate-600 dark:text-slate-100">
+        <div className="w-full p-5 rounded flex flex-col gap-10 bg-slate-200 dark:bg-slate-600 dark:text-slate-100">
           <div
             className='w-full text-xl border-b border-black'
           > 
