@@ -34,9 +34,12 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
   useEffect(()=> {
     if(currentQuit){
       setWhatConsumed( Object.keys(currentQuit?.usageParameters)[0])
+      console.log(Object.keys(currentQuit?.usageParameters)[0])
     }
   }, [currentQuit])
   
+
+   
 
 
   return (
@@ -133,7 +136,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                     Money Saved
                   </h2>
                   
-                  <MoneySaved startDate={currentQuit.startDate} abandonedDate={currentQuit.abandonedDate} cupsPerDay={currentQuit.usageParameters.Cups} costPerCup={currentQuit.usageParameters.Cost} />
+                  <MoneySaved startDate={currentQuit.startDate} abandonedDate={currentQuit.abandonedDate} cupsPerDay={currentQuit.usageParameters[whatConsumed]} costPerCup={currentQuit.usageParameters.Cost} />
                 </div> 
                 <div>
                   <h2
@@ -142,7 +145,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                     {whatConsumed} avoided
                   </h2>
                   
-                    <AmountAvoided startDate={currentQuit.startDate} abandonedDate={currentQuit.abandonedDate} amountPerDay={currentQuit.usageParameters.Cups}/>
+                    <AmountAvoided startDate={currentQuit.startDate} abandonedDate={currentQuit.abandonedDate} amountPerDay={currentQuit.usageParameters[whatConsumed]}/>
                 </div> 
               </div>
           </div>

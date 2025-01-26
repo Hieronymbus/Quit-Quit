@@ -13,6 +13,8 @@ import QuitAdvice from './pages/QuitAdvice';
 import QuitMilestones from './pages/QuitMilestones';
 import AddQuit from './pages/AddQuit';
 import ScrollToTop from './utils/ScrollToTop.jsx';
+import DeveloperInfo from './pages/DeveloperInfo.jsx';
+import AccountSettings from './pages/AccountSettings.jsx';
 
 function App() {
   
@@ -55,6 +57,8 @@ function App() {
           <Route element={<ProtectedRoutes /> } >
             <Route element={<PersonalDashboard setDarkMode={setDarkMode} darkMode={darkMode} setSelectedQuit={setSelectedQuit} />} path="/home"/>
             <Route element={<About setDarkMode={setDarkMode} darkMode={darkMode} /> } path="/about" />
+            <Route element={<DeveloperInfo />} path="/developer-info" />
+            <Route element={<AccountSettings />} path="/account-settings" />
             <Route element={<QuitStats setDarkMode={setDarkMode} darkMode={darkMode} selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit} />} path="/quitStats"/>
             <Route element={<QuitMilestones setDarkMode={setDarkMode} darkMode={darkMode} selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit}/>} path="/quitMilestones"/>
             <Route element={<QuitAdvice setDarkMode={setDarkMode} darkMode={darkMode} selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit}/>} path="/quitAdvice"/>

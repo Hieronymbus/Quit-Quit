@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 
-const MoneySaved = ({startDate, abandonedDate,cupsPerDay, costPerCup}) => {
+const MoneySaved = ({startDate, abandonedDate, cupsPerDay, costPerCup}) => {
   
   const [moneySaved, setMoneySaved] = useState(0);
 

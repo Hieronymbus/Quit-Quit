@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import TickUserIcon from '../assets/svg/TickUserIcon.jsx'
 import Button4UserMenu from './Button4UserMenu.jsx'
 import LogoutButton from './ButtonLogout.jsx'
@@ -7,7 +7,14 @@ import LogoutButton from './ButtonLogout.jsx'
 const MenuUser = ({ user, isUserMenuOpen, setDarkMode, darkMode, setIsLogoutClicked, isLogoutClicked }) => {
 
     const navigate = useNavigate()
-
+    const location = useLocation()
+    function handleNavigateToAccountSettings () {
+        if(location === '/account-settings') {
+            window.location.reload()
+        } else {
+            navigate('/account-settings')
+        }
+    }
     return (
         <div
             className={`${isUserMenuOpen === false ? 'hidden' : ""} 
@@ -22,7 +29,7 @@ const MenuUser = ({ user, isUserMenuOpen, setDarkMode, darkMode, setIsLogoutClic
 
             </h2>
             
-            <Button4UserMenu text="Account settings" />
+            <Button4UserMenu text="Account settings" onClick={handleNavigateToAccountSettings}/>
             
             <Button4UserMenu darkMode={darkMode} onClick={setDarkMode} text="Toggle Theme" />
             
