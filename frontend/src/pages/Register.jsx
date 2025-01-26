@@ -32,7 +32,7 @@ const Register = ({setSelectedQuit}) => {
             confirmationPassword: ""
           }
         )
-        navigate("/home")
+        await navigate("/home")
       }
   };
   useEffect(()=>{
