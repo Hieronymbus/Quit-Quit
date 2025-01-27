@@ -6,10 +6,30 @@ const addictionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    expertGuide: {
-        type: String,
-        required: true
-    },
+    expertGuide:  {
+        warning: {
+          type: String,
+          required: true, 
+        },
+        action: {
+            start:{
+                type:String,
+                required: true
+            },
+            middle: {
+                type: String,
+                required: true,
+            },
+            end: {
+                type: String,
+                required: true
+            }
+        },
+        maintenance: {
+          type: String,
+          required: true, 
+        },
+      },
     icon:{
         type: String,
         required: true
