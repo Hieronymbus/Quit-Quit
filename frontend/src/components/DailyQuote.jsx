@@ -16,7 +16,7 @@ const DailyQuote = () => {
     }
     useEffect(()=>{
         fetchDailyQuote()    
-    },[fetchDailyQuote])
+    },[])
   return (
    
     <div className="flex flex-col items-center gap-1 pb-3 border-b border-b-slate-500 dark:border-slate-400 ">
