@@ -7,8 +7,8 @@ const ButtonNotification = () => {
     <button
         className=' p-2 hidden sm:block rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800 '
         data-tooltip-id="notification-button-tooltip"
-        data-tooltip-content="Show notifications"
-        data-tooltip-place="bottom"
+        data-tooltip-content="Notifications feature - coming soon"
+        data-tooltip-place="bottom-end"
         data-tooltip-variant='dark'
         data-tooltip-delay-show={500}
     >
