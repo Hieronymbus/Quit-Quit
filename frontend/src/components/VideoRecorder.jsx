@@ -42,7 +42,7 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
       const chunks = [];
       mediaRecorder.ondataavailable = (event) => chunks.push(event.data);
       mediaRecorder.onstop = () => {
-        const blob = new Blob(chunks, { type: "video/webm" });
+        const blob = new Blob(chunks, { type: "video/mp4" });
         setRecordedBlob(blob);
         stopMediaStream();
       };
@@ -105,6 +105,7 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
             ref={videoRef}
             autoPlay 
             muted 
+            playsInline 
             style={{ width: "100%" }}
           > 
           </video>
