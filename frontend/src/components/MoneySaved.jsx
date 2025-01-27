@@ -39,7 +39,18 @@ const MoneySaved = ({startDate, abandonedDate, cupsPerDay, costPerCup}) => {
 
   return (
     <div>
-      {moneySaved >= 0 ? "$" + moneySaved  : "The quit has yet to begin, so the money saved remains precisely where it was—nowhere."}
+
+      {
+        costPerCup == 0
+        ?
+        <div>
+          Congratulations on starting your journey to quit a habit that, somehow, you were getting for free all that time. You’re not saving money, but perhaps it was your energy that was the real cost. At least your finances remain blissfully unaware you ever had a problem!
+        </div>
+        :
+        <div>
+          {moneySaved >= 0 ? "$" + moneySaved  : "The quit has yet to begin, so the money saved remains precisely where it was—nowhere."}
+        </div>
+      }
     </div>
   );
 

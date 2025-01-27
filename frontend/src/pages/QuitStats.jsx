@@ -33,15 +33,19 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
   },[quits])
   useEffect(()=> {
     if(currentQuit){
-      setWhatConsumed( Object.keys(currentQuit?.usageParameters)[0])
+
+      const keys = Object.keys(currentQuit?.usageParameters);
+      const knownKeys = ["Cost", "Time"];
+      const whatConsumedKey = keys.find(key => {
+        return !knownKeys.includes(key)
+      })
+      setWhatConsumed(whatConsumedKey)
       console.log(Object.keys(currentQuit?.usageParameters)[0])
     }
   }, [currentQuit])
   
 
    
-
-
   return (
     <div
        className='w-full min-h-screen  bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
@@ -144,7 +148,6 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                   >
                     {whatConsumed} avoided
                   </h2>
-                  
                     <AmountAvoided startDate={currentQuit.startDate} abandonedDate={currentQuit.abandonedDate} amountPerDay={currentQuit.usageParameters[whatConsumed]}/>
                 </div> 
               </div>
@@ -165,7 +168,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                   >
                     Written
                   </h3>
-                  {currentQuit.reasonsToQuit ? currentQuit.reasonsToQuit : "No reasons given. Just waking up one morning and deciding that perhaps, just perhaps, enough is enough. A fine, if somewhat mysterious, decision—no fanfare, no grand speeches—just the quiet resolve of someone who’s had enough of that particular nonsense. Carry on, then, with no particular reason but sheer will."}
+                  {currentQuit.reasonsToQuit ? currentQuit.reasonsToQuit : "No written reasons given. Just waking up one morning and deciding that perhaps, just perhaps, enough is enough. A fine, if somewhat mysterious, decision—no fanfare, no grand speeches—just the quiet resolve of someone who’s had enough of that particular nonsense. Carry on, then, with no particular reason but sheer will."}
                 </div>
                 <div>
                   <h3

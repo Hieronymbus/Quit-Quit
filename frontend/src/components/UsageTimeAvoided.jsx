@@ -43,7 +43,18 @@ const UsageTimeAvoided = ({startDate, abandonedDate, timePerDay}) => {
 
     return (
     <div>
-        {timeSaved}
+        {
+            timePerDay == 0
+            ?
+            <div>
+                Well done on starting the journey to quit a habit that, despite being suspiciously instantaneous and not stealing your time, might have quietly sapped your vitality, like a gremlin with a hidden agenda.
+            </div>
+            :
+            <div>
+                {timeSaved}
+            </div>
+        }
+        
     </div>
     );
         
