@@ -24,27 +24,37 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
     >
       <Header setDarkMode={setDarkMode} darkMode={darkMode} currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
       <QuitNav/>
-      <div
-        className=" p-5 text-xl  bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
-      > 
-        
-        <div dangerouslySetInnerHTML={{ __html: currentQuit?.addictionTypeID.expertGuide.warning }} /> 
-        <h2
-          className='text-4xl font-bold my-5 '
+      {
+        currentQuit 
+        ?
+        <div
+          className=" p-5 text-xl  bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
+        > 
+          
+          <div dangerouslySetInnerHTML={{ __html: currentQuit.addictionTypeID.expertGuide.warning }} /> 
+          <h2
+            className='text-4xl font-bold my-5 ' 
+          >
+            Action Phase(6 months)
+          </h2>
+          <div className='mb-10' dangerouslySetInnerHTML={{ __html: currentQuit.addictionTypeID.expertGuide.action.start }} /> 
+          <div className='mb-10' dangerouslySetInnerHTML={{ __html: currentQuit.addictionTypeID.expertGuide.action.middle }} /> 
+          <div className='mb-10' dangerouslySetInnerHTML={{ __html: currentQuit.addictionTypeID.expertGuide.action.end }} /> 
+          <h2
+            className='text-4xl font-bold mb-5'
+          >
+            Maintenance Phase(ongoing)
+          </h2>
+          <div className='mb-10' dangerouslySetInnerHTML={{ __html: currentQuit.addictionTypeID.expertGuide.maintenance }} /> 
+          
+        </div>
+        :
+        <div
+          className=" p-5 text-xl  bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
         >
-          Action Phase(6 months)
-        </h2>
-        <div className='mb-10' dangerouslySetInnerHTML={{ __html: currentQuit?.addictionTypeID.expertGuide.action.start }} /> 
-        <div className='mb-10' dangerouslySetInnerHTML={{ __html: currentQuit?.addictionTypeID.expertGuide.action.middle }} /> 
-        <div className='mb-10' dangerouslySetInnerHTML={{ __html: currentQuit?.addictionTypeID.expertGuide.action.end }} /> 
-        <h2
-          className='text-4xl font-bold mb-5'
-        >
-          Maintenance Phase(ongoing)
-        </h2>
-        <div className='mb-10' dangerouslySetInnerHTML={{ __html: currentQuit?.addictionTypeID.expertGuide.maintenance }} /> 
-        
-      </div>
+          Loading..
+        </div>
+      }
       
 
     </div>
