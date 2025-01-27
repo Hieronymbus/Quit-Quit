@@ -26,13 +26,28 @@ const DailyQuote = () => {
         {
             dailyQuote
             ?
-            <div className="flex flex-col items-center max-w-2xl px-4 text-center">
-                <h2 className="text-xl font-medium ">
-                    {dailyQuote[0]?.q}
-                </h2>
-                <h3 className="text-lg font-semibold mt-2 text-gray-700 dark:text-gray-400">
-                    — {dailyQuote[0]?.a}
-                </h3>
+            <div>
+                {
+                    dailyQuote !== "Have you heard the joke about yoga. Nevermind its a bit of a stretch."
+                    ?
+                    <div className="flex flex-col items-center max-w-2xl px-4 text-center">
+                        <h2 className="text-xl font-medium ">
+                            {dailyQuote[0].q}
+                        </h2>
+                        <h3 className="text-lg font-semibold mt-2 text-gray-700 dark:text-gray-400">
+                            — {dailyQuote[0]?.a}
+                        </h3>
+                    </div>
+                    :
+                    <div className="flex flex-col items-center max-w-2xl px-4 text-center">
+                        <h2 className="text-xl font-medium ">
+                            {dailyQuote}
+                        </h2>
+                        <h3 className="text-lg font-semibold mt-2 text-gray-700 dark:text-gray-400">
+                            — quote generation malfunction
+                        </h3>
+                    </div>
+                }
             </div>
             :
             <div>cacheing..</div>
