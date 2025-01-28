@@ -143,7 +143,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                
                 <div>
                   <label htmlFor='startDateInput' className="block text-lg font-medium  mb-1">
-                      Choose a Start Date
+                      Choose a Start Date/time
                   </label>
                   <DateTimePicker 
                     onChange={setDates}

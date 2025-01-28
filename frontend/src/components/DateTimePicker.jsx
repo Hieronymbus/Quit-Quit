@@ -32,7 +32,10 @@ const DateTimePicker = ({ onChange }) => {
         id='startDateInput'
         type="datetime-local"
         value={dateTime}
-        onChange={(e) => onChange(e)}
+        onChange={(e) => {
+          setDateTime(e.target.value)
+          onChange(e.target.value)
+        }}
       />
       <button 
         className="p-2 px-4 text-md  rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-sm shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
@@ -40,7 +43,7 @@ const DateTimePicker = ({ onChange }) => {
         onClick={handleNowButtonClick} 
         
       >
-        Or use Now as start time
+        Set to now
       </button>
     </div>
   );

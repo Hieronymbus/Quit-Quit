@@ -15,7 +15,7 @@ const LogoutButton = ({isLogoutClicked, setIsLogoutClicked}) => {
        if(success) {
         toast(message, {
           icon: "👋", 
-          duration: 3000,
+          duration: 2000,
           position: "bottom-center", 
           style: {
             borderRadius: "8px",
