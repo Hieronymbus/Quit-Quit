@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import QuitCard from './QuitCard'
+import { useNavigate } from 'react-router-dom'
 
 
 const QuitList = ({title,status , quits, setSelectedQuit}) => {
@@ -9,6 +10,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
            return quit.status === status
         })
     ) 
+    const navigate = useNavigate()
     const containerRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(null);
@@ -43,7 +45,10 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
 
     const handleMouseUpOrLeave = () => {
       setStartX(null);
-      containerRef.current.style.cursor = "grab";
+      if(filteredQuitsArr.length > 3){
+        containerRef.current.style.cursor = "grab";
+      }
+      
       containerRef.current.style.removeProperty("user-select");
     };
 
@@ -70,6 +75,11 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUpOrLeave}
             onMouseLeave={handleMouseUpOrLeave}
+            onMouseEnter={()=>{
+              if(filteredQuitsArr.length > 3){
+                containerRef.current.style.cursor = "grab";
+              }
+            }}
           >
             {/* No quits message */}
             {filteredQuitsArr.length === 0 && (
@@ -80,7 +90,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                     title === "Action-Phase"
                     &&
                     <i>
-                       To start a new quit click the plus icon at the top of the page.
+                       To start a new quit click the <b className='underline text-blue-400 cursor-pointer' onClick={() => navigate("/addQuit")}>here</b>
                     </i>
                   }
                 </i>
