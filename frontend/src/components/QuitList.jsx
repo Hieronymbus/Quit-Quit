@@ -21,13 +21,16 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
     // let dragDistance = 0;
 
     const handleMouseDown = (e) => {
-      setIsDragging(false);
-      setStartX(e.pageX - containerRef.current.offsetLeft) 
-      setScrollStart(containerRef.current.scrollLeft);
-      setDragDistance(0); // Reset drag distance
-      console.log(startX)
-      containerRef.current.style.cursor = "grabbing";
-      containerRef.current.style.userSelect = "none";
+      if(filteredQuitsArr.length > 3){
+
+        setIsDragging(false);
+        setStartX(e.pageX - containerRef.current.offsetLeft) 
+        setScrollStart(containerRef.current.scrollLeft);
+        setDragDistance(0); // Reset drag distance
+        console.log(startX)
+        containerRef.current.style.cursor = "grabbing";
+        containerRef.current.style.userSelect = "none";
+      }
     };
 
     const handleMouseMove = (e) => {

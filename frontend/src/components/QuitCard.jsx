@@ -42,7 +42,7 @@ const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
     <div
       ref={cardContainerRef}
       onMouseUp={(e) => handleQuitClick(e)}
-      className={` h-[250px] lg:w-[32%] md:w-[49%] sm:w-full w-full p-4 rounded  snap-center flex flex-shrink-0 flex-col gap-6 border-2 border-white ${bgColor} hover:cursor-pointer `}
+      className={` h-[250px] lg:w-[32%] md:w-[49%] sm:w-full w-full p-4 rounded  snap-center flex flex-shrink-0 flex-col gap-3  border-2 border-white ${bgColor} hover:cursor-pointer `}
       data-tooltip-id='cardTooltip'
       data-tooltip-content="Click to open advanced stats page"
       data-tooltip-place='bottom-start'
@@ -53,44 +53,71 @@ const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
     >
       <Tooltip id="cardTooltip" opacity="0.4"/>
       <h1
-        className='text-2xl'
+        className='text-3xl text-center'
       >
+        {
+          quit.abandonedDate
+          ?
+          <div>
+            I've given up quitting,
+          </div>
+          :
+          <div>
+            {
+              isStarted 
+              ? "I am currently quitting,"
+              : "I am going to quit,"
+            } 
+          </div>
+        }
         {quit.addictionTypeID.name}
       </h1>
       <div>
-        <h2
-          className='text-xl'
-        > 
-          {
-            quit.abandonedDate
-            ?
-            <div>
 
-              {isStarted ? "Quit Started On" : "Quit Would have started On"}
+        {
+          isStarted
+          &&
+          <div>
+            <h2
+              className='text-xl text-center'
+            >
+              {quit.abandonedDate ? "Quit Lasted For" : "Abstinance"}
+              
+            </h2>
+            <div
+              className=' text-4xl text-center'
+            >
+              <QuitDuration startDate={quit.startDate} abandonedDate={quit.abandonedDate}/>
             </div>
-            :
-            <div>
-
-              {isStarted ? "Quit Started On" : "Quit scheduled for start"}
-            </div>
-          }
-          
-        </h2> 
-        <FormatDate date={quit.startDate} />
-      </div>
-      {
-        isStarted
-        &&
+          </div>
+        }
         <div>
           <h2
-            className='text-lg'
-          >
-            {quit.abandonedDate ? "Quit Lasted For" : "Current Duration"}
+            className='text-xl italic text-center'
+          > 
+            {
+              quit.abandonedDate
+              ?
+              <div>
+
+                {isStarted ? "Quit Started On" : "Quit Would have started On"}
+              </div>
+              :
+              <div>
+
+                {isStarted ? "Since" : "Quit scheduled to start"}
+              </div>
+            }
             
-          </h2>
-          <QuitDuration startDate={quit.startDate} abandonedDate={quit.abandonedDate}/>
+          </h2> 
+          <div
+            className=' text-xl italic text-center'
+          >
+            <FormatDate date={quit.startDate} />
+          </div>
         </div>
-      }
+      </div>
+      
     </div>
   )
 }

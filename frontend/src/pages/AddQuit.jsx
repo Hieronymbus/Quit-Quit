@@ -263,15 +263,16 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                     <div>
 
                       <label 
-                        className='block w-full text-lg font-medium text-gray-700 mb-1'
+                        className='block w-full text-lg font-medium mb-1'
                         htmlFor="fileUploadInput"
                       >
-                        Choose file from device to upload:   
+                        Choose video file from device to upload   
                       </label>  
                       <input 
-                        className='block w-full p-2 pt-2.5 pb-2.5 border bg-white border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500'
-                        type="file"
+                        className='block w-full p-2 pt-2.5 pb-2.5 border bg-white border-gray-300  dark:text-slate-700 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 '
                         id="fileUploadInput"
+                        type="file"
+                        accept="video/*"
                         onChange={(e) => {
                           const file = e.target.files[0];  
                           setNewQuit(prev => ({ 
@@ -317,8 +318,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                     Start Quit
                   </button>  
                   <button
-                     className="text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
-
+                    className="text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
                     type='button' 
                     onClick={() => {
                       window.location = "/home"

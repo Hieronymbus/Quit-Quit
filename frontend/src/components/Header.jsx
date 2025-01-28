@@ -135,7 +135,7 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                                         <ButtonAddQuit />
                                     }   
                                     {
-                                        location.pathname === '/addQuit'
+                                        location.pathname !== '/home'
                                         &&
                                         <button
                                                 className=' p-2 rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800' 
@@ -146,35 +146,14 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                                             <BackArrowIcon />
                                             <Tooltip id='back-button-tooltip'/>
                                         </button>
-                                    }  
-                                    {
-                                        location.pathname === '/about'
-                                        &&
-                                        <button
-                                                className=' p-2 rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800' 
-                                                onClick={()=>{navigate('/home')}}
-                                                data-tooltip-id='back-button-tooltip'
-                                                data-tooltip-content='Return to home page'
-                                        >
-                                            <BackArrowIcon />
-                                            <Tooltip id='back-button-tooltip'/>
-                                        </button>
-                                    }                                   
+                                    }                                                     
                                     {   
                                         location.pathname == '/quitStats'
                                         &&
                                         <div
                                             className='flex'
                                         >
-                                            <button
-                                                className=' p-2 rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800' 
-                                                onClick={()=>{navigate('/home')}}
-                                                data-tooltip-id='back-button-tooltip'
-                                                data-tooltip-content='Return to home page'
-                                            >
-                                                <BackArrowIcon />
-                                                <Tooltip id='back-button-tooltip'/>
-                                            </button>
+                                          
                                             {
                                                 currentQuit?.status === 'abandoned'
                                                 ?
@@ -190,15 +169,7 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                                         <div
                                             className='flex'
                                         >
-                                            <button
-                                                className=' p-2 rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800' 
-                                                onClick={()=>{navigate('/home')}}
-                                                data-tooltip-id='back-button-tooltip'
-                                                data-tooltip-content='Return to home page'
-                                            >
-                                                <BackArrowIcon />
-                                                <Tooltip id='back-button-tooltip'/>
-                                            </button>
+                                           
                                             {
                                                 currentQuit?.status === 'abandoned'
                                                 ?
@@ -214,15 +185,7 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
                                         <div
                                             className='flex'
                                         >
-                                            <button
-                                                className=' p-2 rounded-3xl hover:bg-slate-500 dark:hover:bg-slate-800' 
-                                                onClick={()=>{navigate('/home')}}
-                                                data-tooltip-id='back-button-tooltip'
-                                                data-tooltip-content='Return to home page'
-                                            >
-                                                <BackArrowIcon />
-                                                <Tooltip id='back-button-tooltip'/>
-                                            </button>
+                                           
                                             {
                                                 currentQuit?.status === 'abandoned'
                                                 ?
