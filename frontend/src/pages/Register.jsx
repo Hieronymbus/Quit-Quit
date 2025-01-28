@@ -11,7 +11,7 @@ const Register = ({setSelectedQuit}) => {
     confirmationPassword: ""
   })
   const navigate = useNavigate()
-  const {registerUser, loginUser, user} = useUserStore();
+  const {registerUser, loginUser, user, fetchUser} = useUserStore();
 
   const handleRegisterUser = async () => {
       const {success, message} = await registerUser(newUser)
@@ -51,6 +51,7 @@ const Register = ({setSelectedQuit}) => {
             confirmationPassword: ""
           }
         )
+        await fetchUser()
         navigate("/home")
       }
   };

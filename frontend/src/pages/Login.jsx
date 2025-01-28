@@ -11,7 +11,7 @@ const Login = ({setSelectedQuit}) => {
   })
 
   const navigate = useNavigate()
-  const { loginUser } = useUserStore()
+  const { loginUser, fetchUser } = useUserStore()
   
   const handleLogin = async () => {
     const {success, message} = await loginUser(loginDetails);
@@ -46,7 +46,7 @@ const Login = ({setSelectedQuit}) => {
           password: ""
         }
       )
-      
+      await fetchUser()
       navigate("/home")
     }
   }
