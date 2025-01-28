@@ -11,8 +11,7 @@ export const useUserStore = create((set) => ({
             return { success: false, message: "Please fill in all fields."};
         }
         if(newUser.password != newUser.confirmationPassword){
-            console.log("password no match")
-            return {success: false, message:"password does not match conifrmation password"}
+            return {success: false, message:"Password does not match confirrmation password"}
         }
         console.log(newUser)
         try {
@@ -30,7 +29,7 @@ export const useUserStore = create((set) => ({
             }
             
             const data = await response.json()
-            return { success: true, message: "User registered successfully" };
+            return { success: true, message: "User registered successfully & logged in" };
             
         } catch (err) {
             return { success: false, message: err.message}
@@ -104,6 +103,9 @@ export const useUserStore = create((set) => ({
             }
         })
         const data = await response.json();
+        if(data.success === true){
+            return {success: true, message: "logged out"}
+        }
         set({ user: {
             isLoggedIn: false,
             userDetails: {},

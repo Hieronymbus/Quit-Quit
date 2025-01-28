@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { useUserStore } from '../store/user'
 import { useNavigate } from 'react-router-dom'
+import toast from "react-hot-toast";
 
 const LogoutButton = ({isLogoutClicked, setIsLogoutClicked}) => {
     
@@ -10,7 +11,19 @@ const LogoutButton = ({isLogoutClicked, setIsLogoutClicked}) => {
         setIsLogoutClicked(true)
     }
     async function handleLogoutYes() {
-        await logoutUser()
+       const {success, message} = await logoutUser()
+       if(success) {
+        toast(message, {
+          icon: "👋", 
+          duration: 3000,
+          position: "bottom-center", 
+          style: {
+            borderRadius: "8px",
+            background: "#333",
+            color: "#fff",
+          },
+        });
+       }
         navigate('/')
 
     }

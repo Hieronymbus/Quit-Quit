@@ -9,7 +9,7 @@ export const createRegister = async (req, res) => {
     const { userName, email, password, confirmationPassword } = req.body
 
     if(password != confirmationPassword ){
-        return res.status(400).json({success: false, message: 'password does not match confirmation password'})
+        return res.status(400).json({success: false, message: 'Password does not match confirmation password'})
     }
     const existingUserName = await User.findOne({userName: userName});
     const existingEmail = await User.findOne({email: email});
