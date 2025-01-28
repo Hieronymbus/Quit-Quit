@@ -64,9 +64,8 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
             {title}
           </h2>
         </div>
-        <div className="relative w-full flex flex-col sm:flex-row items-center  ">
+        <div className="relative w-full flex flex-col sm:flex-row items-center p-2 rounded-md bg-slate-300 dark:bg-slate-500">
          
-    
           {/* Scrollable Container */}
           <div
             ref={containerRef}
@@ -121,10 +120,10 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
             
           </div>
             {
-              filteredQuitsArr.length > 1
+              filteredQuitsArr.length > 3
               &&
               <div
-                className='sm:h-[250px] w-full sm:w-fit  flex sm:flex-col rounded-b-lg'
+                className='hidden sm:flex sm:h-[250px] w-full sm:w-fit  sm:flex-col rounded-b-lg'
               >
                 <button
                   className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
@@ -142,6 +141,66 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                   onClick={() => {
                     containerRef.current.scrollBy({
                       left: -300,
+                      behavior: "smooth",
+                    });
+                  }}
+                >
+                  ◀
+                </button>
+              </div>
+            }
+            {
+              filteredQuitsArr.length > 2
+              &&
+              <div
+                className='hidden sm:flex md:hidden lg:hidden sm:h-[250px] w-full sm:w-fit  sm:flex-col rounded-b-lg'
+              >
+                <button
+                  className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
+                  onClick={() => {
+                    containerRef.current.scrollBy({
+                      left: 300,
+                      behavior: "smooth",
+                    });
+                  }}
+                >
+                  ▶
+                </button>
+                <button
+                  className="w-1/2 order-1 sm:order-2 sm:h-1/2 sm:w-full p-2 rounded-l-lg sm:rounded-l-none sm:rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
+                  onClick={() => {
+                    containerRef.current.scrollBy({
+                      left: -300,
+                      behavior: "smooth",
+                    });
+                  }}
+                >
+                  ◀
+                </button>
+              </div>
+            }
+            {
+              filteredQuitsArr.length > 1
+              &&
+              <div
+                className='sm:h-[250px] sm:hidden w-full sm:w-fit  flex sm:flex-col rounded-b-lg'
+              >
+                <button
+                  className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
+                  onClick={() => {
+                    containerRef.current.scrollBy({
+                      left: 335,
+                      behavior: "smooth",
+                    });
+                  }}
+                >
+                  ▶
+                </button>
+                <button
+                  className="w-1/2 order-1 sm:order-2 sm:h-1/2 sm:w-full p-2 rounded-l-lg sm:rounded-l-none sm:rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
+                  onClick={() => {
+                    containerRef.current.scrollBy({
+                      left: -335,
                       behavior: "smooth",
                     });
                   }}

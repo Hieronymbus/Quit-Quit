@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
 import QuitDuration from './QuitDuration.jsx';
 import FormatDate from './FormatDate.jsx';
+import VertElipses from '../assets/svg/VertElipses.jsx';
 
 const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
   const navigate = useNavigate()
@@ -42,7 +43,7 @@ const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
     <div
       ref={cardContainerRef}
       onMouseUp={(e) => handleQuitClick(e)}
-      className={` h-[250px] lg:w-[32%] md:w-[49%] sm:w-full w-full p-4 rounded  snap-center flex flex-shrink-0 flex-col gap-3  border-2 border-white ${bgColor} hover:cursor-pointer `}
+      className={` relative h-[250px] lg:w-[32%] md:w-[49%] sm:w-full w-full p-4 rounded snap-center flex flex-shrink-0 flex-col gap-3  border-2 border-white ${bgColor} hover:cursor-pointer `}
       data-tooltip-id='cardTooltip'
       data-tooltip-content="Click to open advanced stats page"
       data-tooltip-place='bottom-start'
@@ -51,9 +52,14 @@ const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
       data-tooltip-delay-show={500}
       
     >
-      <Tooltip id="cardTooltip" opacity="0.4"/>
+      <Tooltip id="cardTooltip" opacity="0.8"/>
+      <div
+        className=' absolute right-1.5 '
+      >
+        <VertElipses />
+      </div>
       <h1
-        className='text-3xl text-center'
+        className='text-2xl  '
       >
         {
           quit.abandonedDate
@@ -79,13 +85,13 @@ const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
           &&
           <div>
             <h2
-              className='text-xl text-center'
+              className='text-xl italic'
             >
               {quit.abandonedDate ? "Quit Lasted For" : "Abstinance"}
               
             </h2>
             <div
-              className=' text-4xl text-center'
+              className=' text-3xl text-center font-semibold'
             >
               <QuitDuration startDate={quit.startDate} abandonedDate={quit.abandonedDate}/>
             </div>
@@ -93,28 +99,49 @@ const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
         }
         <div>
           <h2
-            className='text-xl italic text-center'
+            className='text-xl italic '
           > 
             {
               quit.abandonedDate
               ?
               <div>
 
-                {isStarted ? "Quit Started On" : "Quit Would have started On"}
+                {isStarted 
+                ? 
+                  <div>
+                    Ended on
+                    <div
+                      className=' text-xl  font-light text-center'
+                    >
+                      <FormatDate date={quit.abandonedDate} />
+                    </div>
+                  </div>
+                : 
+                  <div>
+                    Quit Would have started On
+                    <div
+                      className=' text-xl  font-light text-center'
+                    >
+                      <FormatDate date={quit.startDate} />
+                    </div>
+                  </div>
+                }
+                
               </div>
               :
               <div>
 
                 {isStarted ? "Since" : "Quit scheduled to start"}
+                <div
+                className=' text-xl  font-light text-center'
+                >
+                  <FormatDate date={quit.startDate} />
+                </div>
               </div>
             }
             
           </h2> 
-          <div
-            className=' text-xl italic text-center'
-          >
-            <FormatDate date={quit.startDate} />
-          </div>
+          
         </div>
       </div>
       
