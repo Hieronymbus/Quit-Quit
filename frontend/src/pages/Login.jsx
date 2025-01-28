@@ -46,7 +46,7 @@ const Login = ({setSelectedQuit}) => {
           password: ""
         }
       )
-      await fetchUser()
+      
       navigate("/home")
     }
   }

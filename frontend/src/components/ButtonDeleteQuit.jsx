@@ -33,7 +33,7 @@ export const DeleteQuitButton = ({currentQuit}) => {
             <div>
                 <Overlay />
                 <div
-                    className='p-3 w-11/12 rounded-xl fixed top-28 m-auto inset-x-0 flex flex-col bg-slate-400 dark:bg-slate-600  shadow-lg shadow-black'
+                    className='p-3 w-11/12 sm:w-1/4  rounded-xl fixed top-28 m-auto inset-x-0 flex flex-col bg-slate-400 dark:bg-slate-600  shadow-lg shadow-black'
                 >   
                     <h2
                         className='text-center text-lg mb-2 '
@@ -48,13 +48,13 @@ export const DeleteQuitButton = ({currentQuit}) => {
                             className="w-1/2 text-lg p-2 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-md shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2" 
                             onClick={handleDeleteQuit}
                         >
-                            YES
+                            Yes
                         </button>
                         <button
                             className="w-1/2 text-lg p-2 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-md shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2" 
                             onClick={() => setIsDeleteClicked(false)}
                         >
-                            NO
+                            No
                         </button>
                     </div>
                 </div>

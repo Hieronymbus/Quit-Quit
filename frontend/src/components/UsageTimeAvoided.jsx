@@ -47,7 +47,7 @@ const UsageTimeAvoided = ({startDate, abandonedDate, timePerDay}) => {
             timePerDay == 0
             ?
             <div>
-                Well done on starting the journey to quit a habit that, despite being suspiciously instantaneous and not stealing your time, might have quietly sapped your vitality, like a gremlin with a hidden agenda.
+             Zero reclaimed, but well done on starting the journey to quit a habit that, despite being suspiciously instantaneous and not stealing your time, might have quietly sapped your vitality, like a gremlin with a hidden agenda.
             </div>
             :
             <div>

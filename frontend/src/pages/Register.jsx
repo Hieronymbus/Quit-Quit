@@ -51,7 +51,7 @@ const Register = ({setSelectedQuit}) => {
             confirmationPassword: ""
           }
         )
-        await fetchUser()
+        
         navigate("/home")
       }
   };

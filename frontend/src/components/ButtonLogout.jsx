@@ -34,22 +34,24 @@ const LogoutButton = ({isLogoutClicked, setIsLogoutClicked}) => {
                 isLogoutClicked 
                 ? (
                     <div
-                        className='flex flex-col p-5 rounded-2xl bg-slate-200 dark:bg-slate-800 '
+                        className='flex flex-col pt-2 pb-4 rounded-b-2xl bg-slate-5000 dark:bg-slate-900 border-t-slate-500 border-t '
                     >
-                      <h3>
-                        Confirm Logout -
+                      <h3
+                        className='text-xl text-center'
+                      >
+                        Confirm Logout 
                       </h3>
                       <div
-                        className='mt-1 flex '
+                        className='mt-2 flex justify-center gap-2'
                       >
                         <button
-                            className='mr-5 p-1 border-2 border-slate-800 rounded-md dark:border-slate-100'
-                            onClick={handleLogoutYes}
+                          className="w-1/3 text-lg p-2 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-md shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2" 
+                          onClick={handleLogoutYes}
                         >
                             Yes
                         </button>
                         <button
-                          className='mr-5 p-1 border-2 border-slate-800 rounded-md dark:border-slate-100'
+                          className="w-1/3 text-lg p-2 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-md shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2" 
                           onClick={()=>setIsLogoutClicked(false)}
                         >
                             No

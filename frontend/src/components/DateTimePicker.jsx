@@ -40,7 +40,7 @@ const DateTimePicker = ({ onChange }) => {
         onClick={handleNowButtonClick} 
         
       >
-        Use Now as start time
+        Or use Now as start time
       </button>
     </div>
   );
