@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {  useNavigate } from 'react-router-dom';
+import toast from "react-hot-toast";
 import { useUserStore } from '../store/user.js';
 import { useAddictionStore } from '../store/addiction.js';
 import { useQuitStore } from '../store/quit.js';
 import VideoRecorder from '../components/VideoRecorder.jsx';
 import Header from '../components/Header.jsx';
+import DateTimePicker from '../components/DateTimePicker.jsx';
+
 
 const AddQuit = ({setDarkMode, darkMode}) => {
   const navigate = useNavigate();
@@ -37,9 +40,9 @@ const AddQuit = ({setDarkMode, darkMode}) => {
     }
   }, [newQuit.addictionTypeID])
 
-  function setDates(e) {
+  function setDates(value) {
     // Parse the start date from input (this will be in the format "YYYY-MM-DDTHH:mm")
-    const newStartDate = new Date(e.target.value); 
+    const newStartDate = new Date(value); 
     
     // Create a new end date by copying the start date
     const newEndDate = new Date(newStartDate);
@@ -68,13 +71,31 @@ const AddQuit = ({setDarkMode, darkMode}) => {
     console.log(message)
     
     
-    alert(message)
     if(success) {
-     
+      toast(message, {
+        icon: "👏", // Custom icon
+        duration: 4000, // Toast duration in milliseconds
+        style: {
+          borderRadius: "8px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
 
       // navigate("/personalDashboard")
       window.location = "/home"
       window.location()
+    } else {
+      toast(message, {
+        icon: "❌", // Custom icon for failure
+        duration: 4000, // Toast duration in milliseconds
+        style: {
+          borderRadius: "8px",
+          background: "#f8d7da", // Light red background
+          color: "#721c24", // Dark red text
+          border: "1px solid #f5c6cb", // Red border
+        },
+      });
     }
   }
 
@@ -122,12 +143,8 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                   <label htmlFor='startDateInput' className="block text-lg font-medium  mb-1">
                       Choose a Start Date
                   </label>
-                  <input
-                      className="block w-full p-2 pl-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700"
-                      type="datetime-local"
-                      id='startDateInput'
-                      onChange={(e) => setDates(e)}
-                      value={newQuit.startDate ? newQuit.startDate.toISOString().slice(0, 16) : ""}
+                  <DateTimePicker 
+                    onChange={setDates}
                   />
                 </div>
               )
@@ -155,6 +172,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                               type={parameter.type}
                               id={`parameter${index + 1}`}
                               step="0.01"
+                              min="0"
                               onChange={(e) =>
                                 setNewQuit(prev => ({...prev, usageParameters:{...prev.usageParameters, [name]: e.target.value }}))
                               }
