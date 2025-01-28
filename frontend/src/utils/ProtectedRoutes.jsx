@@ -13,7 +13,7 @@ const ProtectedRoutes = () => {
       return <div></div>
     }
     return (
-    user.isLoggedIn ? <Outlet /> : <Navigate to="/register" />
+    user.isLoggedIn ? <Outlet /> : <Navigate to="/" />
   )
 }
 

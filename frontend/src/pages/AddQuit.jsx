@@ -74,7 +74,8 @@ const AddQuit = ({setDarkMode, darkMode}) => {
     if(success) {
       toast(message, {
         icon: "👏", // Custom icon
-        duration: 4000, // Toast duration in milliseconds
+        duration: 4000,
+        position: "bottom-center", 
         style: {
           borderRadius: "8px",
           background: "#333",
@@ -88,7 +89,8 @@ const AddQuit = ({setDarkMode, darkMode}) => {
     } else {
       toast(message, {
         icon: "❌", // Custom icon for failure
-        duration: 4000, // Toast duration in milliseconds
+        duration: 4000,
+        position: "bottom-center", 
         style: {
           borderRadius: "8px",
           background: "#f8d7da", // Light red background

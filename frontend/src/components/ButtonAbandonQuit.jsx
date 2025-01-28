@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useQuitStore } from '../store/quit'
 import { useNavigate } from 'react-router-dom'
 import { Tooltip } from 'react-tooltip'
+import toast from "react-hot-toast";
 import Overlay from './Overlay'
 const AbandonQuitButton = ({currentQuit}) => {
 
@@ -11,6 +12,16 @@ const AbandonQuitButton = ({currentQuit}) => {
     
     const handleAbandonQuit = async (quit) => {
         await abandonQuit(quit)
+        toast("Quit abandoned", {
+            icon: "👀", 
+            duration: 3000,
+            position: "bottom-center", 
+            style: {
+              borderRadius: "8px",
+              background: "#333",
+              color: "#fff",
+            },
+          });
         navigate("/home")
     };
     

@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import { useUserStore } from '../store/user.js'
 import { useNavigate } from 'react-router-dom'
-
+import toast from "react-hot-toast";
 const Register = ({setSelectedQuit}) => {
 
   const [newUser, setNewUser] = useState({
@@ -16,9 +16,28 @@ const Register = ({setSelectedQuit}) => {
   const handleRegisterUser = async () => {
       const {success, message} = await registerUser(newUser)
       if(!success){
-        alert(message)
+        toast(message, {
+          icon: "❌", // Custom icon for failure
+          duration: 3000, 
+          position: "bottom-center",
+          style: {
+            borderRadius: "8px",
+            background: "#f8d7da", // Light red background
+            color: "#721c24", // Dark red text
+            border: "1px solid #f5c6cb", // Red border
+          },
+        });
       } else {
-        alert(message)
+        toast(message, {
+          icon: "👏", 
+          duration: 3000,
+          position: "bottom-center", 
+          style: {
+            borderRadius: "8px",
+            background: "#333",
+            color: "#fff",
+          },
+        });
         const loginDetails ={
           userNameEmail: newUser.email,
           password: newUser.password
