@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Overlay from './Overlay';
 import MilestonePercent from './MilestonePercent';
+import VertElipses from '../assets/svg/VertElipses'
 
 const CardMilestone = ({goalAchieved, description, title, goalPercent}) => {
   
@@ -12,11 +13,18 @@ const CardMilestone = ({goalAchieved, description, title, goalPercent}) => {
     return (
             <div 
                 className={
-                    `   p-1.5 rounded-xl hover:cursor-pointer 
+                    `    p-1.5 rounded-xl hover:cursor-pointer 
                     ${goalAchieved ? "bg-gradient-to-br from-blue-500 to-purple-600  text-white p-6 rounded-lg shadow-lg  " : "bg-gradient-to-r from-orange-200 via-orange-300 to-amber-200 text-orange-900 p-6 rounded-lg shadow-lg"} 
                     overflow-auto `}
                 onClick={handleMilestoneClick}
-            > 
+            >   
+
+                <div
+                    className='  flex justify-end'
+                >
+                    
+                    <VertElipses />
+                </div>
                 <div
                     className=' flex justify-between  gap-2'
                 >
@@ -48,7 +56,7 @@ const CardMilestone = ({goalAchieved, description, title, goalPercent}) => {
                     isMilestoneClicked
                     &&
                     <div
-                        className='z-50 bg-inherit border-inherit '
+                        className='z-60 bg-inherit border-inherit '
                     >
 
                         <Overlay />
