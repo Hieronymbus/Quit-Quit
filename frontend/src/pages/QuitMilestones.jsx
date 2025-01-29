@@ -11,6 +11,8 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) 
   const {fetchQuits, quits} = useQuitStore();
   const {user } = useUserStore()
   const [currentQuit, setCurrentQuit] = useState(quits.find((quit) => quit._id === selectedQuit))
+  const [whatConsumed, setWhatConsumed] = useState(null);
+
   const [sortedAdjustedAchievmentsArr, setSortedAdjustedAchievmentsArr] = useState([])
   
 
@@ -25,6 +27,19 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) 
     const foundQuit = quits.find((quit) => quit._id === selectedQuit);
     setCurrentQuit(foundQuit || null);
   }, [quits, selectedQuit]);
+
+  useEffect(()=> {
+    if(currentQuit){
+
+      const keys = Object.keys(currentQuit?.usageParameters);
+      const knownKeys = ["Cost", "Time"];
+      const whatConsumedKey = keys.find(key => {
+        return !knownKeys.includes(key)
+      })
+      setWhatConsumed(whatConsumedKey)
+      console.log(Object.keys(currentQuit?.usageParameters)[0])
+    }
+  }, [currentQuit])
 
   useEffect(() => {
     if(currentQuit) {
@@ -43,29 +58,32 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) 
         const money = amount * costPerCup
         return money
       }
-      const moneyGoal = money(amountTotal(currentQuit?.usageParameters.Cups, timeDays(currentQuit?.startDate)),currentQuit?.usageParameters.Cost)  
-      const amountGoal = amountTotal(currentQuit?.usageParameters.Cups, timeDays(currentQuit?.startDate))
+      const moneyGoal = money(amountTotal(currentQuit?.usageParameters[whatConsumed], timeDays(currentQuit?.startDate)),currentQuit?.usageParameters.Cost)  
+      const amountGoal = amountTotal(currentQuit?.usageParameters[whatConsumed], timeDays(currentQuit?.startDate))
       const timeGoal = timeDays(currentQuit?.startDate)
      
     
-      const goalMatchArr =[moneyGoal, moneyGoal, moneyGoal, amountGoal, amountGoal, amountGoal, timeGoal, timeGoal, timeGoal, timeGoal] 
+      const goalMatchArr = [moneyGoal, moneyGoal, moneyGoal, amountGoal, amountGoal, amountGoal, timeGoal, timeGoal, timeGoal, timeGoal] 
     
       const adjustedAchievmentsArr = currentQuit?.addictionTypeID.achievments.map((achievment, index) => {
+          
           if (goalMatchArr[index] >= achievment.target) {
             achievment.goalAchieved = true
+            achievment.goalPercent = 100
             return achievment
           } else {
             achievment.goalAchieved = false
-            achievment.goalPercent = 0
+
+            achievment.goalPercent = parseInt((goalMatchArr[index] / achievment.target) * 100)
             return achievment
           }
       })
       
       setSortedAdjustedAchievmentsArr( [...adjustedAchievmentsArr].sort((a, b) => {
-        return b.goalAchieved - a.goalAchieved;
+        return b.goalPercent - a.goalPercent;
       }))
     }
-  }, [currentQuit])
+  }, [currentQuit, whatConsumed])
 
   return (
     <div
@@ -82,11 +100,12 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) 
             <CardMilestone 
                 key={index}
                 goalAchieved={milestone.goalAchieved}
+                goalPercent={milestone.goalPercent}
                 title={milestone.title}
                 description={milestone.description}
             />
           )
-          
+        
         })}
         
       </div>

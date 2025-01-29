@@ -16,7 +16,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
   const {user } = useUserStore();
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [whatConsumed, setWhatConsumed] = useState(null);
-  const [currentQuit, setCurrentQuit] = useState(null)
+  const [currentQuit, setCurrentQuit] = useState(null);
 
   useEffect(() => {
     const loadData = async () => {
