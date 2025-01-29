@@ -145,19 +145,19 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
           )      
         }
       </div>
-      
-
-        {
-          isRecording 
-          && 
-          <p
-            className="mt-2 sm:mt-5 text-lg"
-          >
-            Recording... {timer}s
-          </p>
-        }
-      
-      {recordedBlob && (
+      {
+        isRecording 
+        && 
+        <p
+          className="mt-2 sm:mt-5 text-lg"
+        >
+          Recording... {timer}s
+        </p>
+      }     
+      {
+        recordedBlob 
+        && 
+        (
         <div>
           <h3
             className="text-xl mb-3"
@@ -186,7 +186,8 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
             </button>
           </div>
         </div>
-      )}
+        )
+      }
     </div>
   );
 };

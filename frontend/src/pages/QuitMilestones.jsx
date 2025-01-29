@@ -97,27 +97,35 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) 
         setIsEitherMenuClicked={setIsEitherMenuClicked}
         isEitherMenuClicked={isEitherMenuClicked}
       />
-      <QuitNav/>
-      
-      <div className="p-5 grid sm:grid-rows-5 sm:grid-cols-2 gap-2 bg-slate-200 dark:bg-slate-600 overflow-auto">
-        {sortedAdjustedAchievmentsArr.map((milestone, index) => {
+      <QuitNav />
+      {
+        currentQuit
+        ?
+        <div className="p-5 grid sm:grid-rows-5 sm:grid-cols-2 gap-2 bg-slate-200 dark:bg-slate-600 overflow-auto">
+          {sortedAdjustedAchievmentsArr.map((milestone, index) => {
 
-          return (
+            return (
 
-            <CardMilestone 
-                key={index}
-                goalAchieved={milestone.goalAchieved}
-                goalPercent={milestone.goalPercent}
-                title={milestone.title}
-                description={milestone.description}
-                isEitherMenuClicked={isEitherMenuClicked}
-                setIsEitherMenuClicked={setIsEitherMenuClicked}
-            />
-          )
-        
-        })}
-        
-      </div>
+              <CardMilestone 
+                  key={index}
+                  goalAchieved={milestone.goalAchieved}
+                  goalPercent={milestone.goalPercent}
+                  title={milestone.title}
+                  description={milestone.description}
+                  isEitherMenuClicked={isEitherMenuClicked}
+                  setIsEitherMenuClicked={setIsEitherMenuClicked}
+              />
+            )
+          
+          })}        
+        </div>
+        :
+        <div
+          className="h-full-minus-navbar p-5 text-xl bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
+        >
+          Loading..
+        </div>
+      }
 
     </div>
   )

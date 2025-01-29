@@ -55,7 +55,9 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
       {
         !currentQuit
         ?
-        <div>
+        <div
+          className="h-full-minus-navbar p-5 text-xl bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
+        >
           Loading...
         </div>
         :

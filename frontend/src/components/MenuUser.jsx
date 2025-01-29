@@ -23,14 +23,11 @@ const MenuUser = ({ user, isUserMenuOpen, setDarkMode, darkMode, setIsLogoutClic
             <h2
                 className='h-20 pl-4 text-3xl flex justify-center items-center'
             >
-
                 {user?.userDetails.userName}
                 <TickUserIcon />
-
             </h2>
             
             <Button4UserMenu text="Account settings" onClick={handleNavigateToAccountSettings}/>
-            
             <Button4UserMenu darkMode={darkMode} onClick={setDarkMode} text="Toggle Theme" />
             
             <LogoutButton setIsLogoutClicked={setIsLogoutClicked} isLogoutClicked={isLogoutClicked} />
