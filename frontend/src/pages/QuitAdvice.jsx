@@ -20,15 +20,15 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
   const currentQuit = quits.find((quit) => quit._id === selectedQuit)
   return (
     <div
-      className="dark:text-slate-200"
+      className='dark:text-slate-200'
     >
       <Header setDarkMode={setDarkMode} darkMode={darkMode} currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
       <QuitNav/>
       {
-        currentQuit 
+        !currentQuit 
         ?
         <div
-          className=" p-5 text-xl  bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
+          className=" p-5 text-xl bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
         > 
           
           <div dangerouslySetInnerHTML={{ __html: currentQuit.addictionTypeID.expertGuide.warning }} /> 
@@ -50,9 +50,9 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
         </div>
         :
         <div
-          className=" p-5 text-xl  bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
+          className="h-full-minus-navbar p-5 text-xl bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
         >
-          Loading..
+            Loading..
         </div>
       }
       

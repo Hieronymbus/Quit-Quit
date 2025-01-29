@@ -9,6 +9,7 @@ export default {
     extend: {
       height: {
         'full-minus-16': 'calc(100% - 4rem)', // 4rem = 16 Tailwind spacing unit
+        'full-minus-navbar': 'calc(100vh - 94px)' // 94px banana navbar height when quitting 🍌
       },
       fontFamily: {
         roboto: ['Roboto', 'sans'],
