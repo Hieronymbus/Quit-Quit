@@ -10,6 +10,9 @@ export default {
       height: {
         'full-minus-16': 'calc(100% - 4rem)', // 4rem = 16 Tailwind spacing unit
       },
+      fontFamily: {
+        roboto: ['Roboto', 'sans'],
+      },
     }
   },
   plugins: [],

@@ -57,8 +57,8 @@ function App() {
           <Route element={<ProtectedRoutes /> } >
             <Route element={<PersonalDashboard setDarkMode={setDarkMode} darkMode={darkMode} setSelectedQuit={setSelectedQuit} />} path="/home"/>
             <Route element={<About setDarkMode={setDarkMode} darkMode={darkMode} /> } path="/about" />
-            <Route element={<DeveloperInfo />} path="/developer-info" />
-            <Route element={<AccountSettings />} path="/account-settings" />
+            <Route element={<DeveloperInfo setDarkMode={setDarkMode} darkMode={darkMode}/>} path="/developer-info" />
+            <Route element={<AccountSettings setDarkMode={setDarkMode} darkMode={darkMode}/>} path="/account-settings" />
             <Route element={<QuitStats setDarkMode={setDarkMode} darkMode={darkMode} selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit} />} path="/quitStats"/>
             <Route element={<QuitMilestones setDarkMode={setDarkMode} darkMode={darkMode} selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit}/>} path="/quitMilestones"/>
             <Route element={<QuitAdvice setDarkMode={setDarkMode} darkMode={darkMode} selectedQuit={selectedQuit} setSelectedQuit={setSelectedQuit}/>} path="/quitAdvice"/>

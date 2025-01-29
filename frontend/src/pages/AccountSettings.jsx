@@ -1,13 +1,13 @@
 import React from 'react'
 import Header from '../components/Header'
 
-const AccountSettings = () => {
+const AccountSettings = ({darkMode, setDarkMode}) => {
  
     return (
         <div
             className='w-full h-screen flex flex-col '
         >
-            <Header />
+            <Header setDarkMode={setDarkMode} darkMode={darkMode}/>
             <div
                 className='h-full-minus-16 p-5 text-xl  bg-slate-200 dark:bg-slate-600 dark:text-slate-200'
             >
