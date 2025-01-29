@@ -1,15 +1,22 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Overlay from './Overlay';
 import MilestonePercent from './MilestonePercent';
 import VertElipses from '../assets/svg/VertElipses'
 
-const CardMilestone = ({goalAchieved, description, title, goalPercent}) => {
+const CardMilestone = ({goalAchieved, description, title, goalPercent, isEitherMenuClicked ,setIsEitherMenuClicked}) => {
   
     const [isMilestoneClicked, setIsMilestoneClicked] = useState(false);
+
 
     const handleMilestoneClick = () =>  {
         setIsMilestoneClicked(!isMilestoneClicked)
     }
+
+    useEffect(()=>{
+        setIsEitherMenuClicked(false)
+        setIsMilestoneClicked(false)
+    },[isEitherMenuClicked])
+
     return (
             <div 
                 className={

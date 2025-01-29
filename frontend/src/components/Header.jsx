@@ -18,7 +18,7 @@ import ButtonNotification from './ButtonNotification.jsx'
 import AbandonQuitButton from './ButtonAbandonQuit.jsx'
 import { DeleteQuitButton } from './ButtonDeleteQuit.jsx'
 
-const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
+const Header = ({currentQuit, setSelectedQuit, darkMode, setDarkMode, isEitherMenuClicked,setIsEitherMenuClicked}) => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
@@ -33,12 +33,14 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
     const handleMenuButtonClick = () => {
         if (!isMenuOpen) {
             document.body.classList.add("overflow-hidden");
-          } else {
+        } else {
             document.body.classList.remove("overflow-hidden");
-          }
+        }
         setIsMenuOpen(!isMenuOpen)
         setIsUserMenuOpen(false)
         setIsLogoutClicked(false)
+        setIsEitherMenuClicked(true)
+        
     }
     useEffect(() => {
         document.body.classList.remove("overflow-hidden")
@@ -49,8 +51,8 @@ const Header = ({currentQuit, setSelectedQuit, darkMode,setDarkMode}) => {
         setIsUserMenuOpen(!isUserMenuOpen)
         setIsMenuOpen(false)
         setIsLogoutClicked(false)
-        
-          document.body.classList.remove("overflow-hidden");
+        setIsEitherMenuClicked(true)
+        document.body.classList.remove("overflow-hidden");
           
     };
     const handleClickOutside = (e) => {

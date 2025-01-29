@@ -12,9 +12,9 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) 
   const {user } = useUserStore()
   const [currentQuit, setCurrentQuit] = useState(quits.find((quit) => quit._id === selectedQuit))
   const [whatConsumed, setWhatConsumed] = useState(null);
-
-  const [sortedAdjustedAchievmentsArr, setSortedAdjustedAchievmentsArr] = useState([])
+  const [sortedAdjustedAchievmentsArr, setSortedAdjustedAchievmentsArr] = useState([]);
   
+  const [isEitherMenuClicked, setIsEitherMenuClicked ] = useState([]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -89,7 +89,14 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) 
     <div
       className='w-full min-h-screen  bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
     >
-      <Header setDarkMode={setDarkMode} darkMode={darkMode} currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
+      <Header 
+        setDarkMode={setDarkMode} 
+        darkMode={darkMode} 
+        currentQuit={currentQuit} 
+        setSelectedQuit={setSelectedQuit}
+        setIsEitherMenuClicked={setIsEitherMenuClicked}
+        isEitherMenuClicked={isEitherMenuClicked}
+      />
       <QuitNav/>
       
       <div className="p-5 grid sm:grid-rows-5 sm:grid-cols-2 gap-2 bg-slate-200 dark:bg-slate-600 overflow-auto">
@@ -103,6 +110,8 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) 
                 goalPercent={milestone.goalPercent}
                 title={milestone.title}
                 description={milestone.description}
+                isEitherMenuClicked={isEitherMenuClicked}
+                setIsEitherMenuClicked={setIsEitherMenuClicked}
             />
           )
         
