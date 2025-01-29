@@ -10,6 +10,11 @@ const CardMilestone = ({goalAchieved, description, title, goalPercent, isEitherM
 
     const handleMilestoneClick = () =>  {
         setIsMilestoneClicked(!isMilestoneClicked)
+        if (!isMilestoneClicked) {
+            document.body.classList.add("overflow-hidden");
+        } else {
+            document.body.classList.remove("overflow-hidden");
+        }
     }
 
     useEffect(()=>{

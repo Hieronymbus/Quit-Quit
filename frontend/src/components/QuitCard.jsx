@@ -49,8 +49,7 @@ const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
       data-tooltip-place='bottom-start'
       data-tooltip-variant='dark'
       data-tooltip-float='true'
-      data-tooltip-delay-show={500}
-      
+      data-tooltip-delay-show={500}  
     >
       <Tooltip id="cardTooltip" opacity="0.8"/>
       <div
