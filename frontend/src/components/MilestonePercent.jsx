@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const MilestonePercent = ({ progress,z }) => {
+const MilestonePercent = ({ progress }) => {
   
     const radius = 40; // Circle radius
     const strokeWidth = 8;
@@ -21,7 +21,7 @@ const MilestonePercent = ({ progress,z }) => {
             {
                 offset >= 0
                 &&
-                <div className={`  flex items-center justify-center`}>
+                <div className={`relative  flex items-center justify-center`}>
                     <svg width="100" height="100" viewBox="0 0 100 100">
                     {/* Background Circle */}
                     <circle
