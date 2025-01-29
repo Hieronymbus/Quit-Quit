@@ -25,7 +25,7 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
       <Header setDarkMode={setDarkMode} darkMode={darkMode} currentQuit={currentQuit} setSelectedQuit={setSelectedQuit}/>
       <QuitNav/>
       {
-        !currentQuit 
+        currentQuit 
         ?
         <div
           className=" p-5 text-xl bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
