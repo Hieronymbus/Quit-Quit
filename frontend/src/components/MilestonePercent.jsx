@@ -5,18 +5,17 @@ const MilestonePercent = ({ progress }) => {
     const radius = 40; // Circle radius
     const strokeWidth = 8;
     const circumference = 2 * Math.PI * radius;
-    const [offset, setOffset] = useState(null) 
+    const [offset, setOffset] = useState(circumference) 
     useEffect(() => {
-        if(progress){
-            if(progress === 100){
-                setOffset(0)
-            } else{
-
-                setOffset(circumference - (progress / 100) * circumference)
-            }
+        if (progress === 100) {
+            setOffset(0); // When progress is 100%, the circle is complete, so set offset to 0
+        } else if (progress > 0) {
+            setOffset(circumference - (progress / 100) * circumference); // Calculate offset for other progress values
+        } else {
+            setOffset(circumference); // For 0%, set offset to full circumference
         }
     },[progress])
-    
+    console.log('progress', progress)
     return (
         <div>
             {

@@ -23,8 +23,8 @@ const LogoutButton = ({isLogoutClicked, setIsLogoutClicked}) => {
             color: "#fff",
           },
         });
-       }
         navigate('/')
+       }
 
     }
 
