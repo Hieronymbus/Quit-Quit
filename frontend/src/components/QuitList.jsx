@@ -6,10 +6,20 @@ import { useNavigate } from 'react-router-dom'
 const QuitList = ({title,status , quits, setSelectedQuit}) => {
 
     const [filteredQuitsArr, setFilteredQuitsArr] = useState(
-        quits.filter((quit)=>{
+        
+      quits.filter((quit)=>{
            return quit.status === status
+        }).sort((quit)=> {
+          if(status === 'Action-Phase' || status === "Maintenance-Phase"){
+            return  new Date() - new Date(quit.startDate) 
+          } else  {
+            return new Date() - new Date(quit.abandonedDate)
+          }                   
         })
+
     ) 
+    
+
     const navigate = useNavigate()
     const containerRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
@@ -63,6 +73,12 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
           <h2 className="text-3xl text-center">
             {title}
           </h2>
+          <h3
+            className='text-xl font-mono text-center'
+          >
+
+            Count : {filteredQuitsArr.length}
+          </h3>
         </div>
         <div className="relative w-full flex flex-col sm:flex-row items-center p-2 rounded-md bg-slate-300 dark:bg-slate-500">
          
@@ -103,12 +119,13 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
             )}
             {/* Quit cards */}
             {
-                quits.map((quit, index) => {
+                filteredQuitsArr.map((quit, index) => {
                     
                     if(quit.status === status){
                         return (
                             <QuitCard
-                                key={index}
+                                key={index} 
+                                number={index + 1}                              
                                 quit={quit}
                                 isDragging={isDragging}
                                 setSelectedQuit={setSelectedQuit}

@@ -30,8 +30,7 @@ const QuitDuration = ({startDate, abandonedDate}) => {
             setDuration("Quitting is imminent, but the farewell tour isn’t complete. There are a few more indulgences that haven’t yet fulfilled their destiny."); // Display this if the quit date is in the future
           }
         }        
-      };
-  
+      }; 
       // Calculate immediately and then every second
       calculateDuration();
       const interval = setInterval(calculateDuration, 1000);

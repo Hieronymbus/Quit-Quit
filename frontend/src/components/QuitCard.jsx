@@ -5,7 +5,7 @@ import QuitDuration from './QuitDuration.jsx';
 import FormatDate from './FormatDate.jsx';
 import VertElipses from '../assets/svg/VertElipses.jsx';
 
-const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
+const QuitCard = ({quit, number, setSelectedQuit, isDragging}) => {
   const navigate = useNavigate()
   const [bgColor, setBgColor] = useState("")
   const [isStarted, setIsStarted] = useState(false)
@@ -64,14 +64,25 @@ const QuitCard = ({quit, setSelectedQuit, isDragging}) => {
           quit.abandonedDate
           ?
           <div>
-            I've given up quitting,
+            <span
+              className='font-bold'
+            >
+              {number}.
+            </span>
+            
+            {" I've given up quitting,"}
           </div>
           :
           <div>
+            <span
+              className='font-bold'
+            >
+              {number}.
+            </span>
             {
               isStarted 
-              ? "I am currently quitting,"
-              : "I am going to quit,"
+              ? " I am currently quitting,"
+              : " I am going to quit,"
             } 
           </div>
         }
