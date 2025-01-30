@@ -210,5 +210,4 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
     </div>
   )
 }
-
 export default QuitDashboard

@@ -18,6 +18,7 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
   }, [fetchQuits]);
   
   const currentQuit = quits.find((quit) => quit._id === selectedQuit)
+
   return (
     <div
       className='dark:text-slate-200'
@@ -37,7 +38,14 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
           >
             Action Phase(6 months)
           </h2>
-          <div className='mb-10' dangerouslySetInnerHTML={{ __html: currentQuit.addictionTypeID.expertGuide.action.start }} /> 
+          <div>
+            <h2>Click to expand week 1-2</h2>
+          </div>
+          <div
+            className='hidden'
+          >
+            <div className='mb-10' dangerouslySetInnerHTML={{ __html: currentQuit.addictionTypeID.expertGuide.action.start }} /> 
+          </div>
           <div className='mb-10' dangerouslySetInnerHTML={{ __html: currentQuit.addictionTypeID.expertGuide.action.middle }} /> 
           <div className='mb-10' dangerouslySetInnerHTML={{ __html: currentQuit.addictionTypeID.expertGuide.action.end }} /> 
           <h2
@@ -54,9 +62,7 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
         >
             Loading..
         </div>
-      }
-      
-
+      }     
     </div>
   )
 }

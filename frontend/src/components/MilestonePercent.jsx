@@ -5,7 +5,7 @@ const MilestonePercent = ({ progress }) => {
     const radius = 40; // Circle radius
     const strokeWidth = 8;
     const circumference = 2 * Math.PI * radius;
-    const [offset, setOffset] = useState() 
+    const [offset, setOffset] = useState(null) 
     useEffect(() => {
         if(progress){
             if(progress === 100){
@@ -16,6 +16,7 @@ const MilestonePercent = ({ progress }) => {
             }
         }
     },[progress])
+    
     return (
         <div>
             {

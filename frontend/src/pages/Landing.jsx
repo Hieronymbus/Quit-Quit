@@ -53,11 +53,7 @@ const Home = ({ darkMode, setDarkMode, setSelectedQuit}) => {
               alt="picture of chains" 
             />
           </div>
-
-
-        </div>
-
-      
+        </div>  
     </div>
   )
 }
