@@ -10,7 +10,7 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) 
 
   const {fetchQuits, quits} = useQuitStore();
   const {user } = useUserStore()
-  const [currentQuit, setCurrentQuit] = useState(quits.find((quit) => quit._id === selectedQuit))
+  const [currentQuit, setCurrentQuit] = useState(null)
   const [whatConsumed, setWhatConsumed] = useState(null);
   const [sortedAdjustedAchievmentsArr, setSortedAdjustedAchievmentsArr] = useState([]);
   
@@ -24,8 +24,11 @@ const QuitMilestones = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) 
   }, [fetchQuits]);
 
   useEffect(() => {
-    const foundQuit = quits.find((quit) => quit._id === selectedQuit);
-    setCurrentQuit(foundQuit || null);
+    if(quits && selectedQuit){
+
+      const foundQuit = quits.find((quit) => quit._id === selectedQuit);
+      setCurrentQuit(foundQuit || null);
+    }
   }, [quits, selectedQuit]);
 
   useEffect(()=> {

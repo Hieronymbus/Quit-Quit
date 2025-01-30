@@ -15,7 +15,7 @@ const MilestonePercent = ({ progress }) => {
             setOffset(circumference); // For 0%, set offset to full circumference
         }
     },[progress])
-    console.log('progress', progress)
+    
     return (
         <div>
             {

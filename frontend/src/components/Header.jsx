@@ -39,7 +39,10 @@ const Header = ({currentQuit, setSelectedQuit, darkMode, setDarkMode, isEitherMe
         setIsMenuOpen(!isMenuOpen)
         setIsUserMenuOpen(false)
         setIsLogoutClicked(false)
-        setIsEitherMenuClicked(true)
+
+        if(location.pathname === '/quitMilestones') {
+            setIsEitherMenuClicked(true)
+        }
         
     }
     useEffect(() => {
@@ -51,8 +54,10 @@ const Header = ({currentQuit, setSelectedQuit, darkMode, setDarkMode, isEitherMe
         setIsUserMenuOpen(!isUserMenuOpen)
         setIsMenuOpen(false)
         setIsLogoutClicked(false)
-        setIsEitherMenuClicked(true)
         document.body.classList.remove("overflow-hidden");
+        if(location.pathname === '/quitMilestones') {
+            setIsEitherMenuClicked(true)
+        }
           
     };
     const handleClickOutside = (e) => {
@@ -64,7 +69,7 @@ const Header = ({currentQuit, setSelectedQuit, darkMode, setDarkMode, isEitherMe
                 && !openUserMenuButtonRef.current.contains(e.target)
             ) {
           setIsUserMenuOpen(false); // Close the menu
-          console.log("umenyuayduyasud")
+          
         }
     };
     useEffect(() => {
