@@ -33,7 +33,7 @@ export const DeleteQuitButton = ({currentQuit}) => {
             <div>
                 <Overlay />
                 <div
-                    className='p-3 w-11/12 sm:w-1/4  rounded-xl fixed top-28 m-auto inset-x-0 flex flex-col bg-slate-400 dark:bg-slate-600  shadow-lg shadow-black'
+                    className='z-50 p-3 w-11/12 sm:w-1/4  rounded-xl fixed top-28 m-auto inset-x-0 flex flex-col bg-slate-400 dark:bg-slate-600  shadow-lg shadow-black'
                 >   
                     <h2
                         className='text-center text-lg mb-2 '

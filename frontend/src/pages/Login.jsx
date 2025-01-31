@@ -11,7 +11,7 @@ const Login = ({setSelectedQuit}) => {
   })
 
   const navigate = useNavigate()
-  const { loginUser, fetchUser } = useUserStore()
+  const { loginUser, fetchUser, user } = useUserStore()
   
   const handleLogin = async () => {
     const {success, message} = await loginUser(loginDetails);
@@ -46,8 +46,8 @@ const Login = ({setSelectedQuit}) => {
           password: ""
         }
       )
+      navigate("/home");
       
-      navigate("/home")
     }
   }
   useEffect(()=>{
@@ -55,15 +55,18 @@ const Login = ({setSelectedQuit}) => {
     localStorage.removeItem('selectedQuit')
     setSelectedQuit("")
   })
+  
+
+
   return (
     <div
       className='w-screen h-screen  flex flex-col justify-center items-center gap-3 bg-slate-500 dark:bg-slate-800'
     > 
       <form
         className='w-11/12 md:w-2/3 lg:w-1/3 p-3 aspect-square rounded-xl dark:text-gray-100 bg-slate-400 dark:bg-slate-700 border-2 shadow-lg shadow-black dark:shadow-gray-50 flex flex-col items-center '
-        onSubmit={(e) => {
+        onSubmit={ (e) => {
           e.preventDefault()
-          handleLogin()
+           handleLogin()
         }}
       >
         <h2
