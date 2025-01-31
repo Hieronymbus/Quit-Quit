@@ -77,7 +77,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
             className='text-xl font-mono text-center'
           >
 
-            Count : {filteredQuitsArr.length}
+            count : {filteredQuitsArr.length}
           </h3>
         </div>
         <div className="relative w-full flex flex-col sm:flex-row items-center p-2 rounded-md bg-slate-300 dark:bg-slate-500">

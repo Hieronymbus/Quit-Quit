@@ -75,6 +75,7 @@ const About = ({darkMode, setDarkMode}) => {
             With this structured approach, the website is here to guide you through the intense but rewarding Action Phase and into a sustainable, addiction-free life in the Maintenance Phase.
           </p>
         </section>
+        <a href="https://lordicon.com/">Icons by Lordicon.com</a>
       </div>
     </div>
   )

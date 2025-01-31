@@ -34,6 +34,7 @@ const Menu = ({ isMenuOpen, handleNavigatetoHome}) => {
         <Button4Menu text="Home" onClick={handleNavigatetoHome} />
         <Button4Menu text="Site Info" onClick={handleNavigateToAbout}/>
         <Button4Menu text="Developer Info" onClick={handleNavigateToDevInfo} />
+        <Button4Menu text="Forums(inDev)" />
         <Button4Menu text="Emergency Info(inDev)" />
         <Button4Menu text="Privacy Policy(inDev)" />
     </div>

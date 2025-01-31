@@ -43,9 +43,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
       console.log(Object.keys(currentQuit?.usageParameters)[0])
     }
   }, [currentQuit])
-  
-
-   
+     
   return (
     <div
        className='w-full min-h-screen  bg-slate-200 dark:bg-slate-600 dark:text-slate-100'
@@ -62,11 +60,16 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
         </div>
         :
         <div className="w-full p-5 rounded flex flex-col gap-10 bg-slate-200 dark:bg-slate-600 dark:text-slate-100">
+          <h1
+            className='text-4xl font-semibold text-blue-600 dark:text-blue-400'
+          >
+            {currentQuit.status != "abandoned" && "Liberation in Motion @"} {currentQuit.addictionTypeID.name}
+          </h1>
           <div
             className='w-full text-xl border-b border-black'
           > 
             <h2
-              className='text-3xl text-blue-600 dark:text-blue-500'
+              className='text-3xl text-blue-600 dark:text-blue-400'
             >
               Key Dates
             </h2>
@@ -77,7 +80,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 <h3
                   className='text-xl text-blue-400 dark:text-blue-300'
                 >
-                  Start date 
+                  Abstinence started
                 </h3>
                 <FormatDate date={currentQuit.startDate}/> 
               </div>
@@ -110,7 +113,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
             className="w-full text-xl border-b border-black "
           >
               <h2
-                className='text-3xl text-blue-600 dark:text-blue-500'
+                className='text-3xl text-blue-600 dark:text-blue-400'
               >
                 Statistics
               </h2>
@@ -157,7 +160,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
           <div className="w-full text-xl">
             <div>
               <h2
-                className=' text-blue-600 dark:text-blue-500 text-3xl'
+                className=' text-blue-600 dark:text-blue-400 text-3xl'
               >
                 Reasons for quitting
               </h2>

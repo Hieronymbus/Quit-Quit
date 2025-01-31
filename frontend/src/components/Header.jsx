@@ -11,7 +11,7 @@ import ProfileIcon  from '../assets/svg/ProfileIcon.jsx'
 import PlusIcon from '../assets/svg/PlusIcon.jsx';
 import BackArrowIcon from '../assets/svg/BackArrowIcon.jsx'
 
-import Menu from './Menu.jsx'
+import Menu from './MenuNav.jsx'
 import MenuUser from './MenuUser.jsx'
 import ButtonAddQuit from './ButtonAddQuit.jsx'
 import ButtonNotification from './ButtonNotification.jsx'

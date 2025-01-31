@@ -4,6 +4,7 @@ import { Tooltip } from 'react-tooltip';
 import QuitDuration from './QuitDuration.jsx';
 import FormatDate from './FormatDate.jsx';
 import VertElipses from '../assets/svg/VertElipses.jsx';
+import clockGif from '../assets/gifs/wired-lineal-45-clock-time-loop-oscillate.gif'
 
 const QuitCard = ({quit, number, setSelectedQuit, isDragging}) => {
   const navigate = useNavigate()
@@ -53,6 +54,15 @@ const QuitCard = ({quit, number, setSelectedQuit, isDragging}) => {
     >
       <Tooltip id="cardTooltip" opacity="0.8"/>
       <div
+        className="absolute top-0 left-1" 
+      >
+        <span
+              className='text-sm align-top font-bold '
+            >
+              {number}
+            </span>
+      </div>
+      <div
         className=' absolute right-1.5 '
       >
         <VertElipses />
@@ -64,21 +74,13 @@ const QuitCard = ({quit, number, setSelectedQuit, isDragging}) => {
           quit.abandonedDate
           ?
           <div>
-            <span
-              className='font-bold'
-            >
-              {number}.
-            </span>
+           
             
             {" I've given up quitting,"}
           </div>
           :
           <div>
-            <span
-              className='font-bold'
-            >
-              {number}.
-            </span>
+            
             {
               isStarted 
               ? " I am currently quitting,"
@@ -101,8 +103,11 @@ const QuitCard = ({quit, number, setSelectedQuit, isDragging}) => {
               
             </h2>
             <div
-              className=' text-3xl text-center font-semibold'
+              className=' flex justify-center text-3xl  font-semibold'
             >
+              <img src={clockGif} alt="animated clock" 
+                className='h-10'
+              />
               <QuitDuration startDate={quit.startDate} abandonedDate={quit.abandonedDate}/>
             </div>
           </div>
