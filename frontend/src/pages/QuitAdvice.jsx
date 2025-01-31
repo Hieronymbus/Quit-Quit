@@ -10,7 +10,7 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
 
   const {fetchQuits, quits} = useQuitStore();
   const {user } = useUserStore()
-  const [isStartOpen, setIsStartOpen] = useState(true);
+  const [isStartOpen, setIsStartOpen] = useState(false);
   const [isMiddleOpen,setIsMiddleOpen] = useState(false);
   const [isEndOpen,setIsEndOpen] = useState(false);
   const [isOngoingOpen, setIsOngoinOpen] = useState(false);
@@ -45,11 +45,18 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
           >
             Action Phase(6 months)
           </h2>
+          <p
+            className='mb-4'
+          >
+            The Action Phase is the toughest part of quitting, lasting 6 months. During this time, your body and mind adjust, and you’ll work to form new habits. 
+            Trust the process—it’s like trying to train a dragon, but you’ll get there! Staying focused is key, and remember: even the dragons need a little time to stop breathing fire. 
+          </p>
           <div
-            className='mb-10 p-2 bg-slate-300  dark:bg-slate-800'
+            className=' mb-4 p-2 rounded-md bg-slate-300  dark:bg-slate-800'
           >
             <div
               {...(isStartOpen ? {className: "block"} : {className: "hidden"} )}
+              
             >
               <div className='mb-5' dangerouslySetInnerHTML={{ __html: currentQuit.addictionTypeID.expertGuide.action.start }} /> 
             </div>
@@ -69,7 +76,7 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
             </div>
           </div>
           <div
-            className='mb-10 p-2 bg-slate-300 dark:bg-slate-800'           
+            className='mb-4 p-2 rounded-md bg-slate-300 dark:bg-slate-800'           
           >
             <div
               {...(isMiddleOpen ? {className: "block"} : {className: "hidden"} )}
@@ -85,14 +92,14 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
                   ?
                   "Click to Colapse"
                   :
-                  "Click to Expand weeks 3-8"
+                  "Click to expand weeks 3-8"
                 }
               </h2>
             </div>
           </div>
 
           <div
-            className='mb-10 p-2 bg-slate-300 dark:bg-slate-800'
+            className='mb-8 p-2 rounded-md bg-slate-300 dark:bg-slate-800'
           >
             <div
               {...(isEndOpen ? {className: "block"} : {className: "hidden"} )}
@@ -109,19 +116,26 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
                   ?
                   "Click to Colapse"
                   :
-                  "Click to Expand months 2-6"
+                  "Click to expand months 2-6"
                 }
               </h2>
             </div>
           </div>
 
           <h2
-            className='text-4xl font-bold mb-5'
+            className='text-4xl font-bold mb-4'
           >
             Maintenance Phase(ongoing)
           </h2>
+          <p
+          
+            className='mb-4'>
+            The Maintenance Phase is about keeping your new habits strong for the long haul. There’s no finish line, just a continuous journey of progress.
+            It’s like gardening—tending to your well-being daily to keep the weeds of temptation at bay. Stay vigilant, and don’t let a slip turn into a landslide.
+            You’ve already climbed the mountain; now it’s time to enjoy the view without slipping back down!
+          </p>
           <div
-            className='mb-10 p-2 bg-slate-300 dark:bg-slate-800'
+            className='mb-4 p-2 rounded-md bg-slate-300 dark:bg-slate-800'
           >
             <div
               {...(isOngoingOpen ? {className: "block"} : {className: "hidden"} )}
@@ -138,7 +152,7 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
                     ?
                     "Click to Colapse"
                     :
-                    "Click to expand month 7-infinity"
+                    "Click to expand infinity"
                   }
               </h2>
             </div>
