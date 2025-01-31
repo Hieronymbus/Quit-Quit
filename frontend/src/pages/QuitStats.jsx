@@ -192,7 +192,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                       {
                         isVideoModalOpen
                         &&
-                        <Overlay /> 
+                        <Overlay onClickHandler={setIsVideoModalOpen}/> 
                       }
                       <ModalVideo setIsVideoModalOpen={setIsVideoModalOpen} isVideoModalOpen={isVideoModalOpen} currentQuit={currentQuit}/>
                     </div>

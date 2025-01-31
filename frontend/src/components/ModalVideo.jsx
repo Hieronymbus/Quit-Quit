@@ -5,10 +5,10 @@ const ModalVideo = ({ setIsVideoModalOpen, isVideoModalOpen, currentQuit}) => {
   return (
         <div
             className={`${!isVideoModalOpen ? "hidden": "fixed"}  rounded-lg
-            z-20 w-11/12 md:w-1/3 aspect-square m-auto inset-x-0 inset-y-0 border border-gray-100 bg-slate-950  shadow-md shadow-gray-100`}
+            z-40 w-11/12 md:w-1/3 aspect-video m-auto inset-x-0 inset-y-0 border border-gray-100 bg-slate-950  shadow-md shadow-gray-100`}
         > 
             <div
-            className='flex justify-end'
+                className='flex justify-end'
             >
             <button
                 onClick={() => setIsVideoModalOpen(false)}
@@ -21,7 +21,7 @@ const ModalVideo = ({ setIsVideoModalOpen, isVideoModalOpen, currentQuit}) => {
             </div>
              
             <div
-                className='p-2 flex flex-col items-center '
+                className='h-full p-2 flex flex-col justify-center items-center'
             >
                 <video 
                     className='rounded-xl  '
