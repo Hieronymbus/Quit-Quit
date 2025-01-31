@@ -13,7 +13,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
   const navigate = useNavigate();
   const {user} = useUserStore();
   const {addictionsArr, fetchAddictions} = useAddictionStore();
-  const {createQuit} = useQuitStore();
+  const {createQuit, fetchQuits, quits} = useQuitStore();
   const [mode, setMode] = useState("")
   const [newQuit, setNewQuit] = useState({
       userID: user.userDetails._id,
@@ -27,11 +27,38 @@ const AddQuit = ({setDarkMode, darkMode}) => {
       status: "active"
   });
   const [addictionChoiceParameters, setAddictionChoiceParameters] = useState([]);
+  const [filteredAddictionsArr, setFilteredAddictionsArr] = useState([])
 
   useEffect(() => {
       fetchAddictions();
   }, [])
   console.log(addictionsArr)
+
+  useEffect(()=>{
+    
+    fetchQuits(user.userDetails._id)
+    
+  },[fetchQuits])
+  
+
+  useEffect(()=>{
+    let filteredArr 
+    let mappedArr
+    if(quits){
+      filteredArr = quits.filter((quit, index) => {
+        return quit.status != 'abandoned'
+      })
+      mappedArr = filteredArr.map(quit => {
+        return quit.addictionTypeID._id
+      })
+    }
+    console.log("mapped", mappedArr)
+    setFilteredAddictionsArr( addictionsArr.filter(addiction => {
+      return !mappedArr.includes(addiction._id)
+    }))
+    
+  },[quits])
+
 
   useEffect(() => {
     if(newQuit.addictionTypeID){
@@ -126,7 +153,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                   <option value="" disabled>
                       -- Select an option --
                   </option>
-                  {addictionsArr.map((addiction, index) => {
+                  {filteredAddictionsArr.map((addiction, index) => {
                     // if(addiction.status != "active" || addiction.status != "completed")
                       return (
                           <option value={addiction._id} key={index}>
