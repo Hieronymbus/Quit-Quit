@@ -32,7 +32,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
   useEffect(() => {
       fetchAddictions();
   }, [])
-  console.log(addictionsArr)
+  console.log("plane",addictionsArr)
 
   useEffect(()=>{
     
@@ -57,7 +57,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
       return !mappedArr.includes(addiction._id)
     }))
     
-  },[quits])
+  },[quits,addictionsArr])
 
 
   useEffect(() => {
