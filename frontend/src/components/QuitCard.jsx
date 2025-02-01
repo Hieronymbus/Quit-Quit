@@ -106,7 +106,7 @@ const QuitCard = ({quit, number, setSelectedQuit, isDragging}) => {
               className=' flex justify-center text-3xl  font-semibold'
             > 
               {
-                quit.abandonedDate ? <div></div> : <img src={clockGif} alt="animated clock"  className='h-10'/>
+                quit.abandonedDate ? <div></div> : <img src={clockGif} alt="animated clock"  className='h-6'/>
               }         
               <QuitDuration startDate={quit.startDate} abandonedDate={quit.abandonedDate}/>
             </div>
