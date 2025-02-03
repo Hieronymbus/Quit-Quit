@@ -63,7 +63,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
           <h1
             className='text-4xl font-semibold text-blue-600 dark:text-blue-400'
           >
-            {currentQuit.status != "abandoned" && "Liberation in Motion @"} {currentQuit.addictionTypeID.name}
+            {currentQuit.status != "abandoned" && "Quit in Motion @"} {currentQuit.addictionTypeID.name}
           </h1>
           <div
             className='w-full text-xl border-b border-black'

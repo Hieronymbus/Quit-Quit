@@ -152,7 +152,7 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
                     ?
                     "Click to Colapse"
                     :
-                    "Click to expand infinity"
+                    "Click to expand months 7-Infinite"
                   }
               </h2>
             </div>

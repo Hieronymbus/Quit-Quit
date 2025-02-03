@@ -34,9 +34,8 @@ const Home = ({ darkMode, setDarkMode, setSelectedQuit}) => {
               <h2
                 className='text-xl'
               >
-                From sneaky snacks to stubborn smokes, we offer tools so clever they might just trick you into success.
-                No finger-wagging here, just a sprinkle of wisdom,
-                a dollop of humor, and a gentle nudge to keep you moving forward (preferably away from Tyrone Biggums).
+                From sneaky snacks to stubborn smokes, we offer tools to help you succeed. 
+                No judgment—just a mix of wisdom, practical solutions to support your goals, and a gentle nudge to keep you moving forward (preferably away from Tyrone Biggums).
               </h2>
             </div>
             <div

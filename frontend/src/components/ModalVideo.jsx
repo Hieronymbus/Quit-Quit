@@ -24,7 +24,7 @@ const ModalVideo = ({ setIsVideoModalOpen, isVideoModalOpen, currentQuit}) => {
                 className='h-full flex flex-col justify-center items-center'
             >
                 <video 
-                    className='rounded-xl  '
+                    className='  '
                     controls
                     src={`${import.meta.env.VITE_PORT}/${currentQuit.videoPath}`}
                 />
