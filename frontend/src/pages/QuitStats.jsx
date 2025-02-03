@@ -11,6 +11,8 @@ import MoneySaved from '../components/MoneySaved.jsx'
 import Overlay from '../components/Overlay.jsx'
 import ModalVideo from '../components/ModalVideo.jsx'
 
+import loadingGIF from '../assets/gifs/wired-outline-212-arrow-1-rounded-loop-cycle.gif'
+
 const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) => {
   const {fetchQuits, quits} = useQuitStore();
   const {user } = useUserStore();
@@ -54,9 +56,9 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
         !currentQuit
         ?
         <div
-          className="h-full-minus-navbar p-5 text-xl bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
+          className="h-full-minus-navbar p-5 text-2xl bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
         >
-          Loading...
+            Loading<img src={loadingGIF} alt="loading animation"  className='h-9 inline ml-1'/>
         </div>
         :
         <div className="w-full p-5 rounded flex flex-col gap-10 bg-slate-200 dark:bg-slate-600 dark:text-slate-100">

@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from 'react'
+import loadingGIF from '../assets/gifs/wired-outline-212-arrow-1-rounded-loop-cycle.gif'
 
 const DailyQuote = () => {
 
@@ -50,7 +51,7 @@ const DailyQuote = () => {
                 }
             </div>
             :
-            <div>cacheing..</div>
+            <div><img src={loadingGIF} alt="loading animation"  className='h-7 inline '/></div>
         }
     </div>
     

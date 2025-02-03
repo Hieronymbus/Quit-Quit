@@ -8,6 +8,8 @@ import Header from '../components/Header'
 import QuitList from '../components/QuitList'
 import DailyQuote from '../components/DailyQuote.jsx';
 
+import loadingGIF from '../assets/gifs/wired-outline-212-arrow-1-rounded-loop-cycle.gif'
+
 const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
 
   const {user} = useUserStore()
@@ -35,9 +37,9 @@ const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
         isLoading
         ?
         <div
-          className="h-full-minus-navbar p-5 text-xl bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
+          className="h-full-minus-navbar p-5 text-2xl bg-slate-200 dark:bg-slate-600 dark:text-slate-200"
         >
-          Loading..
+            Loading<img src={loadingGIF} alt="loading animation"  className='h-9 inline ml-1'/>
         </div>
         :
         <div

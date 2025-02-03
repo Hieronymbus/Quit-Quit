@@ -21,7 +21,7 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
       }
     };
     if(isPreRecording){
-
+     
       getMedia()
     }
 
@@ -29,6 +29,7 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
 
   const startRecording = async () => {
     if(mediaStream) {
+     
       stopMediaStream()
     }
     try {
@@ -96,10 +97,6 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
         isPreRecording
         &&
         <div>
-          <h2
-            className="text-xl mb-1"
-          >
-          </h2>
           <video
             className="rounded-t-lg rounded-r-lg"
             ref={videoRef}
