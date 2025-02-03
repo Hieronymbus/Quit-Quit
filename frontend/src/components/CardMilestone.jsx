@@ -112,7 +112,20 @@ const CardMilestone = ({goalAchieved, description, title, goalPercent, isEitherM
                             <p
                                 className='mt-2  text-lg  prose whitespace-pre-line '
                             >
-                                {description}
+                                {goalPercent === 100 
+                                    ? 
+                                    description 
+                                    : 
+                                    <div>
+                                        {
+                                            goalPercent === 0
+                                            ?
+                                            "Hmm.. Zero percent"
+                                            :
+                                            "Ayy, this milestone ain’t yours yet—but don’t trip! Keep grinding, keep pushing, and soon enough, you’ll be lookin’ back like, ‘Damn, that was easy!’ Stay on it, you got this!"
+                                        }
+                                    </div>
+                                }
                             </p>
                         </div>
                     </div>
