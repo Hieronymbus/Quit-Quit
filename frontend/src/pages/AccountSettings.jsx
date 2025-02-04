@@ -1,8 +1,11 @@
 import React from 'react'
 import Header from '../components/Header'
+import { useUserStore } from '../store/user'
 
 const AccountSettings = ({darkMode, setDarkMode}) => {
- 
+    
+    const { user } = useUserStore()
+
     return (
         <div
             className='w-full h-screen flex flex-col '
@@ -11,7 +14,27 @@ const AccountSettings = ({darkMode, setDarkMode}) => {
             <div
                 className='h-full-minus-16 p-5 text-xl  bg-slate-200 dark:bg-slate-600 dark:text-slate-200'
             >
-                This is where you will be able to change your username, reset password, delete account... coming soon
+               <h2>
+                    Username
+               </h2>
+               <h3>
+                    {user.userDetails.userName}
+               </h3>
+               <button>edit</button>
+               <h2>
+                    Email
+               </h2>
+               <h3>
+                    {user.userDetails.email}
+               </h3>
+               <button>edit</button>
+               <h2>
+                Change password
+               </h2>
+               <button>click</button>
+               <h2>
+                Delete Account
+               </h2>
             </div>
         </div>
   )

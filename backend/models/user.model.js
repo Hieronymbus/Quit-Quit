@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import Quit from './quit.model.js'
 const userSchema = new mongoose.Schema({
 
     userName:{
@@ -19,6 +19,12 @@ const userSchema = new mongoose.Schema({
 },{
     timestamps: true
 })
+
+userSchema.pre('findOneAndDelete', async function (next) {
+    const userID = this.getQuery()._id; // Get the user ID being deleted
+    await Quit.deleteMany({ userID });  // Delete all quits linked to this user
+    next();
+});
 
 const User = mongoose.model("User", userSchema);
 
