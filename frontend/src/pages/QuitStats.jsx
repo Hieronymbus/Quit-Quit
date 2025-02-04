@@ -12,6 +12,11 @@ import Overlay from '../components/Overlay.jsx'
 import ModalVideo from '../components/ModalVideo.jsx'
 
 import loadingGIF from '../assets/gifs/wired-outline-212-arrow-1-rounded-loop-cycle.gif'
+import calanderPNG from '../assets/calendar.png'
+import analyticsPNG from '../assets/analytics.png'
+import reasonsPNG from '../assets/people.png'
+import rightPNG from '../assets/right.png'
+
 
 const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) => {
   const {fetchQuits, quits} = useQuitStore();
@@ -61,22 +66,23 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
             Loading<img src={loadingGIF} alt="loading animation"  className='h-9 inline ml-1'/>
         </div>
         :
-        <div className="w-full p-5 rounded flex flex-col gap-10 bg-slate-200 dark:bg-slate-600 dark:text-slate-100">
+        <div className="w-full p-5 rounded flex flex-col gap-5 bg-slate-200 dark:bg-slate-600 dark:text-slate-100">
           <h1
-            className='text-4xl font-semibold text-blue-600 dark:text-blue-400'
+            className='text-4xl font-semibold text-blue-600 dark:text-blue-400 '
           >
-            {currentQuit.status != "abandoned" && "Quit in Motion @"} {currentQuit.addictionTypeID.name}
+            {currentQuit.status != "abandoned" ? "Quit in Motion" : <span className='text-red-600 dark:text-red-500'>Quit Abandoned</span>} <img src={rightPNG} className='h-12 inline'/> {currentQuit.addictionTypeID.name}
           </h1>
           <div
-            className='w-full text-xl border-b border-black'
+            className='w-full text-xl '
           > 
             <h2
-              className='text-3xl text-blue-600 dark:text-blue-400'
+              className='text-3xl text-blue-600 dark:text-blue-400 mb-2'
             >
-              Key Dates
+              Key Dates <img src={calanderPNG} className='h-12 inline'/>
             </h2>
+            
             <div
-              className='w-full p-5 grid sm:grid-cols-2 gap-5'
+              className='w-full p-5 grid sm:grid-cols-2 gap-5 bg-gray-300 dark:bg-gray-500 rounded-lg'
             >
               <div> 
                 <h3
@@ -101,7 +107,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 && 
                 <div> 
                   <h2
-                    className='text-xl  text-red-600 dark:text-red-500'
+                    className='text-xl  text-red-500 dark:text-red-400'
                   >
                     Abandoned this quit on
                   </h2>
@@ -112,15 +118,15 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
           </div>
           
           <div 
-            className="w-full text-xl border-b border-black "
+            className="w-full text-xl  "
           >
               <h2
-                className='text-3xl text-blue-600 dark:text-blue-400'
+                className='text-3xl text-blue-600 dark:text-blue-400 mb-2'
               >
-                Statistics
+                 Statistics <img src={analyticsPNG} className='h-9 inline'/>
               </h2>
               <div
-                className=' p-5 grid sm:grid-cols-2 gap-5'
+                className=' p-5 grid sm:grid-cols-2 gap-5 bg-gray-300 dark:bg-gray-500 rounded-lg'
               >
                 <div>
                   <h2
@@ -162,12 +168,12 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
           <div className="w-full text-xl">
             <div>
               <h2
-                className=' text-blue-600 dark:text-blue-400 text-3xl'
+                className='mb-2 text-blue-600 dark:text-blue-400 text-3xl'
               >
-                Reasons for quitting
+                Reasons <img src={reasonsPNG} className='h-8 inline'/>
               </h2>
               <div
-                className='p-5 grid sm:grid-cols-2 gap-5'
+                className='p-5 grid sm:grid-cols-2 gap-5 bg-gray-300 dark:bg-gray-500 rounded-lg'
               > 
                 <div>
                   <h3
