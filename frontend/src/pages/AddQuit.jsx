@@ -178,90 +178,108 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                 </div>
               )
             }
-            {
-              addictionChoiceParameters.map((parameter, index) => {
-                const nameSplit = parameter.name.split(' ');
-                const name = nameSplit[0];
-                return  <div
-                          key={index}
-                        >
-                          <label
-                            htmlFor={`parameter${index + 1}`}
-                            className='block w-full text-lg font-medium  mb-1'
-                            
-                          >
-                          {parameter.name}
-                          </label>
-                          <div
-                            className='w-full flex justify-between'
-                          >
-
-                            <input 
-                              className={`${index == 2 ? "inline w-4/6" : "block w-full"}  p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700`}
-                              type={parameter.type}
-                              id={`parameter${index + 1}`}
-                              step="0.01"
-                              min="0"
-                              onChange={(e) =>
-                                setNewQuit(prev => ({...prev, usageParameters:{...prev.usageParameters, [name]: e.target.value }}))
-                              }
-                            />
-                            {
-                              index == 2
-                              &&
-                              <select
-                                id="timeUnitSelect"
-                                onChange={(e) => { setNewQuit(prev => ({ ...prev, minsOrHours: e.target.value })) }}
-                                value={newQuit.minsOrHours}
-                                className="inline p-2 ml-1 w-2/5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700"
-                              > 
+           
+            { 
+              newQuit.addictionTypeID
+              &&
+              <div>
+                <h2
+                  className='text-2xl font-bold mt-4 mb-2'
+                >
+                  Usage breakdown
+                </h2>
+                {
+                  addictionChoiceParameters.map((parameter, index) => {
+                    const nameSplit = parameter.name.split(' ');
+                    const name = nameSplit[0];
+                    return  <div
+                              key={index}
+                            >
+                              <label
+                                htmlFor={`parameter${index + 1}`}
+                                className='block w-full text-lg font-medium  mb-1 mt-2'
                                 
-                                <option
-                                  value="minutes"
-                                >
-                                  Mins
-                                </option>
-                                <option
-                                  value="hours"
-                                >
-                                  Hours
-                                </option>
-                              </select>
-                            }
-                          </div>
-                        </div> 
-              })
+                              >
+                              {parameter.name}
+                              </label>
+                              <div
+                                className='w-full flex justify-between'
+                              >
+    
+                                <input 
+                                  className={`${index == 2 ? "inline w-4/6" : "block w-full"}  p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700`}
+                                  type={parameter.type}
+                                  id={`parameter${index + 1}`}
+                                  step="0.01"
+                                  min="0"
+                                  onChange={(e) =>
+                                    setNewQuit(prev => ({...prev, usageParameters:{...prev.usageParameters, [name]: e.target.value }}))
+                                  }
+                                />
+                                {
+                                  index == 2
+                                  &&
+                                  <select
+                                    id="timeUnitSelect"
+                                    onChange={(e) => { setNewQuit(prev => ({ ...prev, minsOrHours: e.target.value })) }}
+                                    value={newQuit.minsOrHours}
+                                    className="inline p-2 ml-1 w-2/5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700"
+                                  > 
+                                    
+                                    <option
+                                      value="minutes"
+                                    >
+                                      Mins
+                                    </option>
+                                    <option
+                                      value="hours"
+                                    >
+                                      Hours
+                                    </option>
+                                  </select>
+                                }
+                              </div>
+                            </div> 
+                  })
+                }
+              </div>
+              
             }
-
+            
             {
               newQuit.addictionTypeID
               &&
               (
                 <div
-                  className=' flex flex-col gap-3'
+                  className=' flex flex-col '
                 > 
-                <div>
-                  <label
-                    className='block text-lg font-medium  mb-1'
-                    htmlFor='textReasonsTextArea'
+                  <h2
+                    className='text-2xl font-bold mt-4 mb-2'
                   >
-                    Reasons for quiting(optional) 
-                  </label>
-                  <textarea
-                    className='block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700'
-                    id='textReasonsTextArea'
-                    onChange={(e) => {setNewQuit(prev => ({...prev, reasonsToQuit: e.target.value }))}}
-                    value={newQuit.reasonsToQuit}
-                  >
-                  </textarea>
-                </div>
+                    Motivation for quitting
+                  </h2>
+                  <div>
+                    <label
+                      className='block text-lg font-medium  mb-1'
+                      htmlFor='textReasonsTextArea'
+                    >
+                      Reasons for quiting(optional) 
+                    </label>
+                    <textarea
+                      className='block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700'
+                      id='textReasonsTextArea'
+                      onChange={(e) => {setNewQuit(prev => ({...prev, reasonsToQuit: e.target.value }))}}
+                      value={newQuit.reasonsToQuit}
+                    >
+                    </textarea>
+                  </div>
                   
                   {
                     !newQuit.videoFile
                     &&
                     <div>
                       <label
-                        className='block w-full text-lg font-medium  mb-1'
+                        className='block w-full text-lg font-medium  mb-1 mt-2'
                         htmlFor='modeSelect'
                       >
                         Would you like to upload or record a video message for yourself? 
@@ -277,7 +295,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                         <option value="upload">Upload</option>
                         <option value='record'>Record</option>
                       </select>
-                  </div>
+                    </div>
                   }
                   {
                     mode == 'skip'

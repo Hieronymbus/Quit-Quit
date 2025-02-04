@@ -22,7 +22,7 @@ const MilestonePercent = ({ progress }) => {
                 offset >= 0
                 &&
                 <div className={`relative  flex items-center justify-center`}>
-                    <svg width="100" height="100" viewBox="0 0 100 100">
+                    <svg  viewBox="0 0 100 100" className=" w-16 h-16 sm:w-24 sm:h-24">
                     {/* Background Circle */}
                     <circle
                         cx="50"
@@ -47,7 +47,7 @@ const MilestonePercent = ({ progress }) => {
                     />
                     </svg>
                     {/* Percentage Text */}
-                    <span className={`z-20 absolute text-lg font-bold ${progress === 100 ? "text-slate-100" : "text-orange-900"} `}>{progress}%</span>
+                    <span className={`z-20 absolute text-sm sm:text-lg font-bold ${progress === 100 ? "text-slate-100" : "text-orange-900"} `}>{progress}%</span>
                 </div>
             }
         </div>

@@ -45,8 +45,7 @@ const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
         <div
           className=' p-[16px] flex flex-col gap-[16px] overflow-auto '
         > 
-          <DailyQuote />
-          
+          <DailyQuote />     
           <QuitList 
             title="Action-Phase"
             status="active"

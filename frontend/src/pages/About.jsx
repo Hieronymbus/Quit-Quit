@@ -29,7 +29,7 @@ const About = ({darkMode, setDarkMode}) => {
       <div className="w-full p-5 text-justify flex flex-col gap-5">
         {/* Introduction Section */}
         <section>
-          <h1 className="text-4xl mb-2.5 text-center sm:text-left">Introduction</h1>
+          <h1 className="text-4xl mb-2.5 text-center font-bold sm:text-left">Introduction</h1>
           <p className="text-lg">
             Congratulations on taking this incredible step toward a healthier, addiction-free life! Deciding to confront and overcome addiction is no small feat, and it shows your strength, courage, and commitment to change. 
             By coming to this website, you've demonstrated a willingness to invest in yourself and your future—a choice that takes immense bravery.
@@ -42,7 +42,7 @@ const About = ({darkMode, setDarkMode}) => {
 
         {/* About Addiction Section */}
         <section>
-          <h1 className="text-4xl mb-2.5 text-center sm:text-left">About Addiction</h1>
+          <h1 className="text-4xl mb-2.5 text-center font-bold sm:text-left">About Addiction</h1>
           <p className="text-lg">
             Addiction is a widespread challenge affecting millions of individuals worldwide, transcending age, gender, and cultural boundaries. Globally, over 35 million people are estimated to suffer from substance use disorders, with only 1 in 7 receiving the necessary treatment. 
           </p>
@@ -56,7 +56,7 @@ const About = ({darkMode, setDarkMode}) => {
 
         {/* About the Website Section */}
         <section>
-          <h1 className="text-4xl mb-2.5 text-center sm:text-left">About the Website</h1>
+          <h1 className="text-4xl mb-2.5 text-center font-bold sm:text-left">About the Website</h1>
           <p className="text-lg">
             This website is your dedicated companion on the journey to breaking free from addiction, offering tools and structure to keep you motivated and focused. 
             It is designed around a proven two-phase approach: 
@@ -75,7 +75,8 @@ const About = ({darkMode, setDarkMode}) => {
             With this structured approach, the website is here to guide you through the intense but rewarding Action Phase and into a sustainable, addiction-free life in the Maintenance Phase.
           </p>
         </section>
-        <a href="https://lordicon.com/">Icons by Lordicon.com</a>
+        
+        
       </div>
     </div>
   )

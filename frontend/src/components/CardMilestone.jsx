@@ -25,8 +25,8 @@ const CardMilestone = ({goalAchieved, description, title, goalPercent, isEitherM
     return (
             <div 
                 className={
-                    `    p-1.5 rounded-xl hover:cursor-pointer 
-                    ${goalAchieved ? "bg-gradient-to-br from-blue-500 to-purple-600  text-white p-6 rounded-lg shadow-lg  " : "bg-gradient-to-r from-orange-200 via-orange-300 to-amber-200 text-orange-900 p-6 rounded-lg shadow-lg"} 
+                    `    p-1.5 pl-2.5 rounded-xl hover:cursor-pointer 
+                    ${goalAchieved ? "bg-gradient-to-br from-blue-500 to-purple-600  text-white  rounded-lg shadow-lg  " : "bg-gradient-to-r from-orange-200 via-orange-300 to-amber-200 text-orange-900  rounded-lg shadow-lg"} 
                     overflow-auto `}
                 onClick={handleMilestoneClick}
             >   
@@ -41,7 +41,7 @@ const CardMilestone = ({goalAchieved, description, title, goalPercent, isEitherM
                     className=' flex justify-between  gap-2'
                 >
                     
-                    <h2 className='w-4/6 p-2 text-2xl '>
+                    <h2 className='w-4/6 sm:p-2 text-lg sm:text-2xl'>
                         {title} 
                     </h2>                 
                     <div
