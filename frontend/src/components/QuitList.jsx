@@ -75,13 +75,13 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
         <h2 className="relative text-3xl text-center text-blue-600 dark:text-blue-400 flex items-center justify-center">
           <img 
             src={title === 'Action phase' ? rocketPNG : title === 'Maintenance' ? yachtPNG : crashPNG} 
-            className="size-12 absolute left-5" 
+            className="size-10 mr-2 " 
             alt="Phase Icon"
           />
           <span>{title}</span>  
           <img 
             src={title === 'Action phase' ? rocketPNG : title === 'Maintenance' ? yachtPNG : crashPNG} 
-            className="size-12 absolute right-5" 
+            className="size-10 ml-2" 
             alt="Phase Icon"
           />
         </h2>
