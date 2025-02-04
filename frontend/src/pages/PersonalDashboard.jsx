@@ -43,23 +43,23 @@ const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
         </div>
         :
         <div
-          className=' p-[16px] flex flex-col gap-[16px] overflow-auto '
+          className=' p-[16px] flex flex-col sm:gap[16px] overflow-auto '
         > 
           <DailyQuote />     
           <QuitList 
-            title="Action-Phase"
+            title="Action phase"
             status="active"
             quits={quits}
             setSelectedQuit={setSelectedQuit}
           />
           <QuitList 
-            title="Maintenance-Phase"
+            title="Maintenance"
             status="completed"
             quits={quits}
             setSelectedQuit={setSelectedQuit}
           />
           <QuitList 
-            title="Abandoned-Attempts"
+            title="Abandoned"
             status="abandoned"
             quits={quits}
             setSelectedQuit={setSelectedQuit}

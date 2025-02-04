@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react'
 import QuitCard from './QuitCard'
 import { useNavigate } from 'react-router-dom'
-
+import rocketPNG from '../assets/rocket.png'
+import yachtPNG from '../assets/yacht.png'
+import crashPNG from '../assets/accident.png'
 
 const QuitList = ({title,status , quits, setSelectedQuit}) => {
 
@@ -68,9 +70,16 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
     
     return (
 
-      <div className="w-full h-full flex flex-col items-center">
-        <div className="w-full mb-2">
-          <h2 className="text-3xl text-center">
+      <div className="w-full h-full flex flex-col items-center mb-10 sm:mb-0">
+        <div className="w-full mb-2  mt-[16px]">
+          <h2 className="text-3xl text-center text-blue-600 dark:text-blue-400">
+            {
+              title === 'Action phase'
+              ?
+              <img src={rocketPNG} className='size-12 absolute left-10 '/>
+              :
+              <img src={title === 'Maintenance' ? yachtPNG : crashPNG} className='size-12 absolute left-10 '/>
+            }
             {title}
           </h2>
           <h3
@@ -79,7 +88,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
             count : {filteredQuitsArr.length}
           </h3>
         </div>
-        <div className="relative w-full flex flex-col sm:flex-row items-center p-2 rounded-md bg-slate-300 dark:bg-slate-500">       
+        <div className="relative h-[270px] w-full flex flex-col sm:flex-row items-center py-2 pr-2 sm:pr-0 pl-2 rounded-md bg-slate-300 dark:bg-slate-500">       
           {/* Scrollable Container */}
           <div
             ref={containerRef}
@@ -103,7 +112,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                 <i>
                   Currently no quits in this category.<i> </i> 
                   {
-                    title === "Action-Phase"
+                    title === "Action phase"
                     &&
                     <i>
                        To start a new quit click the <b className='underline text-blue-400 cursor-pointer' onClick={() => navigate("/addQuit")}>here</b>
@@ -138,10 +147,10 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
               filteredQuitsArr.length > 3
               &&
               <div
-                className='hidden sm:flex sm:h-[250px] w-full sm:w-fit  sm:flex-col rounded-b-lg'
+                className=' hidden ml-2 sm:flex sm:h-[270px] w-full sm:w-fit  sm:flex-col rounded-b-lg'
               >
                 <button
-                  className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
+                  className="w-1/2 order-1 sm:h-1/2 sm:w-full p-2 rounded-tr-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
                   onClick={() => {
                     containerRef.current.scrollBy({
                       left: 300,
@@ -152,7 +161,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                   ▶
                 </button>
                 <button
-                  className="w-1/2 order-1 sm:order-2 sm:h-1/2 sm:w-full p-2 rounded-l-lg sm:rounded-l-none sm:rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
+                  className="w-1/2 order-2 sm:h-1/2 sm:w-full p-2 rounded-br-lg  bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
                   onClick={() => {
                     containerRef.current.scrollBy({
                       left: -300,
@@ -168,10 +177,10 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
               filteredQuitsArr.length > 2
               &&
               <div
-                className='hidden sm:flex md:hidden lg:hidden sm:h-[250px] w-full sm:w-fit  sm:flex-col rounded-b-lg'
+                className=' hidden sm:flex md:hidden lg:hidden sm:h-[270px] w-full sm:w-fit  sm:flex-col rounded-b-lg'
               >
                 <button
-                  className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
+                  className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 rounded-rb-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
                   onClick={() => {
                     containerRef.current.scrollBy({
                       left: 300,
@@ -195,13 +204,13 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
               </div>
             }
             {
-              filteredQuitsArr.length > 1
+              filteredQuitsArr.length >= 0
               &&
               <div
-                className='sm:h-[250px] sm:hidden w-full sm:w-fit  flex sm:flex-col rounded-b-lg'
+                className='absolute -bottom-9 sm:h-[250px] sm:hidden w-full sm:w-fit  flex sm:flex-col rounded-b-lg'
               >
                 <button
-                  className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
+                  className="w-1/2 order-2 sm:order-1 sm:h-1/2 sm:w-full p-2 rounded-br-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
                   onClick={() => {
                     containerRef.current.scrollBy({
                       left: 335,
@@ -212,7 +221,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                   ▶
                 </button>
                 <button
-                  className="w-1/2 order-1 sm:order-2 sm:h-1/2 sm:w-full p-2 rounded-l-lg sm:rounded-l-none sm:rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
+                  className="w-1/2 order-1 sm:order-2 sm:h-1/2 sm:w-full p-2 rounded-bl-lg sm:rounded-l-none sm:rounded-r-lg bg-slate-400 hover:bg-slate-500 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white "
                   onClick={() => {
                     containerRef.current.scrollBy({
                       left: -335,
@@ -223,8 +232,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                   ◀
                 </button>
               </div>
-            }
-          
+            }      
         </div>
       </div>
       
