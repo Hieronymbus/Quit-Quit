@@ -3,7 +3,7 @@ import QuitCard from './QuitCard'
 import { useNavigate } from 'react-router-dom'
 import rocketPNG from '../assets/rocket.png'
 import yachtPNG from '../assets/yacht.png'
-import crashPNG from '../assets/accident.png'
+import crashPNG from '../assets/helicopter.png'
 
 const QuitList = ({title,status , quits, setSelectedQuit}) => {
 
@@ -74,14 +74,14 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
         <div className="w-full mb-2  mt-[16px]">
         <h2 className="relative text-3xl text-center text-blue-600 dark:text-blue-400 flex items-center justify-center">
           <img 
-            src={title === 'Action phase' ? rocketPNG : title === 'Maintenance' ? yachtPNG : crashPNG} 
-            className="size-10 mr-2 " 
+            src={title === 'Action Phase' ? rocketPNG : title === 'Maintenance' ? yachtPNG : crashPNG} 
+            className="size-9 mr-2 " 
             alt="Phase Icon"
           />
           <span>{title}</span>  
           <img 
-            src={title === 'Action phase' ? rocketPNG : title === 'Maintenance' ? yachtPNG : crashPNG} 
-            className="size-10 ml-2" 
+            src={title === 'Action Phase' ? rocketPNG : title === 'Maintenance' ? yachtPNG : crashPNG} 
+            className="size-9 ml-2" 
             alt="Phase Icon"
           />
         </h2>
@@ -115,7 +115,7 @@ const QuitList = ({title,status , quits, setSelectedQuit}) => {
                 <i>
                   Currently no quits in this category.<i> </i> 
                   {
-                    title === "Action phase"
+                    title === "Action Phase"
                     &&
                     <i>
                        To start a new quit click the <b className='underline text-blue-400 cursor-pointer' onClick={() => navigate("/addQuit")}>here</b>

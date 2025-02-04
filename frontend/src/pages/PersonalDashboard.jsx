@@ -47,7 +47,7 @@ const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
         > 
           <DailyQuote />     
           <QuitList 
-            title="Action phase"
+            title="Action Phase"
             status="active"
             quits={quits}
             setSelectedQuit={setSelectedQuit}
