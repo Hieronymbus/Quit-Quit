@@ -33,30 +33,32 @@ const DeveloperInfo = ({darkMode, setDarkMode}) => {
                 </li>
               </ul>
             </div>
-            <p>
+            <p
+              className='mt-2'
+            >
             This project started as a simple idea but quickly became a challenge that pushed my skills to the next level. I wanted to build something practical, visually appealing, and user-friendly—while also sharpening my abilities in React, Tailwind CSS, and backend integration. What I love most about it is seeing everything come together, from concept to execution. The biggest struggle? Debugging unexpected issues and making sure every detail worked seamlessly. But through persistence and problem-solving, I turned obstacles into learning experiences. This project isn't just a product—it's proof of growth, creativity, and dedication.
             </p>
             <div
               className='mt-8 flex flex-col w-full items-start'
             >
-              <h2 className="text-3xl font-bold  mb-4">
+              <h2 className="text-3xl font-bold  mb-4 text-blue-600 dark:text-blue-400">
                 Tech Stack
               </h2>
               <ul className="list-disc pl-5 space-y-2 text-lg ">
                 <li className="flex items-center">
-                  <span className="w-2.5 h-2.5 bg-blue-500 rounded-full mr-2"></span> React
+                  <span className="w-2.5 h-2.5 bg-teal-500 rounded-full mr-2"></span> React
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2.5 h-2.5 bg-blue-500 rounded-full mr-2"></span> Node.js
+                  <span className="w-2.5 h-2.5 bg-teal-500 rounded-full mr-2"></span> Node.js
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2.5 h-2.5 bg-blue-500 rounded-full mr-2"></span> MongoDB
+                  <span className="w-2.5 h-2.5 bg-teal-500 rounded-full mr-2"></span> MongoDB
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2.5 h-2.5 bg-blue-500 rounded-full mr-2"></span> Express.js
+                  <span className="w-2.5 h-2.5 bg-teal-500 rounded-full mr-2"></span> Express.js
                 </li>
                 <li className="flex items-center">
-                  <span className="w-2.5 h-2.5 bg-blue-500 rounded-full mr-2"></span> Tailwind CSS
+                  <span className="w-2.5 h-2.5 bg-teal-500 rounded-full mr-2"></span> Tailwind CSS
                 </li>
               </ul>
             </div>

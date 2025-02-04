@@ -42,7 +42,7 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
           
           <div dangerouslySetInnerHTML={{ __html: currentQuit.addictionTypeID.expertGuide.warning }} /> 
           <h2
-            className='text-4xl font-bold my-5 ' 
+            className='text-4xl font-bold my-5 text-blue-600 dark:text-blue-400' 
           >
             Action Phase(6 months)
           </h2>
@@ -124,7 +124,7 @@ const QuitAdvice = ({selectedQuit,setSelectedQuit, setDarkMode, darkMode}) => {
           </div>
 
           <h2
-            className='text-4xl font-bold mb-4'
+            className='text-4xl font-bold mb-4 text-blue-600 dark:text-blue-400'
           >
             Maintenance Phase(ongoing)
           </h2>

@@ -70,7 +70,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
           <h1
             className='text-4xl font-semibold text-blue-600 dark:text-blue-400 '
           >
-            {currentQuit.status != "abandoned" ? "Quit in Motion" : <span className='text-red-600 dark:text-red-500'>Quit Abandoned</span>} <img src={rightPNG} className='h-12 inline'/> {currentQuit.addictionTypeID.name}
+            {currentQuit.status != "abandoned" ? "Quit in Motion" : <span className='text-red-600 dark:text-red-500'>Quit Abandoned</span>} <img src={rightPNG} className='h-12 inline rotate-90 sm:rotate-0'/> {currentQuit.addictionTypeID.name}
           </h1>
           <div
             className='w-full text-xl '
@@ -86,7 +86,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
             >
               <div> 
                 <h3
-                  className='text-xl text-blue-400 dark:text-blue-300'
+                  className='text-xl text-blue-500 dark:text-blue-300'
                 >
                   Abstinence started
                 </h3>
@@ -96,7 +96,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 className=''
               > 
                 <h3
-                  className='text-xl text-blue-400 dark:text-blue-300'
+                  className='text-xl text-blue-500 dark:text-blue-300'
                 >
                   Action phase completion date  
                 </h3>
@@ -130,7 +130,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
               >
                 <div>
                   <h2
-                    className='text-blue-400 dark:text-blue-300'
+                    className='text-blue-500 dark:text-blue-300'
                   >
                     Quit Duration
                   </h2>
@@ -139,7 +139,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 </div> 
                 <div>
                   <h2
-                    className='text-blue-400 dark:text-blue-300'
+                    className='text-blue-500 dark:text-blue-300'
                   >
                     Time reclaimed
                   </h2>
@@ -148,7 +148,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 </div> 
                 <div>
                   <h2
-                    className='text-blue-400 dark:text-blue-300'
+                    className='text-blue-500 dark:text-blue-300'
                   >
                     Money Saved
                   </h2>
@@ -157,7 +157,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 </div> 
                 <div>
                   <h2
-                    className='text-blue-400 dark:text-blue-300'
+                    className='text-blue-500 dark:text-blue-300'
                   >
                     {whatConsumed} avoided
                   </h2>
@@ -177,7 +177,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
               > 
                 <div>
                   <h3
-                    className='text-2xl text-blue-400 dark:text-blue-300'
+                    className='text-2xl text-blue-500 dark:text-blue-300'
                   >
                     Written
                   </h3>
@@ -185,7 +185,7 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                 </div>
                 <div>
                   <h3
-                    className='text-2xl text-blue-400 dark:text-blue-300'
+                    className='text-2xl text-blue-500 dark:text-blue-300'
                   >
                     Video reminder
                   </h3>

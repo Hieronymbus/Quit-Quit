@@ -59,7 +59,7 @@ const PersonalDashboard = ({setSelectedQuit, darkMode, setDarkMode}) => {
             setSelectedQuit={setSelectedQuit}
           />
           <QuitList 
-            title="Abandoned"
+            title="Abandoned-Attempts"
             status="abandoned"
             quits={quits}
             setSelectedQuit={setSelectedQuit}

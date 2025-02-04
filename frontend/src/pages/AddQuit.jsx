@@ -139,7 +139,12 @@ const AddQuit = ({setDarkMode, darkMode}) => {
           <form 
             onSubmit={handleAddQuit} 
             className=' sm:w-1/2 p-4 flex flex-col gap-3'
-          >
+          > 
+            <h1
+              className='text-blue-600 dark:text-blue-400 text-4xl font-bold'
+            >
+              Create a new Quit
+            </h1>
             <div>
               <label htmlFor="addictionSelect" className="block text-lg font-medium  mb-1">
                   Select Addiction you wish to quit
@@ -153,7 +158,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                   <option value="" disabled>
                       -- Select an option --
                   </option>
-                  {filteredAddictionsArr.map((addiction, index) => {
+                  {filteredAddictionsArr.sort((a, b) => a.name.localeCompare(b.name)).map((addiction, index) => {
                     // if(addiction.status != "active" || addiction.status != "completed")
                       return (
                           <option value={addiction._id} key={index}>
@@ -184,7 +189,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
               &&
               <div>
                 <h2
-                  className='text-2xl font-bold mt-4 mb-2'
+                  className='text-2xl font-bold mt-4 mb-2 text-blue-600 dark:text-blue-400'
                 >
                   Usage breakdown
                 </h2>
@@ -254,7 +259,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                   className=' flex flex-col '
                 > 
                   <h2
-                    className='text-2xl font-bold mt-4 mb-2'
+                    className='text-2xl font-bold mt-4 mb-2 text-blue-600 dark:text-blue-400'
                   >
                     Motivation for quitting
                   </h2>
