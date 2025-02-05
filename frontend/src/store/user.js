@@ -114,7 +114,7 @@ export const useUserStore = create((set) => ({
     },
     deleteUser: async (userID) => {
         const response = await fetch(`/api/users/${userID}`, {
-            method: 'POST',
+            method: 'DELETE',
             credentials: "include",
             headers: {
                 "Content-Type" : "application/json"
