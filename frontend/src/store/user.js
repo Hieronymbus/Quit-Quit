@@ -111,6 +111,24 @@ export const useUserStore = create((set) => ({
             userDetails: {},
             isLoading: true
         }})
-
+    },
+    deleteUser: async (userID) => {
+        const response = await fetch(`/api/users/${userID}`, {
+            method: 'POST',
+            credentials: "include",
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        })
+        const data = await response.json();
+        if(data.success ){
+            return {success: true, message: "Account deleted"}
+        }
+        set({ user: {
+            isLoggedIn: false,
+            userDetails: {},
+            isLoading: true
+        }})
     }
+
 }))

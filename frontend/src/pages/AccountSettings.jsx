@@ -4,7 +4,11 @@ import { useUserStore } from '../store/user'
 
 const AccountSettings = ({darkMode, setDarkMode}) => {
     
-    const { user } = useUserStore()
+    const { user, deleteUser } = useUserStore()
+
+    const handleDeleteUser = async () => {
+
+    };
 
     return (
         <div
@@ -33,7 +37,7 @@ const AccountSettings = ({darkMode, setDarkMode}) => {
                </h2>
                <button>click</button>
                <h2>
-                Delete Account
+                Want to delete your account?  <button>click here. </button>
                </h2>
             </div>
         </div>
