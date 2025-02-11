@@ -195,8 +195,10 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                     <div>
                       <button
                         className=" text-lg p-2 mt-2 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2" 
-
-                        onClick={()=> setIsVideoModalOpen(true)}
+                        onClick={()=> {
+                          setIsVideoModalOpen(true);
+                          document.body.classList.add("overflow-hidden");
+                        }}
                       >
                         Open video message
                       </button>
