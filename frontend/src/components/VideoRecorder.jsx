@@ -97,6 +97,11 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
         isPreRecording
         &&
         <div>
+          <h3
+            className="text-xl font-semibold mb-1 mt-2"
+          >
+            Video Recorder
+          </h3>
           <video
             className="rounded-t-lg rounded-r-lg"
             ref={videoRef}
@@ -130,7 +135,6 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
           ( 
               <button 
                 className="text-xl p-2 rounded-b-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
-
                 onClick={(e) => { e.preventDefault(); stopRecording(); }}
               >
                 Stop Recording
@@ -157,7 +161,7 @@ const VideoRecorder = ({ setNewQuit, mode }) => {
         (
         <div>
           <h3
-            className="text-xl mb-3"
+            className="text-xl font-semibold mb-3 mt-2"
           >
             Video preview
           </h3>
