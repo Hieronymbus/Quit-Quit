@@ -1,6 +1,7 @@
 import React from 'react'
 
-const ModalVideo = ({ setIsVideoModalOpen, isVideoModalOpen, currentQuit}) => {
+const ModalVideo = ({ setIsVideoModalOpen, isVideoModalOpen, currentQuit, videoRef }) => {
+
 
   return (
         <div
@@ -11,11 +12,13 @@ const ModalVideo = ({ setIsVideoModalOpen, isVideoModalOpen, currentQuit}) => {
                 className='flex justify-end'
             >
             <button
+                className='text-gray-100'
                 onClick={() => {
                     setIsVideoModalOpen(false)
                     document.body.classList.remove("overflow-hidden");
+                    videoRef.current.pause();
+                    videoRef.current.currentTime = 0;                
                 }}
-                className='text-gray-100'
             >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="size-7">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -28,6 +31,7 @@ const ModalVideo = ({ setIsVideoModalOpen, isVideoModalOpen, currentQuit}) => {
             >
                 <video 
                     className='max-h-[450px]  '
+                    ref={videoRef}
                     controls
                     src={`${import.meta.env.VITE_PORT}/${currentQuit.videoPath}`}
                 />

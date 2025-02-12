@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import Header from '../components/Header.jsx'
 import QuitNav from '../components/QuitNav.jsx'
 import { useQuitStore } from '../store/quit.js'
@@ -24,6 +24,8 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [whatConsumed, setWhatConsumed] = useState(null);
   const [currentQuit, setCurrentQuit] = useState(null);
+
+  const videoRef = useRef(null)
 
   useEffect(() => {
     const loadData = async () => {
@@ -205,9 +207,9 @@ const QuitDashboard = ({selectedQuit, setSelectedQuit, setDarkMode, darkMode}) =
                       {
                         isVideoModalOpen
                         &&
-                        <Overlay onClickHandler={setIsVideoModalOpen}/> 
+                        <Overlay onClickHandler={setIsVideoModalOpen} videoRef={videoRef}/> 
                       }
-                      <ModalVideo setIsVideoModalOpen={setIsVideoModalOpen} isVideoModalOpen={isVideoModalOpen} currentQuit={currentQuit}/>
+                      <ModalVideo setIsVideoModalOpen={setIsVideoModalOpen} isVideoModalOpen={isVideoModalOpen} currentQuit={currentQuit} videoRef={videoRef}/>
                     </div>
                     :
                     <div>
