@@ -11,7 +11,7 @@
 - addictionBrawler
 
 ## Deployment Link 
-- https://quitforealtho.onrender.com production
+- https://quitforealtho.onrender.com 
 
 ## Timeline 
 
