@@ -47,7 +47,7 @@ export const useQuitStore = create((set) => ({
                 
             } catch (error) {
                 console.error(error)
-                return {success: false, message:"new quit failed to started"}
+                return {success: false, message:"new quit failed to start"}
             }
     },
     fetchQuits: async (userID) => {

@@ -140,7 +140,7 @@ async function handleAddQuit(e) {
 
     if (success) {
       toast(message, {
-        icon: "👏", // Custom icon
+        icon: "👏", 
         duration: 4000,
         position: "bottom-center",
         style: {
@@ -154,30 +154,18 @@ async function handleAddQuit(e) {
       window.location();
     } else {
       toast(message, {
-        icon: "❌", // Custom icon for failure
+        icon: "❌", 
         duration: 4000,
         position: "bottom-center",
         style: {
           borderRadius: "8px",
-          background: "#f8d7da", // Light red background
-          color: "#721c24", // Dark red text
-          border: "1px solid #f5c6cb", // Red border
+          background: "#f8d7da", 
+          color: "#721c24", 
+          border: "1px solid #f5c6cb", 
         },
       });
     }
-  } catch (err) {
-    toast("An unexpected error occurred.", {
-      icon: "❌",
-      duration: 4000,
-      position: "bottom-center",
-      style: {
-        borderRadius: "8px",
-        background: "#f8d7da",
-        color: "#721c24",
-        border: "1px solid #f5c6cb",
-      },
-    });
-  } finally {
+  }  finally {
     setLoading(false);
   }
 }
@@ -338,7 +326,7 @@ async function handleAddQuit(e) {
                         htmlFor='modeSelect'
                       >
                         Would you like to upload or record a video message for yourself? 
-                        This video can serve as a reminder of why you’re making this change in your life. 
+                        This can serve as a reminder of why you’re making this change in your life. 
                       </label>
                       <select
                         className='block w-full p-2 pt-2.5 pb-2.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700'
