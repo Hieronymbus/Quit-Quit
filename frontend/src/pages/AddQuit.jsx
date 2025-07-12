@@ -91,18 +91,58 @@ const AddQuit = ({setDarkMode, darkMode}) => {
   }
   
 
-  async function handleAddQuit(e) {
-    e.preventDefault()
-    console.log(newQuit.videoFile)
-    const {success, message} = await createQuit(newQuit)
-    console.log(message)
+  // async function handleAddQuit(e) {
+  //   e.preventDefault()
+  //   console.log(newQuit.videoFile)
+  //   const {success, message} = await createQuit(newQuit)
+  //   console.log(message)
     
     
-    if(success) {
+  //   if(success) {
+  //     toast(message, {
+  //       icon: "👏", // Custom icon
+  //       duration: 4000,
+  //       position: "bottom-center", 
+  //       style: {
+  //         borderRadius: "8px",
+  //         background: "#333",
+  //         color: "#fff",
+  //       },
+  //     });
+
+  //     // navigate("/personalDashboard")
+  //     window.location = "/home"
+  //     window.location()
+  //   } else {
+  //     toast(message, {
+  //       icon: "❌", // Custom icon for failure
+  //       duration: 4000,
+  //       position: "bottom-center", 
+  //       style: {
+  //         borderRadius: "8px",
+  //         background: "#f8d7da", // Light red background
+  //         color: "#721c24", // Dark red text
+  //         border: "1px solid #f5c6cb", // Red border
+  //       },
+  //     });
+  //   }
+  // }
+  const [loading, setLoading] = useState(false);
+
+async function handleAddQuit(e) {
+  e.preventDefault();
+  setLoading(true);
+
+  try {
+    console.log(newQuit.videoFile);
+    const { success, message } = await createQuit(newQuit);
+    console.log(message);
+
+    if (success) {
       toast(message, {
         icon: "👏", // Custom icon
         duration: 4000,
-        position: "bottom-center", 
+        position: "bottom-center",
         style: {
           borderRadius: "8px",
           background: "#333",
@@ -110,14 +150,13 @@ const AddQuit = ({setDarkMode, darkMode}) => {
         },
       });
 
-      // navigate("/personalDashboard")
-      window.location = "/home"
-      window.location()
+      window.location = "/home";
+      window.location();
     } else {
       toast(message, {
         icon: "❌", // Custom icon for failure
         duration: 4000,
-        position: "bottom-center", 
+        position: "bottom-center",
         style: {
           borderRadius: "8px",
           background: "#f8d7da", // Light red background
@@ -126,7 +165,22 @@ const AddQuit = ({setDarkMode, darkMode}) => {
         },
       });
     }
+  } catch (err) {
+    toast("An unexpected error occurred.", {
+      icon: "❌",
+      duration: 4000,
+      position: "bottom-center",
+      style: {
+        borderRadius: "8px",
+        background: "#f8d7da",
+        color: "#721c24",
+        border: "1px solid #f5c6cb",
+      },
+    });
+  } finally {
+    setLoading(false);
   }
+}
 
   return (
     <div
@@ -259,14 +313,14 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                   <h2
                     className='text-2xl font-bold mt-4 mb-2 text-blue-600 dark:text-blue-400'
                   >
-                    Motivation for quitting
+                    Motivation
                   </h2>
                   <div>
                     <label
                       className='block text-lg font-medium  mb-1'
                       htmlFor='textReasonsTextArea'
                     >
-                      Reasons for quiting(optional) 
+                      Reasons for quiting 
                     </label>
                     <textarea
                       className='block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700'
@@ -284,7 +338,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                         htmlFor='modeSelect'
                       >
                         Would you like to upload or record a video message for yourself? 
-                        This message can serve as a reminder of why you’re making this important change in your life to quit. (Optional)
+                        This video can serve as a reminder of why you’re making this change in your life. 
                       </label>
                       <select
                         className='block w-full p-2 pt-2.5 pb-2.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 dark:text-slate-700'
@@ -369,11 +423,38 @@ const AddQuit = ({setDarkMode, darkMode}) => {
                     className='flex flex-col gap-3 mt-8'
                   >
                   <button
-                    className="text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
-                    type='submit'
+                    className="relative text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black flex justify-center items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                    type="submit"
+                    disabled={loading}
                   >
-                    Start Quit
-                  </button>  
+                    {loading ? (
+                      <>
+                        <svg
+                          className="animate-spin h-5 w-5 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                          />
+                        </svg>
+                        Uploading…
+                      </>
+                    ) : (
+                      "Start Quit"
+                    )}
+                  </button> 
                   <button
                     className="text-xl p-3 rounded-3xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 shadow-lg shadow-black transform transition-transform duration-150 hover:shadow-md hover:shadow-black active:shadow-sm hover:translate-y-0.5 active:translate-y-2"
                     type='button' 
