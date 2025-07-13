@@ -8,7 +8,7 @@ export const useQuitStore = create((set) => ({
                 || !newQuit.addictionTypeID 
                 || !newQuit.startDate
                 || !newQuit.endDate 
-                || !newQuit.usageParameters || !newQuit.status || !newQuit.minsOrHours ) {
+                || Object.keys(newQuit.usageParameters).length !== 3 || !newQuit.status || !newQuit.minsOrHours ) {
                     return { success: false, message: "Please fill in all fields." };
             }
 

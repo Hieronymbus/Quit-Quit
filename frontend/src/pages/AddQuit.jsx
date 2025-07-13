@@ -28,11 +28,12 @@ const AddQuit = ({setDarkMode, darkMode}) => {
   });
   const [addictionChoiceParameters, setAddictionChoiceParameters] = useState([]);
   const [filteredAddictionsArr, setFilteredAddictionsArr] = useState([])
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
       fetchAddictions();
   }, [])
-  console.log("plane",addictionsArr)
+  // console.log("plane",addictionsArr)
 
   useEffect(()=>{
     
@@ -52,7 +53,7 @@ const AddQuit = ({setDarkMode, darkMode}) => {
         return quit.addictionTypeID._id
       })
     }
-    console.log("mapped", mappedArr)
+    // console.log("mapped", mappedArr)
     setFilteredAddictionsArr( addictionsArr.filter(addiction => {
       return !mappedArr.includes(addiction._id)
     }))
@@ -127,16 +128,16 @@ const AddQuit = ({setDarkMode, darkMode}) => {
   //     });
   //   }
   // }
-  const [loading, setLoading] = useState(false);
+  
 
 async function handleAddQuit(e) {
   e.preventDefault();
   setLoading(true);
 
   try {
-    console.log(newQuit.videoFile);
+    // console.log(newQuit.videoFile);
     const { success, message } = await createQuit(newQuit);
-    console.log(message);
+    // console.log(message);
 
     if (success) {
       toast(message, {
@@ -437,7 +438,7 @@ async function handleAddQuit(e) {
                             d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
                           />
                         </svg>
-                        Uploading…
+                        Combobulating...
                       </>
                     ) : (
                       "Start Quit"
